@@ -12,19 +12,30 @@ _From the very beginning, one of the main goals of the OpenShift project was to 
 
 Fork a GitHub source code repository. [this can be all scripted for the participant]. 
 
-```
+```execute
 git clone https://github.com/sjbylo/flask-vote-app.git
+```
+
+```execute
 cd flask-vote-app
-#rm -f  ~/.config/hub
+```
+
+Enter your GitHub username and then your password at the prompt:
+
+```execute 
 hub fork
 ```
+
 (note that 'hub' is a CLI for github API which we can pre-install) 
 (https://hub.github.com/)
 
 This will display your new repository name... 
 
-```
+```execute
 cd ..
+```
+
+```
 git clone <your new repository name>
 cd <your new repository>
 ```

@@ -9,6 +9,8 @@ RUN rm -rf /tmp/src/.git* && \
     chgrp -R 0 /tmp/src && \
     chmod -R g+w /tmp/src
 
+RUN yum -y install hub 
+
 ENV TERMINAL_TAB=split
 
 USER 1001
