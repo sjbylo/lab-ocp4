@@ -11,7 +11,7 @@ var google_analytics = `
 `;
 
 var config = {
-    site_title: 'Workshop Content',
+    site_title: 'OpenShift 4 Workshop',
 
     // analytics: google_analytics,
 
