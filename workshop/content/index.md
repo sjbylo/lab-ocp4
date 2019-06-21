@@ -1,7 +1,7 @@
 ---
 Sort: 1
 Title: Workshop Overview
-NextPage: setup
+NextPage: 01-preparation
 ExitSign: Setup Environment
 ---
 
