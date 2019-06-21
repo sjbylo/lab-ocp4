@@ -44,13 +44,13 @@ Fork a GitHub source code repository. [this can be all scripted for the particip
 ```
 git clone https://github.com/sjbylo/flask-vote-app.git
 cd flask-vote-app
-rm -f  ~/.config/hub
+#rm -f  ~/.config/hub
 hub fork
 ```
 (note that 'hub' is a CLI for github API which we can pre-install) 
 (https://hub.github.com/)
 
-This will display the your new repository name... 
+This will display your new repository name... 
 
 ```
 cd ..
@@ -98,7 +98,7 @@ oc get svc
 
 oc expose svc flask-vote-app
 
-oc get route``
+oc get route
 ```
 
 To check the application is working you can either use curl or load the URL into your browser.
@@ -122,7 +122,7 @@ Optionally: If you are interested ... configure a webhook to trigger the s2i bui
 
 <get instructions fot this>
 
-## Lab 4
+## Lab 3
 
 In this lab ... Make a change in the source code and rebuild/redeploy the container... 
 Trigger the build, if needed. 
@@ -140,7 +140,7 @@ What you should see ...
 
 Check the change is now deployed.... 
 
-## Lab 5
+## Lab 4
 
 _Note, for this lab, could use a DB operator, although I can't find one that works, yet._
 
@@ -165,7 +165,7 @@ DB_TYPE=mysql
 
 Explain how that worked... 
 
-## Lab 6
+## Lab 5
 
 In this lab you will scale the application... 
 
@@ -183,7 +183,7 @@ curl $VOTE_APP_ROUTE
 ```
 
 
-## Lab 7
+## Lab 6
 
 Note: For this lab the "aws operator" must be installed first by a cluster admin user. 
 
