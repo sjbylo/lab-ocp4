@@ -75,11 +75,15 @@ Explain route...
 
 Create and check a route...
 
-```
+```execute 
 oc get svc
+```
 
+```execute 
 oc expose svc flask-vote-app
+```
 
+```execute 
 oc get route
 ```
 
@@ -87,17 +91,19 @@ To check the application is working you can either use curl or load the URL into
 
 Use curl to check the app is working
 
+```execute 
+curl http://flask-vote-app-%project_namespace%.%cluster_subdomain%/ 
 ```
-curl <your route>
-```
+
 You should see...
 
 Test the application...
 
-```
-VOTE_APP_ROUTE=$(oc get route vote-app --template='{{.spec.host}}'); echo $VOTE_APP_ROUTE
+```execute
+curl http://flask-vote-app-%project_namespace%.%cluster_subdomain%/ 
 
-curl $VOTE_APP_ROUTE 
+##VOTE_APP_ROUTE=$(oc get route vote-app --template='{{.spec.host}}'); echo $VOTE_APP_ROUTE
+##curl $VOTE_APP_ROUTE 
 ```
 
 Optionally: If you are interested ... configure a webhook to trigger the s2i build on code change. 
