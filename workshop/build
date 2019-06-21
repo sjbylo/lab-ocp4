@@ -1,3 +1,0 @@
-echo Installing hub tool
-sudo yum -y install hub
-
