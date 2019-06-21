@@ -16,14 +16,21 @@ git clone https://github.com/openshift-labs/lab-workshop-content.git
 cd lab-workshop-content/
 while ! hub fork
 do
+        echo
         echo Please try again ...
         sleep 1
 done
 cd ..
 rm -rf lab-workshop-content
-U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
-git clone https://github.com/$U/lab-workshop-content.git
-#cd lab-workshop-content
+if [ -f ~/.config/hub ]
+then
+        U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
+        git clone https://github.com/$U/lab-workshop-content.git
+        #cd lab-workshop-content
+else
+        echo
+        echo Please run the script again
+fi
 END
 
 chmod 700 setup.sh 
