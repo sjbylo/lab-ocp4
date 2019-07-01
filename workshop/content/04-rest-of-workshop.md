@@ -14,13 +14,17 @@ Guide how to make a change in the source code and commit the change.  Using gith
 If you set up the webhook ...
 If not, trigger a new build ... 
 
-```
-oc start-build flask-vote-app --follow --wait
+```execute
+oc start-build vote-app --follow --wait
 ```
 
 What you should see ... 
 
 Check the change is now deployed.... 
+
+```execute 
+curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
+```
 
 ## Lab 4
 
@@ -32,7 +36,7 @@ Launch a database and connect the application to it...
 
 Run this to start MySQL container:
 
-```
+```execute
 oc new-app --name db -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=vote mysql:5.7
 ```
 
@@ -40,28 +44,54 @@ Connect the application to the database....
 
 Explain what will happen... 
 
-```
-oc set env dc vote-app DB_HOST=db DB_PORT=3306 DB_NAME=vote DB_USER=user DB_PASS=password
-DB_TYPE=mysql
+```execute
+oc set env dc vote-app DB_HOST=db DB_PORT=3306 DB_NAME=vote DB_USER=user DB_PASS=password DB_TYPE=mysql
 ```
 
 Explain how that worked... 
 
 ## Lab 5
 
-In this lab you will scale the application... 
+In this lab you will scale the application, deploy a new version and execute a blue/green deployment.
 
-```
+```execute
 oc scale --replicas=3 dc/vote-app
+```
+
+```execute
 oc get pods
 ```
 
 Test the application.... 
 
+```execute
+curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
 ```
-VOTE_APP_ROUTE=$(oc get route vote-app --template='{{.spec.host}}'); echo $VOTE_APP_ROUTE
 
-curl $VOTE_APP_ROUTE 
+Try ...
+
+```execute
+oc rollout latest vote-app
+```
+
+```execute
+oc rollout undo dc vote-app
+```
+
+```execute
+oc rollout cancel dc vote-app
+```
+
+```execute
+oc rollout undo dc vote-app --to-revision=2
+```
+
+Try also git push (using trigger) 
+
+See in other window ... 
+
+```execute-2
+watch oc rollout  history dc vote-app
 ```
 
 

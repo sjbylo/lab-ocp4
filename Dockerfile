@@ -2,14 +2,14 @@ FROM quay.io/openshiftlabs/workshop-dashboard:2.14.4
 
 USER root
 
+RUN yum -y install hub 
+
 COPY . /tmp/src
 
 RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \
     chgrp -R 0 /tmp/src && \
     chmod -R g+w /tmp/src
-
-RUN yum -y install hub 
 
 ENV TERMINAL_TAB=split
 

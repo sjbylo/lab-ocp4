@@ -42,17 +42,17 @@ cd <your new repository>
 
 Build a container application from source code using S2i... 
 
-``oc new-app . python:2.7 --dry-run`` # Remove the Dockerfile from repository?
+``oc new-app python:2.7~. --name vote-app --dry-run`` # Remove the Dockerfile from repository?
 
 Check the output, explain what it does... 
 
 Run for real now...
 
-``oc new-app . python:2.7``  # Remove the Dockerfile from repository?
+``oc new-app python:2.7~. --name vote-app``  # Remove the Dockerfile from repository?
 
 Check the build output ...
 
-``oc logs -f bc/flask-vote-app``
+``oc logs -f bc/vote-app``
 
 The python builder image will be ... 
 
@@ -65,9 +65,10 @@ STEP 8: RUN /usr/libexec/s2i/assemble
 STEP 10: COMMIT temp.builder.openshift.io/...
 ...
 Successfully pushed ...
+Push successful
 ```
 
-Explain the above. 
+< Explain the above. >
 
 Get access to the running application....
 
@@ -80,7 +81,7 @@ oc get svc
 ```
 
 ```execute 
-oc expose svc flask-vote-app
+oc expose svc vote-app
 ```
 
 ```execute 
@@ -92,7 +93,7 @@ To check the application is working you can either use curl or load the URL into
 Use curl to check the app is working
 
 ```execute 
-curl http://flask-vote-app-%project_namespace%.%cluster_subdomain%/ 
+curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
 ```
 
 You should see...
@@ -100,14 +101,11 @@ You should see...
 Test the application...
 
 ```execute
-curl http://flask-vote-app-%project_namespace%.%cluster_subdomain%/ 
-
-##VOTE_APP_ROUTE=$(oc get route vote-app --template='{{.spec.host}}'); echo $VOTE_APP_ROUTE
-##curl $VOTE_APP_ROUTE 
+curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
 ```
 
 Optionally: If you are interested ... configure a webhook to trigger the s2i build on code change. 
 
-<get instructions fot this>
+< get instructions for this >
 
 
