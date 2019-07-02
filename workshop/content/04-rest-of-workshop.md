@@ -68,6 +68,12 @@ Test the application....
 curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
 ```
 
+See in other window ... 
+
+```execute-2
+watch oc rollout  history dc vote-app
+```
+
 Try ...
 
 ```execute
@@ -76,6 +82,10 @@ oc rollout latest vote-app
 
 ```execute
 oc rollout undo dc vote-app
+```
+
+```execute
+oc rollout latest vote-app
 ```
 
 ```execute
@@ -88,11 +98,6 @@ oc rollout undo dc vote-app --to-revision=2
 
 Try also git push (using trigger) 
 
-See in other window ... 
-
-```execute-2
-watch oc rollout  history dc vote-app
-```
 
 
 ## Lab 6
