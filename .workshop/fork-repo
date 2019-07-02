@@ -1,0 +1,50 @@
+#!/bin/bash
+# Run this to fork the repo.  Depends on hub command 
+REPO_PATH=$1
+
+if [ ! "$REPO_PATH" ]
+then
+	REPO_URL=`git remote -v | grep push | awk '{print $2}'` || exit 1
+	REPO_PATH=`echo $REPO_URL | cut -d/ -f4,5 | sed "s/\.git$//"`
+	echo REPO_PATH=$REPO_PATH
+fi
+
+if [ ! "$REPO_PATH" ]
+then
+	echo "Usage: fork-repo.sh <repo path>, e.g. org/repo-name"
+	exit 1
+fi
+
+REPO_NAME=`basename $REPO_PATH`
+
+umask 077
+
+set -e
+
+cd
+rm -rf $REPO_NAME/
+git clone https://github.com/$REPO_PATH.git
+cd $REPO_NAME/
+echo Forking GitHub repository https://github.com/$REPO_PATH.git
+while ! hub fork
+do
+        echo
+        echo Please try again ...
+        sleep 1
+done
+cd
+rm -rf $REPO_NAME
+if [ -f ~/.config/hub ]
+then
+        U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
+        P=`cat ~/.config/hub | grep oauth_token: | awk '{print $NF}'`
+        echo "https://$U:$P@github.com" > ~/.git-credentials
+
+        git clone https://github.com/$U/$REPO_NAME.git
+        #cd $REPO_NAME
+else
+        echo
+        echo Please run the script again
+        exit 1
+fi
+

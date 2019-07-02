@@ -95,50 +95,35 @@ You can view the build process in the console and also on the command line, like
 oc logs bc/vote-app --follow 
 ```
 
-Note, how the source code is first cloned, the python dependencies are installed and then a new image is committed/pushed into the internal container registry. 
+Note, how the source code is first cloned, the python dependencies are installed and then a
+new image is committed/pushed into the internal container registry. 
 
 After the build the image will be automatically launched.
 
 Check it out:
 
-```
+```execute
 oc get po
-NAME           READY     STATUS      RESTARTS   AGE
+```
+
+You should see sometihng similar to this:
+
+```
+NAME               READY     STATUS      RESTARTS   AGE
 vote-app-1-build   0/1       Completed   0          10m
 vote-app-1-gxq5k   1/1       Running     0          10m
 ```
 
-The vote-app-1-build pod has completed what it was doing, namely building the application. 
-Now the vote-app-1-gxq5k pod is running the application.
+The vote-app-1-build pod has completed what it was doing, namely building the python application. 
+Now the vote-app-1-gxq5k pod has started.
 
 If not already, expose the application to the external network:
 
-```
+```execute
 oc expose svc vote-app
 ```
 
-Open the application in your browser and check it's working.
----
----
-
-
-Build a container application from source code using S2i... 
-
-``oc new-app python:2.7~. --name vote-app --dry-run``
-
-Check the output, explain what it does... 
-
-Run for real now...
-
-``oc new-app python:2.7~. --name vote-app``  # Remove the Dockerfile from repository?
-
-Check the build output ...
-
-``oc logs -f bc/vote-app``
-
-The python builder image will be ... 
-
-You will see the following in the output:
+You will see the following amongst the output:
 
 ```
 ...
@@ -150,11 +135,11 @@ Successfully pushed ...
 Push successful
 ```
 
-< Explain the above. >
+FIXME: Explain the above. 
 
-Get access to the running application....
+To get access to the running application we need to expose it to the outside world. 
 
-Explain route... 
+FIXME: Explain route... 
 
 Create and check a route...
 
@@ -178,16 +163,14 @@ Use curl to check the app is working
 curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
 ```
 
-You should see...
+You should see... FIXME
 
-Test the application...
+Test the application in a browser with the following URL:
 
-```execute
-curl http://vote-app-%project_namespace%.%cluster_subdomain%/ 
-```
+http://vote-app-%project_namespace%.%cluster_subdomain%/ 
 
-Optionally: If you are interested ... configure a webhook to trigger the s2i build on code change. 
+Optionally: If you are interested ... configure a webhook in GitHub to trigger the s2i build on code change. 
 
-< get instructions for this >
+FIXME: get instructions for this 
 
 
