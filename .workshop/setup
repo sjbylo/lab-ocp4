@@ -8,36 +8,7 @@
 # run a second time if the container were restarted for some reason.
 
 # Set up git caching of password
-git config --global credential.helper 'cache --timeout=3600'
+#git config --global credential.helper 'cache --timeout=3600'
+git config --global credential.helper store
 git config --global push.default matching  # squelch the push.default message
-
-# Set up script to fork and clone the cod repo
-
-cat > setup.sh <<'END'
-# Run this to fork the repo
-
-cd ~/
-rm -rf lab-workshop-content/
-git clone https://github.com/openshift-labs/lab-workshop-content.git
-cd lab-workshop-content/
-while ! hub fork
-do
-        echo
-        echo Please try again ...
-        sleep 1
-done
-cd ..
-rm -rf lab-workshop-content
-if [ -f ~/.config/hub ]
-then
-        U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
-        git clone https://github.com/$U/lab-workshop-content.git
-        #cd lab-workshop-content
-else
-        echo
-        echo Please run the script again
-fi
-END
-
-chmod 700 setup.sh 
 

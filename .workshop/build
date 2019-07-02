@@ -21,3 +21,14 @@ rm -f Dockerfile README.md LICENSE
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
+# Needed to set up git auth using oath token 
+git config --global credential.helper store
+
+# Set up script
+set -x
+mkdir $HOME/bin
+cp -p .workshop/fork-repo $HOME/bin
+ls -l $HOME/bin
+
+# Set up PATH
+echo 'export PATH=$HOME/bin:$PATH' >> ~/.bash_profile

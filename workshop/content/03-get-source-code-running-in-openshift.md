@@ -91,7 +91,7 @@ oc new-app python:2.7~. --name vote-app
 You can view the build process in the console and also on the command line, like this:
 
 
-```
+```execute 
 oc logs bc/vote-app --follow 
 ```
 
