@@ -1,0 +1,9 @@
+name: OpenShift Workshop
+
+modules:
+    activate:
+    - index
+    - exercises/01
+    - exercises/02
+    - exercises/03
+    - finish

@@ -12,3 +12,4 @@
 git config --global credential.helper store
 git config --global push.default matching  # squelch the push.default message
 
+umask 077

@@ -4,14 +4,7 @@ REPO_PATH=$1
 
 if [ ! "$REPO_PATH" ]
 then
-	REPO_URL=`git remote -v | grep push | awk '{print $2}'` || exit 1
-	REPO_PATH=`echo $REPO_URL | cut -d/ -f4,5 | sed "s/\.git$//"`
-	echo REPO_PATH=$REPO_PATH
-fi
-
-if [ ! "$REPO_PATH" ]
-then
-	echo "Usage: fork-repo.sh <repo path>, e.g. org/repo-name"
+	echo "Usage: fork-repo <repo path>, e.g. org/repo-name"
 	exit 1
 fi
 
@@ -19,21 +12,24 @@ REPO_NAME=`basename $REPO_PATH`
 
 umask 077
 
-set -e
-
-cd
 rm -rf $REPO_NAME/
-git clone https://github.com/$REPO_PATH.git
+git clone https://github.com/$REPO_PATH.git || exit 1
 cd $REPO_NAME/
+
 echo Forking GitHub repository https://github.com/$REPO_PATH.git
+
 while ! hub fork
 do
         echo
         echo Please try again ...
         sleep 1
 done
-cd
+
+cd ..
 rm -rf $REPO_NAME
+
+sleep 2
+
 if [ -f ~/.config/hub ]
 then
         U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
@@ -41,7 +37,6 @@ then
         echo "https://$U:$P@github.com" > ~/.git-credentials
 
         git clone https://github.com/$U/$REPO_NAME.git
-        #cd $REPO_NAME
 else
         echo
         echo Please run the script again

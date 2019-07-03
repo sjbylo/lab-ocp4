@@ -1,9 +1,4 @@
----
-Sort: 1
-Title: Workshop Overview
-NextPage: 01-preparation
-ExitSign: Setup Environment
----
+# Start (index)
 
 The environment you are using is one of a set of applications useful in hosting training workshops. These can be supervised workshops run in a classroom like environment, or can be self paced workshops provided via an online interactive learning portal.
 
