@@ -1,7 +1,17 @@
-# Start (index)
+This is a half-day workshop to learn how to simplify application development using Red Hat OpenShift Container Platform on AWS. In this instructor-led lab, we will walk through how you can containerize applications on AWS.
 
-The environment you are using is one of a set of applications useful in hosting training workshops. These can be supervised workshops run in a classroom like environment, or can be self paced workshops provided via an online interactive learning portal.
+Red Hat and AWS are working together to make deploying applications inside of containers a seamless process by allowing customers to deploy and manage Red Hat OpenShift Container Platform while integrating with AWS native services.
 
-In this workshop you will learn how to create and structure the content for a workshop. You will also learn how to deploy your workshop content to be able to test it.
+Join us to learn how to:
 
-For your own workshop, this initial home page is where you would provide a description of what your workshop is about.
+- Easily build and extend traditional and container-based enterprise applications, leveraging the power of AWS compute, database, analytics, machine learning, networking, mobile and various application services
+
+- We will also share how Red Hat and AWS can help you put DevOps, containers and OpenShift cloud infrastructure to work for your business
+ 	 
+Who Should Attend:
+
+- Cloud, Application and Infrastructure Architects
+- Cloud, Application and IT Systems Administrators
+- IT Operations and Systems Managers
+- Developers
+

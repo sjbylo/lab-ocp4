@@ -1,4 +1,4 @@
-name: OpenShift Workshop
+name: OpenShift on AWS Workshop 
 
 modules:
     activate:
@@ -6,4 +6,8 @@ modules:
     - exercises/01
     - exercises/02
     - exercises/03
+    - exercises/04
+    - exercises/05
+    - exercises/06
+    - exercises/07
     - finish

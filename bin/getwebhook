@@ -15,6 +15,7 @@ oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.trigge
 
 echo 
 echo 'Set the Content type to "application/json"'
+echo 'Remember to Disable "SSL verification"'
 
 [ -f ~/.config/hub ] || exit 0
 

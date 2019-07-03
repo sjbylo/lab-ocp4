@@ -1,4 +1,4 @@
-FROM quay.io/openshiftlabs/workshop-dashboard:2.14.4
+FROM quay.io/openshiftlabs/workshop-dashboard:3.3.2
 
 USER root
 
@@ -11,7 +11,7 @@ RUN rm -rf /tmp/src/.git* && \
     chgrp -R 0 /tmp/src && \
     chmod -R g+w /tmp/src
 
-ENV TERMINAL_TAB=split
+ENV TERMINAL_TAB=split A=b
 
 USER 1001
 
