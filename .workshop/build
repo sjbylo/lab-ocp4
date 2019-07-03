@@ -25,4 +25,4 @@ git config --global user.name "Your Name"
 git config --global credential.helper store
 
 # Set up PATH
-echo 'export PATH=$HOME/bin:$PATH' >> ~/.bash_profile
+echo 'export PATH=$HOME/.bin:$PATH' >> ~/.bash_profile
