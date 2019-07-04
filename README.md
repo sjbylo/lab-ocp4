@@ -6,7 +6,9 @@ The workshop looks like this.
 
 ![](.bin/screenshot.png)
 
-## How to launch the workshop. See the template "production.json" for all the paramaters that can be set.
+## How to launch the workshop on OpenShift
+
+See the template "production.json" for all the paramaters that can be set.
 
 ```
 oc new-app https://raw.githubusercontent.com/openshift-labs/workshop-dashboard/master/templates/production.json \

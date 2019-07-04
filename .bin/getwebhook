@@ -2,6 +2,8 @@
 
 [ ! "$1" -o ! "$2" ] && echo "Usage: getwebhook <bc> <cluster domain>" && exit 1
 
+clear
+
 P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ $selfLink }}{{ "/webhooks/" }}{{ .github.secret }}{{ "/github" }}{{ end }}{{ end }}{{ end }}')
 
 H=$(echo $2 | sed "s/apps\./api\./")
