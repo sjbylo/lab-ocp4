@@ -2,7 +2,7 @@ FROM quay.io/openshiftlabs/workshop-dashboard:3.3.2
 
 USER root
 
-RUN yum -y install hub 
+RUN yum -y install hub svcat
 
 COPY . /tmp/src
 
@@ -11,7 +11,7 @@ RUN rm -rf /tmp/src/.git* && \
     chgrp -R 0 /tmp/src && \
     chmod -R g+w /tmp/src
 
-ENV TERMINAL_TAB=split A=b
+ENV TERMINAL_TAB=split
 
 USER 1001
 

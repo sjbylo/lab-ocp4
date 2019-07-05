@@ -1,6 +1,7 @@
 set -xe
 
 oc delete all --selector=app=vote-app
+oc delete all --selector=app=db
 
 fork-repo sjbylo/flask-vote-app
 

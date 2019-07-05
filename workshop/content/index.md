@@ -1,3 +1,5 @@
+FIXME: Below is the marketing EDM.  Needs chganging?
+
 This is a half-day workshop to learn how to simplify application development using Red Hat OpenShift Container Platform on AWS. In this instructor-led lab, we will walk through how you can containerize applications on AWS.
 
 Red Hat and AWS are working together to make deploying applications inside of containers a seamless process by allowing customers to deploy and manage Red Hat OpenShift Container Platform while integrating with AWS native services.
