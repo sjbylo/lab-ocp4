@@ -50,7 +50,7 @@ If you make changes to the workshop content, you can run this build command agai
 
 Once deployed, visit the URL route for the workshop. You will be prompted to login to the OpenShift cluster. Use your own username and password. In the case of deploying the workshop for yourself, you will need to have been a project admin for the project it is deployed in.
 
-You can learn more about the scripts used to perform the deployment by looking at the [README](.workshop/scripts/README.md) and files contained in the [.workshop/scripts](.workshop/scripts) directory.
+You can learn more about the scripts used to perform the deployment by looking at the README and files contained in the `.workshop/scripts` directory.
 
 If you need to ever update the deployment scripts to the latest version run:
 
