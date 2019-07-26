@@ -59,3 +59,21 @@ git submodule update --recursive --remote
 ```
 
 This will update the commit reference for the Git submodule, so if you want to keep it for the future, you will need to commit the change back to the repository.
+
+To delete a personal workshop instance when done, run:
+
+```
+.workshop/scripts/delete-personal.sh
+```
+
+To delete a multi user workshop instance when done, run:
+
+```
+.workshop/scripts/delete-spawner.sh
+```
+
+Also delete the build configuration for the workshop image by running:
+
+```
+.workshop/scripts/delete-workshop.sh
+```
