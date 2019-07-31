@@ -5,17 +5,17 @@ modules:
     exercises/01:
         name: Get started with OpenShift
     exercises/02:
-        name: Create the Repo
+        name: Create a Repo
     exercises/03:
         name: Run the Source
     exercises/04:
         name: Change the Source
     exercises/05:
-        name: Add the Database
+        name: Add a Database for testing
     exercises/06:
-        name: Scale and zero downtime Deploy 
+        name: Add a production Database
     exercises/07:
-        name: Need this lab?
+        name: Day 2 Operations
     finish:
         name: Workshop Summary
         exit_sign: Finish Workshop

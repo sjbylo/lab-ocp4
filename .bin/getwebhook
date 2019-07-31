@@ -2,12 +2,19 @@
 
 [ ! "$1" -o ! "$2" ] && echo "Usage: getwebhook <bc> <cluster domain>" && exit 1
 
-echo
-
 P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ $selfLink }}{{ "/webhooks/" }}{{ .github.secret }}{{ "/github" }}{{ end }}{{ end }}{{ end }}')
 
 H=$(echo $2 | sed "s/apps\./api\./")
 
+echo
+echo #######################################################################################
+echo "The following will help you set up a webhook"
+echo
+echo "Go to your GitHub account -> flask-vote-app -> Settings -> Webhooks "
+echo "or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks"
+echo
+echo "Use the following information to create the webhook:"
+echo
 echo GitHub webhook - the Payload URL:
 echo "https://$H:6443$P"
 
@@ -24,6 +31,6 @@ echo 'Remember to Disable "SSL verification"'
 U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
 
 echo
-echo "Go to your GitHub account -> flask-vote-app -> Settings -> Webhooks or follow this URL:"
-echo "https://github.com/$U/flask-vote-app/settings/hooks"
+echo #######################################################################################
+echo
 

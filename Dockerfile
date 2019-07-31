@@ -2,7 +2,9 @@ FROM quay.io/openshiftlabs/workshop-dashboard:3.6.3
 
 USER root
 
-RUN yum -y install hub svcat
+RUN yum -y install hub
+
+RUN curl -sLO https://download.svcat.sh/cli/latest/linux/amd64/svcat && chmod +x ./svcat && mv ./svcat /usr/local/bin
 
 COPY . /tmp/src
 
