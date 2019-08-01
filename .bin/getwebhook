@@ -1,13 +1,17 @@
-#!/bin/bash
+#!/bin/bash -e
 
 [ ! "$1" -o ! "$2" ] && echo "Usage: getwebhook <bc> <cluster domain>" && exit 1
+[ ! -f ~/.config/hub ] && echo "Please complete the previous labs before running this script!" &&  exit 0
+
+oc get bc $1 || exit 1
 
 P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ $selfLink }}{{ "/webhooks/" }}{{ .github.secret }}{{ "/github" }}{{ end }}{{ end }}{{ end }}')
 
 H=$(echo $2 | sed "s/apps\./api\./")
 
-[ ! -f ~/.config/hub ] && echo "Please complete the previous labs before running this script!" &&  exit 0
 U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
+
+S=`oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ .github.secret }}{{ end }}{{ end }}{{ end }}'`
 
 echo
 echo #######################################################################################
@@ -20,15 +24,11 @@ echo "Use the following information to create the webhook:"
 echo
 echo GitHub webhook - the Payload URL:
 echo "https://$H:6443$P"
-
 echo
-echo Webhook Secret:
-oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ .github.secret }}{{ end }}{{ end }}{{ end }}'; echo
-
+echo Webhook Secret: $S
 echo 
 echo 'Set the Content type to "application/json"'
 echo 'Remember to Disable "SSL verification"'
-
 echo
 echo #######################################################################################
 echo
