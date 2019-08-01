@@ -4,7 +4,7 @@ This workshop uses Homeroom. If you are interested in Homeroom, a good place to 
 
 The dashboard for the workshop environment should look like:
 
-![](.bin/screenshot.png)
+![](images/screenshot.png)
 
 ## How to launch the workshop on OpenShift
 
