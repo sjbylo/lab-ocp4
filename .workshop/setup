@@ -12,4 +12,6 @@
 git config --global credential.helper store
 git config --global push.default matching  # squelch the push.default message
 
+#grep -q "svcat completion bash" $HOME/.bash_profile || echo 'source <(svcat completion bash)' >> $HOME/.bash_profile
+
 umask 077
