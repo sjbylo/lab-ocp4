@@ -13,23 +13,32 @@ U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
 
 S=`oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ .github.secret }}{{ end }}{{ end }}{{ end }}'`
 
-echo
-echo #######################################################################################
-echo "The following will help you set up a webhook"
-echo
-echo "Go to your GitHub account -> flask-vote-app -> Settings -> Webhooks "
-echo "or sign in and then go to this URL: https://github.com/$U/flask-vote-app/settings/hooks"
-echo
-echo "Use the following information to create the webhook:"
-echo
-echo GitHub webhook - the Payload URL:
-echo "https://$H:6443$P"
-echo
-echo Webhook Secret: $S
-echo 
-echo 'Set the Content type to "application/json"'
-echo 'Remember to Disable "SSL verification"'
-echo
-echo #######################################################################################
-echo
+cat <<END
+#############################################################################################
+Instructions on how to set up the webhook in GitHub 
+#############################################################################################
+
+Go to your GitHub account and log in, if not already: https://github.com/$U
+Go to Repositories -> flask-vote-app -> Settings -> Webhooks 
+or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks
+
+Click on the "Add Webhook" button and fill in the form using the following information:
+
+Payload URL:
+https://$H:6443$P
+Note: Be very careful when copying and pasting this long value into the form as a space might be inserted depending on which browser you are using!
+
+Content type: application/json
+
+Secret: $S
+
+SSL verification: Disabled 
+
+Leave the other settings as they are.
+
+Finally, click on the "Add Webhook" button.
+
+#############################################################################################
+END
+
 
