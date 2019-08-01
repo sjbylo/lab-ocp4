@@ -6,12 +6,15 @@ P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.tr
 
 H=$(echo $2 | sed "s/apps\./api\./")
 
+[ ! -f ~/.config/hub ] && echo "Please complete the previous labs before running this script!" &&  exit 0
+U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
+
 echo
 echo #######################################################################################
 echo "The following will help you set up a webhook"
 echo
 echo "Go to your GitHub account -> flask-vote-app -> Settings -> Webhooks "
-echo "or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks"
+echo "or sign in and then go to this URL: https://github.com/$U/flask-vote-app/settings/hooks"
 echo
 echo "Use the following information to create the webhook:"
 echo
@@ -25,10 +28,6 @@ oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.trigge
 echo 
 echo 'Set the Content type to "application/json"'
 echo 'Remember to Disable "SSL verification"'
-
-[ -f ~/.config/hub ] || exit 0
-
-U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
 
 echo
 echo #######################################################################################
