@@ -22,24 +22,21 @@ Go to your GitHub account and log in, if not already: https://github.com/$U
 Go to Repositories -> flask-vote-app -> Settings -> Webhooks 
 or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks
 
-Click on the "Add Webhook" button and fill in the form using the following information:
+Click on the "Add Webhook" button and fill in the form using the following values:
 
-Payload URL:
-https://$H:6443$P
-Note: Be very careful when copying and pasting this long value into the form as a space might be inserted at the line-break depending on which browser you are using!
+Payload URL: https://$H:6443$P
+
+     Note: Be very careful when copying and pasting this long value into the form as a space
+           might be inserted at the line-break depending on which browser you are using!
 
 Content type: application/json
-
 Secret: $S
-
 SSL verification: Disabled 
 
-Leave the other settings as they are.
-
+Leave the other settings as they are.  
 Finally, click on the "Add Webhook" button.
 
 GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick``, that means it's working. 
-
 #############################################################################################
 END
 
