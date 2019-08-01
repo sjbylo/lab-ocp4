@@ -3,7 +3,7 @@
 [ ! "$1" -o ! "$2" ] && echo "Usage: getwebhook <bc> <cluster domain>" && exit 1
 [ ! -f ~/.config/hub ] && echo "Please complete the previous labs before running this script!" &&  exit 0
 
-oc get bc $1 || exit 1
+oc get bc $1 >/dev/null || exit 1
 
 P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ $selfLink }}{{ "/webhooks/" }}{{ .github.secret }}{{ "/github" }}{{ end }}{{ end }}{{ end }}')
 
@@ -26,7 +26,7 @@ Click on the "Add Webhook" button and fill in the form using the following infor
 
 Payload URL:
 https://$H:6443$P
-Note: Be very careful when copying and pasting this long value into the form as a space might be inserted depending on which browser you are using!
+Note: Be very careful when copying and pasting this long value into the form as a space might be inserted at the line-break depending on which browser you are using!
 
 Content type: application/json
 
@@ -37,6 +37,8 @@ SSL verification: Disabled
 Leave the other settings as they are.
 
 Finally, click on the "Add Webhook" button.
+
+GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick``, that means it's working. 
 
 #############################################################################################
 END
