@@ -1,24 +1,30 @@
 In this lab you will learn how to manage your application. 
 
+ - ``FIXME:  This lab is not complete (Steve).  it is mant as a "filler", if they get this far they can still do something. If I get time I'll fix it up.``
+
 ... scale the application, deploy a new version and execute a blue/green deployment. 
 
-FIXME: complete this lab!
-
  - Note: ``This lab is optional.`` 
+
+Scale the application up to 3 containers/pods: 
 
 ```execute
 oc scale --replicas=3 dc/vote-app
 ```
 
+See the action in the [console](%console_url%/k8s/ns/%project_namespace%/pods). 
+
 ```execute
 oc get pods
 ```
 
-Test the application.... 
+Test the application to check it still works properly having been scaled out to 3 containers.  
 
 ```execute 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/ | grep "<title>"
 ```
+
+ - Note that all the `state` of the application is stored in the database. Each container/pod is therefore `stateless` and can be freely stopped and started, as needed. 
 
 See in other window ... 
 
@@ -34,29 +40,42 @@ Execute this command which will watch for rollout history:
 watch oc rollout history dc vote-app
 ```
 
-Try ... FIXME: Explain..
+Try ... FIXME: Explain deployments, rolling deployments etc ... 
+
+Rollout a the application again: 
 
 ```execute
 oc rollout latest vote-app
 ```
+
+Rollback (undo) the deployment: 
 
 ```execute
 oc rollout undo dc vote-app
 ```
 
+Rollout the application again: 
+
+
 ```execute
 oc rollout latest vote-app
 ```
 
+During the rollout, cancel it: 
+
 ```execute
 oc rollout cancel dc vote-app
 ```
+Rollback (undo) the deployment: 
+
 
 ```execute
 oc rollout undo dc vote-app --to-revision=2
 ```
 
-Try also git push (using trigger) 
-
 FIXME: blue / green deployment by adding a 2nd version of the app.... 
 
+---
+That's the end of this lab.
+
+Please move onto the next lab.  

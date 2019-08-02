@@ -8,21 +8,54 @@ svcat get instances
 
 Wait for the instance _status_ to become ``Ready`` before continuing. 
 
-Bind the new database with the application by creating a secret containing the access credentials (host, username, password...):
+# Verify the database is running 
+
+Let's check that the RDS instance is up and reachable. 
+
+Use the help script to extract the values from the secret into terminal's shell environment so the connectivity to the database can be tested. 
+
+```execute
+eval `extract-secret mysql-secret`
+```
+Now, access the database to check the content of the ``vote`` database:
+
+```execute
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show databases;'
+```
+ The output should include the ``vote`` database.  If not, or if there is an error, wait for the database to become ready. 
+ 
+ Now, check if the database is empty or not.  
+ 
+  - Note, the database `should be empty` if the application has not initialized it yet.
+
+```execute
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
+```
+
+Only after the application has been configured to connect to the database and has started up, there will be any content in the database. 
+
+
+# Bind to the database service 
+
+Bind to the new database service (called ``mysql``) with the application by first fetching the access credentials of the database (host, username, password...): 
+
+Fetch the access credentials via the `service catalogue`: 
 
 ```execute
 svcat bind mysql --name mysql-binding --secret-name mysql-secret
 ```
 
-Check the RDS bindings:
+ - The binding will be called ``mysql-binding`` and the resulting Kubernetes secret will be called ``mysql-secret``.
+
+ - Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a container. 
+
+Check the database bindings:
 
 ```execute
 svcat get bindings
 ```
 
-The binding creates a secret containing the database's access credentials (host, username, password ...)
-
-Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a container. 
+The binding creates a secret containing the database's access credentials (host, username, password ...) 
 
 View the secret:
 
@@ -31,11 +64,12 @@ oc describe secret mysql-secret
 ```
  - Note that if you see the error ``not found`` the secret has not been created yet.  This most likely means the RDS instance has not finished provisioning and/or the binding has not been created yet. 
 
----
 
-FIXME: Not sure where to place this part yet. 
 
-If not already done in the previous lab, the application needs to be configured to use a ``mysql`` database.  Add this setting to the application.
+
+# Point the application to the database 
+
+If not already done in the previous lab, the application needs to be configured to use a ``mysql`` database instead of the `built-in` database.  Add this setting to the application.
 
 To do this, add the environment variable ``DB_TYPE`` into the application using the following command:
 
@@ -48,30 +82,7 @@ oc rollout resume dc vote-app
 
 Note, that the above ``oc set env`` command would normally cause a re-deployment of the application.  In this case ``oc rollout pause dc vote-app`` is used to stop this from happening, since we are not ready to restart it just yet. 
 
----
-
-Let's check that the RDS instance is reachable. 
-
-Use the help script to extract the values from the secret into shell environment variables. 
-
-```execute
-eval `extract-secret mysql-secret`
-```
-Now, access the database to check the content of the ``vote`` database:
-
-```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show databases;'
-```
- This should also include the ``vote`` database.  
- Now, check is the database is empty or not.  
- 
-  - Note, It should be empty if the application has not initialized it yet.
-
-```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
-```
-
-Once the application has been configured to connect to the database, there will be content. 
+## Configure the application to use the database
 
 Now, connect the application to the database by injecting the database credentials into the application.
 
@@ -95,7 +106,9 @@ Once the application has been re-deployed, check the database has been initializ
 mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
 ```
 
-After using the application, check the votes in the database: 
+## Test the application 
+
+After using the application, check the votes in the database table: 
 
 ```execute
 mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from poll;'
@@ -153,22 +166,9 @@ Or, view the results page in a browser:
 
 
 ---
+That's the end of this lab.
 
 
 
 
-Now, de-provision the production database. 
 
-First, the binding needs to be removed.  This means removing the credentials and the secret.
-
-```execute
-svcat unbind --name mysql-binding
-```
-
-... and then the MySQL service can be de-provisioned:
-
-```execute
-svcat deprovision mysql 
-```
-
-The MySQL instance will be removed and takes about 2 to 3 minutes.  

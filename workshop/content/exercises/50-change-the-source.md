@@ -89,6 +89,9 @@ Test the application in a browser with the following URL:
 [Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/)
 
 
+---
+That's the end of this lab.
+
 You now know how to make changes to your code and test the results.  Next you will connect the vote application to a database. 
 
 

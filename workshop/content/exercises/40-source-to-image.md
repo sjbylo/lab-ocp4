@@ -199,10 +199,13 @@ git push
 
 Watch the build take place again, see a new image being created and the application being re-deployed. 
 
-That is the end of the lab.  In this lab you build the application and tested it. 
+---
+That is the end of the lab. 
+
+In this lab you build the application and tested it. 
 
 ---
-Example output of a full application build:
+## Example output of a full application build:
 
 ```
 $ oc logs bc/vote-app

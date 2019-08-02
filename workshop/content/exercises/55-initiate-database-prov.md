@@ -1,6 +1,8 @@
 In this lab you will provision an AWS Relational Database Service (RDS) instance so that - ``in a later lab`` - you can configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
-We will use the ``AWS Service Broker``, which is an open source project that allows native AWS services to be exposed directly through Red Hat OpenShift and Kubernetes. The Broker provides simple integration of AWS Services directly within OpenShift.
+We will use the ``AWS Service Broker``.
+
+- ``The AWS Service Broker is an open source project that allows native AWS services to be exposed directly through Red Hat OpenShift and Kubernetes. The Broker provides simple integration of AWS Services directly within OpenShift.``
 
 Using the ``AWS Broker``, which is configured and running on this OpenShift cluster, provision an AWS RDS MySQL service.  Connect the MySQL database to the application and test it. 
 
@@ -46,5 +48,9 @@ svcat get instances
 ```
 
 The database takes about 15 minutes to provision. 
-Once you see the instance status as "Provisioning", move onto to the next lab.
+
+---
+That's the end of this lab.
+
+Once you see the instance status as `Provisioning`, move onto to the next lab.
 

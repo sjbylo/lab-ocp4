@@ -49,6 +49,9 @@ You should see your GitHub username in the output. For example:
 ...github.com/johnsmith/...
 ```
 
+---
+That's the end of this lab.
+
 Now you have fetched the source code, the next lab will get that code running on OpenShift. 
 
 

@@ -84,8 +84,9 @@ Check the application is still working as expected:
 [Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
 
 ---
-In this lab you have launched a database for testing purposes and connected the application to it.  
+That's the end of this lab.
 
+In this lab you have launched a database for testing purposes and connected the application to it.  
 
 In the next lab you will configure the cloud based database. 
 

@@ -74,6 +74,8 @@ Come back to the terminal tab or click here:
 Note that you can open the OpenShift Console in a separate tab by using the menu on the top right corner.
 
 ---
+That's the end of this lab.
+
 In this lab you were introduced to the OpenShift console and command line.  In the next lab, you will load and run your first container based application. 
 
 
