@@ -25,6 +25,8 @@ Run the following command in the lower terminal so we can view the running conta
 watch "oc get pods | grep -e ^db- -e ^vote-app- | grep -v ' Completed '"
 ```
 
+# Execute the Source 2 Image build process 
+
 Now run the ``new-app`` command and see what it will do:
 
 ```execute
@@ -115,6 +117,8 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 1. The vote-app-1-deploy pod was launched to deploy the vote application pod.
 1. Now the vote-app-1-gxq5k pod has started.
 
+# Expose the application via an OpenShift Route
+
 By default, the application is not accessible from outside of OpenShift. Now, expose the application to the external network so it can be tested:
 
 ```execute
@@ -128,6 +132,8 @@ Check the route object:
 ```execute 
 oc get route
 ```
+
+# Test the application 
 
 To check the application is working you can either use curl or load the URL into your browser.
 
@@ -160,8 +166,7 @@ Note that:
  - by default, the application uses an built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
  
 
----
-## Creating a Webhook 
+# Create a Webhook (optional) 
 
 ``Optionally``, if you are interested to have the build execute automatically on every code change, configure a webhook in GitHub which will trigger the s2i build on every code commit and push. 
 

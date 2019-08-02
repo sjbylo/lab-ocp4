@@ -1,5 +1,7 @@
 In this lab you will launch a database ``in a container`` and configure your application to use the database instead of the default built-in database.
 
+# Launch the database 
+
 Launch a MySQL database and connect the application to it.  MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL). 
 
 Run this to start a MySQL container:
@@ -21,7 +23,7 @@ oc logs dc/db
 
 Wait for the database to be running.  You will see `ready for connections` in the log output.  If not, try the above command again. 
 
-Once the database is up and running, verify that by checking if the ``vote`` databasd exists:
+Once the database is up and running, verify that by checking if the ``vote`` database exists:
 
 ```execute
 mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e "show databases"

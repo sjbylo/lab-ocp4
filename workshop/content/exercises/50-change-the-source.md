@@ -1,5 +1,6 @@
 In this lab you will make a change in the source code and rebuild/re-deploy the container.
 
+# Change the application source code 
 
 You can either make a source code change using an editor or you can use the below ``sed`` command.
 
@@ -50,6 +51,8 @@ git commit -m "Changed voting data" .
 
  - ``After the next command, if you had set up the GitHub webhook in the previous lab, you should see the source to image build starting automatically.  You will see a build pod running in the lower terminal.``
 
+# Commit and push the changes 
+
 Now, push the changes to GitHub:
 
 ```execute
@@ -71,6 +74,8 @@ oc logs bc/vote-app --follow
 You should see the python application being built again and a new image being committed/pushed into the internal registry. The application should be re-deployed automatically. 
 
 Once the new pod is up and running, check the change you just made has already been deployed:
+
+# Verify the application changes 
 
 ```execute 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/ | grep "<title>"

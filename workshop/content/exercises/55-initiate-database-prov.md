@@ -6,6 +6,8 @@ We will use the ``AWS Service Broker``.
 
 Using the ``AWS Broker``, which is configured and running on this OpenShift cluster, provision an AWS RDS MySQL service.  Connect the MySQL database to the application and test it. 
 
+# Initiate the database using the developer catalogue 
+
 Go to the [Developer Catalog](%console_url%/catalog/ns/%project_namespace%). You will see many technologies which can be used.  One of them is the RDS Service.  In the search box, enter ``rds``.  You will see the ``Amazon RDS for MySQL`` service class.  Click on this RDS Service Class to read information about this service.  Then click on the ``Create Service Instance``  button to view all of the parameters that can be used to define the MySQL instance.  The most important options being:
 
 1. Service Instance Name
