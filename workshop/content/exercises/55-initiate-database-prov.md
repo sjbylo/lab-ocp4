@@ -1,4 +1,4 @@
-In this lab you will provision an AWS Relational Database Service (RDS) instance and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
+In this lab you will provision an AWS Relational Database Service (RDS) instance so that - ``in a later lab`` - you can configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
 We will use the ``AWS Service Broker``, which is an open source project that allows native AWS services to be exposed directly through Red Hat OpenShift and Kubernetes. The Broker provides simple integration of AWS Services directly within OpenShift.
 
@@ -37,7 +37,11 @@ As specified in the above command, an instance of MySQL will be created with an 
 
 Check the status of the RDS instance in the console:
 
-[Provisioned Services](%console_url%/catalog/ns/%project_namespace%/console/provisionedservices) 
+* [Developer  Catalog](%console_url%/catalog/ns/%project_namespace%)
+
+[Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%) 
+
+[Provisioned Seices 2](%console_url%/provisionedservices/ns/%project_namespace%/)
 
 Check the status of the RDS instance:
 
