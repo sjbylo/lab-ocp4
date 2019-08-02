@@ -117,6 +117,11 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 1. The vote-app-1-deploy pod was launched to deploy the vote application pod.
 1. Now the vote-app-1-gxq5k pod has started.
 
+Take a look in the console to see how the application looks:
+
+[Console](%console_url%/k8s/ns/%project_namespace%/pods) 
+
+
 # Expose the application via an OpenShift Route
 
 By default, the application is not accessible from outside of OpenShift. Now, expose the application to the external network so it can be tested:
@@ -175,6 +180,10 @@ Use the following helper script to view the instructions and values that you wil
 ```execute
 getwebhook vote-app %cluster_subdomain%
 ```
+
+ - ``Important: Follow the instructions displayed by the above command.``
+
+Log into GitHub, navigate to the ``flask-vote-app`` repository, click on ``Settings`` and then on ``Webhooks``. 
 
 Click on the "Add Webhook" button and fill in the form using the following information:
 
