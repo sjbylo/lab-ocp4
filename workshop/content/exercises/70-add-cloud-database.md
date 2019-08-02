@@ -1,43 +1,4 @@
-In this lab you will provision an AWS Relational Database Service (RDS) instance and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
-
-We will use the ``AWS Service Broker``, which is an open source project that allows native AWS services to be exposed directly through Red Hat OpenShift and Kubernetes. The Broker provides simple integration of AWS Services directly within OpenShift.
-
-Using the ``AWS Broker``, which is configured and running on this OpenShift cluster, provision an AWS RDS MySQL service.  Connect the MySQL database to the application and test it. 
-
-Go to the [Developer Catalog](%console_url%/catalog/ns/%project_namespace%). You will see many technologies which can be used.  One of them is the RDS Service.  In the search box, enter ``rds``.  You will see the ``Amazon RDS for MySQL`` service class.  Click on this RDS Service Class to read information about this service.  Then click on the ``Create Service Instance``  button to view all of the parameters that can be used to define the MySQL instance.  The most important options being:
-
-1. Service Instance Name
-1. DB Instance Class
-1. Master User Password
-1. DBName
-1. StorageEncrypted 
-1. Publicly Accessible
-1. Master Username
-
- - Please ``DO NOT`` fill in this form and click on the ``Create`` button!  Instead, we will be using the ``svcat`` command from now on to work with the AWS Broker.
-
-Now, provision an instance of MySQL RDS using the ``svcat`` command: 
-
-```execute
-svcat provision mysql --class rdsmysql --plan custom  \
-   -p PubliclyAccessible=true \
-   -p DBName=vote \
-   -p AccessCidr=0.0.0.0/0 \
-   -p MasterUsername=user \
-   -p MasterUserPassword=ocpWorkshop2019 \
-   -p MultiAZ=false \
-   -p DBInstanceClass=db.m4.large \
-   -p AutoMinorVersionUpgrade=false \
-   -p PortNumber=13306 \
-   -p BackupRetentionPeriod=0 \
-   -p VpcId=vpc-03a00c0e08cc9bec3 
-```
-
-As specified in the above command, an instance of MySQL will be created with an instance type of ``db.m4.large`` and will be accessible publicly. 
-
-Check the status of the RDS instance in the console:
-
-[Developer Catalog](%console_url%/catalog/ns/%project_namespace%/console/provisionedservices) 
+In this lab you will work with the already provisioned AWS Relational Database Service (RDS) instance and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
 Check the status of the RDS instance:
 
@@ -45,7 +6,7 @@ Check the status of the RDS instance:
 svcat get instances
 ```
 
-Wait for the instance _status_ to be ``Ready``. 
+Wait for the instance _status_ to be ``Ready`` before continuing. 
 
 Bind the new database with the application by creating a secret containing the access credentials (host, username, password...):
 
@@ -66,7 +27,7 @@ View the secret:
 ```execute
 oc describe secret mysql-secret 
 ```
- - Note that if you see the error ``not found`` the secret has not been created yet.  This most likely means the RDS instance has not finished provisioning and/or the binding has not beed created yet. 
+ - Note that if you see the error ``not found`` the secret has not been created yet.  This most likely means the RDS instance has not finished provisioning and/or the binding has not been created yet. 
 
 ---
 
@@ -83,7 +44,7 @@ oc set env dc vote-app \
 oc rollout resume dc vote-app
 ```
 
-Note, that the above ``oc set env`` command would normally cause a re-deployment of the application.  In this case ``oc rollout pause dc vote-app`` is used to stop this fom happening, since we are not ready to restart it just yet. 
+Note, that the above ``oc set env`` command would normally cause a re-deployment of the application.  In this case ``oc rollout pause dc vote-app`` is used to stop this from happening, since we are not ready to restart it just yet. 
 
 ---
 
@@ -120,7 +81,7 @@ oc set env --from=secret/mysql-secret dc/vote-app
 
 The previous command fetches the values in the secret ``mysql-secret`` and adds them into the deployment, which in turn re-deploys the application. 
 
-Check the environment variables have ben properly set:
+Check the environment variables have been properly set:
 
 ```execute
 oc set env dc/vote-app --list
@@ -132,7 +93,7 @@ Once the application has been re-deployed, check the database has been initializ
 mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
 ```
 
-After using the applicaiton, check the votes in the database: 
+After using the application, check the votes in the database: 
 
 ```execute
 mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from poll;'
@@ -150,7 +111,7 @@ Test the application in a browser:
 
 [Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/)
 
- - ``Note that your neighbour should also be able to access your application and submit a vote.`` 
+ - ``Note that your neighbor should also be able to access your application and submit a vote.`` 
 
 After using the application and adding votes, check the votes in the database: 
 
@@ -194,7 +155,7 @@ Or, view the results page in a browser:
 
 
 
-Now, deprovision the production database. 
+Now, de-provision the production database. 
 
 First, the binding needs to be removed.  This means removing the credentials and the secret.
 
@@ -202,7 +163,7 @@ First, the binding needs to be removed.  This means removing the credentials and
 svcat unbind --name mysql-binding
 ```
 
-... and then the MySQL service can be deprovisioned:
+... and then the MySQL service can be de-provisioned:
 
 ```execute
 svcat deprovision mysql 
