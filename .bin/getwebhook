@@ -14,30 +14,28 @@ U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
 S=`oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .github }}{{ .github.secret }}{{ end }}{{ end }}{{ end }}'`
 
 cat <<END
-#############################################################################################
+###################################################################################
 Instructions on how to set up the webhook in GitHub 
-#############################################################################################
+###################################################################################
 
-Go to your GitHub account and log in, if not already: https://github.com/$U
-Go to Repositories -> flask-vote-app -> Settings -> Webhooks 
-or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks
+1. Go to your GitHub account and log in, if not already: https://github.com/$U
+   Go to Repositories -> flask-vote-app -> Settings -> Webhooks 
+   or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks
 
-Click on the "Add Webhook" button and fill in the form using the following values:
+2. Click on the "Add Webhook" button and fill in the form using the following values:
+   Payload URL:
+   https://$H:6443$P
 
-Payload URL: https://$H:6443$P
+      Note: If you see the error "The URL you've entered is not valid", be very careful when copying and pasting this long value into the form as a space might be inserted at the line-break depending on which browser you are using!
 
-     Note: Be very careful when copying and pasting this long value into the form as a space
-           might be inserted at the line-break depending on which browser you are using!
+   Content type: application/json
 
-Content type: application/json
-Secret: $S
-SSL verification: Disabled 
+   Secret: $S
 
-Leave the other settings as they are.  
-Finally, click on the "Add Webhook" button.
+   SSL verification: Disabled 
 
-GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick``, that means it's working. 
-#############################################################################################
+3. Leave the other settings as they are.  Finally, click on the "Add Webhook" button.
+
+4. GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick``, that means it's working. 
+###################################################################################
 END
-
-

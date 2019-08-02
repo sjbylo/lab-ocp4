@@ -20,6 +20,8 @@ modules:
         name: Add a production Database
     exercises/80-day-two-ops:
         name: Day 2 Operations
+    exercises/90-clean-up:
+        name: Clean up
     finish:
         name: Workshop Summary
         exit_sign: Finish Workshop
