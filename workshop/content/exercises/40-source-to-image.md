@@ -153,11 +153,17 @@ Test the application in a browser:
 
 [Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/)
 
- - ``Note that if ``Application is not available`` is displayed, this means the application is not running yet or the build has failed.``
- - ``Also, note that your neighbour should be able to access your application and submit a vote.  Only one vote per browser is allowed.``
+Note that:
+
+ - if  ``Application is not available`` is displayed, this means the application is not running yet or the build has failed.``
+ - your neighbour should be able to access your application and submit a vote.  Only one vote per browser is allowed.
+ - by default, the application uses an built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
+ 
 
 ---
-Optionally: If you are interested to have the build execute automatically on every code change, configure a webhook in GitHub which will trigger the s2i build on every code commit and push. 
+## Creating a Webhook 
+
+``Optionally``, if you are interested to have the build execute automatically on every code change, configure a webhook in GitHub which will trigger the s2i build on every code commit and push. 
 
 Use the following helper script to view the instructions and values that you will need to configure the webhook. 
 

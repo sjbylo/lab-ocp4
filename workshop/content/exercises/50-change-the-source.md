@@ -70,7 +70,7 @@ oc logs bc/vote-app --follow
 
 You should see the python application being built again and a new image being committed/pushed into the internal registry. The application should be re-deployed automatically. 
 
-Once the new pod is up and running, check the change you made is now deployed:
+Once the new pod is up and running, check the change you just made has already been deployed:
 
 ```execute 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/ | grep "<title>"
@@ -81,6 +81,8 @@ The output should include your change, for example:
 ```
     <title>Favourite *Linux distribution*</title>
 ```
+
+ - ``If this does not work, go back and check that the build had finished successfully and that the application has been re-deployed.``
 
 Test the application in a browser with the following URL:
 

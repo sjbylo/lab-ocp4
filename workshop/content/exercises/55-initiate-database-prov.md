@@ -35,13 +35,9 @@ svcat provision mysql --class rdsmysql --plan custom  \
 
 As specified in the above command, an instance of MySQL will be created with an instance type of ``db.m4.large`` and will be accessible publicly. 
 
-Check the status of the RDS instance in the console:
+Check the status of, and explore, the RDS instance in the console: 
 
-* [Developer  Catalog](%console_url%/catalog/ns/%project_namespace%)
-
-[Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%) 
-
-[Provisioned Seices 2](%console_url%/provisionedservices/ns/%project_namespace%/)
+[Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%/)
 
 Check the status of the RDS instance:
 
@@ -50,5 +46,5 @@ svcat get instances
 ```
 
 The database takes about 15 minutes to provision. 
-Once you see the instance status as "Provisioning", move onto the next lab.
+Once you see the instance status as "Provisioning", move onto to the next lab.
 

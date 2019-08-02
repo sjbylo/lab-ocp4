@@ -1,4 +1,4 @@
-In this lab you will work with the already provisioned AWS Relational Database Service (RDS) instance and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
+In this lab you will work with the AWS Relational Database Service (RDS) instance you provisioned earlier and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
 Check the status of the RDS instance:
 
@@ -6,7 +6,7 @@ Check the status of the RDS instance:
 svcat get instances
 ```
 
-Wait for the instance _status_ to be ``Ready`` before continuing. 
+Wait for the instance _status_ to become ``Ready`` before continuing. 
 
 Bind the new database with the application by creating a secret containing the access credentials (host, username, password...):
 
@@ -21,6 +21,8 @@ svcat get bindings
 ```
 
 The binding creates a secret containing the database's access credentials (host, username, password ...)
+
+Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a container. 
 
 View the secret:
 
