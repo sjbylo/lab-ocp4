@@ -63,7 +63,7 @@ You can view various technologies, including source to image, Templates and Oper
 * [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
 
 <!--
-FIXME: is this useful?:
+Note, this is not availabe on RHPDS 
 * [Operator management](%console_url%/operatormanagement/ns/%project_namespace%)
 -->
 

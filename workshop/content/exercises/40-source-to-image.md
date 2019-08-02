@@ -187,9 +187,9 @@ Leave the other settings as they are.
 
 Finally, click on the "Add Webhook" button.
 
-GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick``, that means it's working. 
+GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick`` next to the webhook, that means it's working. 
 
-FIXME: remove next part as it's also in the next lab?!
+<!-- This next part is removed as it's also in the next lab
 
 Now, when you make a change to the code, commit and push it, a fresh build will be triggered automatically. 
 
@@ -203,6 +203,7 @@ git push
 ```
 
 Watch the build take place again, see a new image being created and the application being re-deployed. 
+-->
 
 ---
 That is the end of the lab. 

@@ -59,11 +59,13 @@ Now, push the changes to GitHub:
 git push 
 ```
 
-If you *did not* set up a webhook in the previous lab, trigger a new build manually:
+ - ``If you *did not* set up a webhook in the previous lab, trigger a new build manually``: 
 
 ```execute
 oc start-build vote-app 
 ```
+
+Wait for the build to start. 
 
 Again, follow the build progress:
 
