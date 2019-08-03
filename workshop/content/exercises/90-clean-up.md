@@ -37,7 +37,7 @@ Notice how is it easy to remove parts of an application using the `selector` opt
 Now, remove the application  
 
 ```execute 
-oc delete all --selector=vote-app  
+oc delete all --selector=app=vote-app  
 ```
 
 Again, we use the `selector` to remove only a part of the application. 

@@ -17,6 +17,8 @@ Use the help script to extract the values from the secret into terminal's shell 
 ```execute
 eval `extract-secret mysql-secret`
 ```
+ - If this command returns ``not found`` wait for the database to be ``ready``.  
+
 Now, access the database to check the content of the ``vote`` database:
 
 ```execute
@@ -71,6 +73,7 @@ oc describe secret mysql-secret
 
 If not already done in the previous lab, the application needs to be configured to use a ``mysql`` database instead of the `built-in` database.  Add this setting to the application.
 
+<!--
 To do this, add the environment variable ``DB_TYPE`` into the application using the following command:
 
 ```execute
@@ -79,6 +82,7 @@ oc set env dc vote-app \
    DB_TYPE=mysql
 oc rollout resume dc vote-app
 ```
+-->
 
 Note, that the above ``oc set env`` command would normally cause a re-deployment of the application.  In this case ``oc rollout pause dc vote-app`` is used to stop this from happening, since we are not ready to restart it just yet. 
 

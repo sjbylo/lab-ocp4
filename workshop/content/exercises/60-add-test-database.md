@@ -31,7 +31,7 @@ mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e "show database
 
 - You should see the ``vote`` database in the list.  If not, wait for the database to come up and/or check the above and try again. 
 
-## Connect to the database 
+## Connect the application to the database 
 
 At this point, the application is unaware of the existence of the MySQL database!  You need to re-configure the application to use the new database. 
 To do that we will change the vote application's environment variables and re-launch the pod.  The vote application looks for the existence of the environment variables at startup and uses them to configure itself.  If database credentials are defined the application connects to the database and provisions the needed tables and data. 
@@ -50,7 +50,15 @@ oc set env dc vote-app \
 
 The above command sets the environment variables `as stated in the arguments`. The deployment configuration restarts the pod automatically because of the configuration change.
 
-Check that the database is now populated:
+Check thsat the application is running properly and had connected to the database:
+
+```execute
+oc logs dc/vote-app 
+```
+
+Wait until you see ``Connect to : mysql://user:password@db:3306/vote`` in the output.  
+
+Check that the database is now populated with the vote application tables:
 
 <!--
 POD=`oc get pods --selector app=workspace -o jsonpath='{.items[?(@.status.phase=="Running")].metadata.name}'`; echo $POD

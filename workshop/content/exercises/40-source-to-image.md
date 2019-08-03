@@ -1,4 +1,4 @@
-In this lab you will use _Source to Image_ to build and launch the voting application on OpenShift.
+In this lab you will use ``Source to Image`` to build and launch the voting application on OpenShift.
 
 _From the very beginning, one of the main objectives of the OpenShift project was to make it really easy for developers to get code running on the platform._
 
@@ -55,11 +55,13 @@ oc new-app python:2.7~. --name vote-app
 
 This command will have listed out all the OpenShift objects that were created.
 
- - ``Note: Should the build configuration already exists from a previous invocation, start the build again with the following command:``
+<!--
+- ``Note: Should the build configuration already exists from a previous invocation, start the build again with the following command:``
 
 ```execute
 oc start-build vote-app 
 ```
+-->
 
 In the lower terminal window you can see the build container running.  That's the one that's building your vote application. 
 
@@ -68,6 +70,11 @@ You can view the build process in the console and also on the command line, like
 ```execute 
 oc logs bc/vote-app --follow 
 ```
+
+To view the build log in the console, click on the build and then on the ``Logs`` tab:
+
+[View the build](%console_url%/k8s/ns/%project_namespace%/builds)
+
 
 Wait for the build to finish.  Note, this can take a few minutes, especially the ``Copying blob...`` and the ``Storing signatures`` operations can be slow. 
 
@@ -119,7 +126,7 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 
 Take a look in the console to see how the application looks:
 
-[Console](%console_url%/k8s/ns/%project_namespace%/pods) 
+[View the console](%console_url%/k8s/ns/%project_namespace%/pods) 
 
 
 # Expose the application via an OpenShift Route
@@ -166,9 +173,9 @@ Test the application in a browser:
 
 Note that:
 
- - if  ``Application is not available`` is displayed, this means the application is not running yet or the build has failed.``
+ - if the message ``Application is not available`` is displayed, this means the application is not running yet or the build has failed.
  - your neighbour should be able to access your application and submit a vote.  Only one vote per browser is allowed.
- - by default, the application uses an built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
+ - by default, the application uses a built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
  
 
 # Create a Webhook (optional) 

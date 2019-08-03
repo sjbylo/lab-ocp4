@@ -8,7 +8,7 @@ First, set up a source code repository in your own GitHub account.  You will nee
 the next step.  If you don't have an account, first sign up for one
 at [http://github.com/join](https://github.com/join) and be sure to remember the username and password!
 
- - ``Note: Github is a site based on an open source version control system known as git, like other version control software git helps with tracking changes to a repository of files. 
+ - ``Note: Github is a site based on an open source version control system known as git, like other version control software git helps with tracking changes to a repository of files.`` 
 
 First, ensure you are in the top level home directory:
 
@@ -52,6 +52,6 @@ You should see your GitHub username in the output. For example:
 ---
 That's the end of this lab.
 
-Now you have fetched the source code, the next lab will get that code running on OpenShift. 
+Now you have forked the source code, the next lab will get that code running on OpenShift. 
 
 
