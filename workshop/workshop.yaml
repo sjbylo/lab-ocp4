@@ -5,10 +5,10 @@ modules:
     - index
     - exercises/10-openshift-intro
     - exercises/20-create-an-app
+    - exercises/55-initiate-database-prov
     - exercises/30-fork-the-repo
     - exercises/40-source-to-image
     - exercises/50-change-the-source
-    - exercises/55-initiate-database-prov
     - exercises/60-add-test-database
     - exercises/70-add-cloud-database
     - exercises/80-day-two-ops

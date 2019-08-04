@@ -4,6 +4,8 @@ modules:
         exit_sign: Start Workshop
     exercises/10-openshift-intro:
         name: Get started with OpenShift
+    exercises/55-initiate-database-prov:
+        name: Initiate Database Provisioning 
     exercises/20-create-an-app:
         name: First Application
     exercises/30-fork-the-repo:
@@ -12,8 +14,6 @@ modules:
         name: Run the Source
     exercises/50-change-the-source:
         name: Change the Source
-    exercises/55-initiate-database-prov:
-        name: Initiate Database Provisioning 
     exercises/60-add-test-database:
         name: Add a Database for testing
     exercises/70-add-cloud-database:
