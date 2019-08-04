@@ -1,4 +1,4 @@
-In this lab you will work with the AWS Relational Database Service (RDS) instance you provisioned earlier and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
+In this lab you will work with the AWS Relational Database Service (``RDS``) instance you provisioned earlier and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
 Check the status of the RDS instance:
 
@@ -49,7 +49,7 @@ Use the help script to extract the values from the secret into terminal's shell 
 ```execute
 eval `extract-secret mysql-secret`
 ```
- - If this command returns ``not found`` wait for the database to be ``ready``.  
+ - If this command returns ``not found`` wait for the database and its binding to be ``ready`` and the secret to be created from the binding. 
 
 Now, access the database to check the content of the ``vote`` database:
 
@@ -68,14 +68,11 @@ mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $D
 
 Only after the application has been configured to connect to the database and has started up, there will be any content in the database. 
 
-
-
-
+<!--
 # Point the application to the database 
 
 If not already done in the previous lab, the application needs to be configured to use a ``mysql`` database instead of the `built-in` database.  Add this setting to the application.
 
-<!--
 To do this, add the environment variable ``DB_TYPE`` into the application using the following command:
 
 ```execute
@@ -84,9 +81,10 @@ oc set env dc vote-app \
    DB_TYPE=mysql
 oc rollout resume dc vote-app
 ```
--->
 
 Note, that the above ``oc set env`` command would normally cause a re-deployment of the application.  In this case ``oc rollout pause dc vote-app`` is used to stop this from happening, since we are not ready to restart it just yet. 
+
+-->
 
 ## Configure the application to use the database
 
