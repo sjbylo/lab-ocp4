@@ -128,6 +128,9 @@ Take a look in the console to see how the application looks:
 
 [View the console](%console_url%/k8s/ns/%project_namespace%/pods) 
 
+The status of your project can be seen here:
+
+[Project Status](%console_url%/overview/ns/%project_namespace%) 
 
 # Expose the application via an OpenShift Route
 
