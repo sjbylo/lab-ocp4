@@ -75,7 +75,7 @@ oc logs bc/vote-app --follow
 
 You should see the python application being built again and a new image being committed/pushed into the internal registry. The application should be re-deployed automatically.   Note, this can take a few minutes, especially the ``Copying blob...`` and the ``Storing signatures`` operations can be slow. 
 
-Once the new pod is up and running, check the change you just made has been deployed properly:
+Once the new pod is up and running, check the change you just made has been deployed properly. 
 
 # Verify the application changes 
 

@@ -217,7 +217,7 @@ Or, view the results page in a browser:
 Note that:
 
  - if the message ``Application is not available`` is displayed, this means the application is not running yet or the build has failed.
- - your neighbour should be able to access your application and submit a vote.  Only one vote per browser is allowed.
+ - your neighbour should be able to access your application and submit a vote.  Note that only one vote per browser is allowed.
  - by default, the application uses a built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
  
 

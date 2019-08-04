@@ -50,9 +50,9 @@ oc set env dc vote-app \
    PORT=3306 \
    DB_NAME=vote \
    MASTER_USERNAME=user \
-   MASTER_PASSWORD=password 
+   MASTER_PASSWORD=password \ 
+   DB_TYPE=mysql
 ```
-<!--    DB_TYPE=mysql -->
 
 The above command sets the environment variables `as stated in the arguments`. The deployment configuration restarts the pod automatically because of the configuration change.
 
