@@ -6,7 +6,39 @@ Check the status of the RDS instance:
 svcat get instances
 ```
 
-Wait for the instance _status_ to become ``Ready`` before continuing. 
+
+ - Important! Wait for the instance _status_ to become ``Ready`` before continuing. 
+
+
+# Bind to the database service 
+
+Bind to the new database service (called ``mysql``) with the application by first fetching the access credentials of the database (host, username, password...): 
+
+Fetch the access credentials via the `service catalogue` by using the "``bind``" command: 
+
+```execute
+svcat bind mysql --name mysql-binding --secret-name mysql-secret
+```
+
+ - The binding will be called ``mysql-binding`` and the resulting Kubernetes secret will be called ``mysql-secret``.
+
+ - Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a container. 
+
+Check the database bindings:
+
+```execute
+svcat get bindings
+```
+
+The binding creates a secret containing the database's access credentials (host, username, password ...) 
+
+View the secret:
+
+```execute
+oc describe secret mysql-secret 
+```
+ - Note that if you see the error ``not found`` the secret has not been created yet.  This most likely means the RDS instance has not finished provisioning and/or the binding has not been created yet. 
+
 
 # Verify the database is running 
 
@@ -35,36 +67,6 @@ mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $D
 ```
 
 Only after the application has been configured to connect to the database and has started up, there will be any content in the database. 
-
-
-# Bind to the database service 
-
-Bind to the new database service (called ``mysql``) with the application by first fetching the access credentials of the database (host, username, password...): 
-
-Fetch the access credentials via the `service catalogue`: 
-
-```execute
-svcat bind mysql --name mysql-binding --secret-name mysql-secret
-```
-
- - The binding will be called ``mysql-binding`` and the resulting Kubernetes secret will be called ``mysql-secret``.
-
- - Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a container. 
-
-Check the database bindings:
-
-```execute
-svcat get bindings
-```
-
-The binding creates a secret containing the database's access credentials (host, username, password ...) 
-
-View the secret:
-
-```execute
-oc describe secret mysql-secret 
-```
- - Note that if you see the error ``not found`` the secret has not been created yet.  This most likely means the RDS instance has not finished provisioning and/or the binding has not been created yet. 
 
 
 
