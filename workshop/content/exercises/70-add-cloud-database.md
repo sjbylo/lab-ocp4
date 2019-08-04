@@ -93,8 +93,11 @@ Now, connect the application to the database by injecting the database credentia
 To do this, add the credentials into the application by importing them into the ``deployment`` from the secret:
 
 ```execute
-oc set env --from=secret/mysql-secret dc/vote-app
+oc set env --from=secret/mysql-secret DB_TYPE=mysql dc/vote-app 
 ```
+<!--
+oc set env --from=secret/mysql-secret dc/vote-app 
+-->
 
 The previous command fetches the values in the secret ``mysql-secret`` and adds them into the deployment, which in turn re-deploys the application. 
 
@@ -147,6 +150,7 @@ Post a few random votes to the application using this help-script:
 test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
 ```
 
+<!--
 ```execute 
 for i in {1..20}
 do
@@ -154,6 +158,7 @@ do
    curl -s -X POST http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html -d "vote=`expr $(($RANDOM % 9)) + 1`" >/dev/null
 done
 ```
+-->
 
 To view the results use the following command. You should see the totals of all the voting options:
 
