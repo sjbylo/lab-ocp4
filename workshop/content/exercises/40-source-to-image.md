@@ -5,11 +5,11 @@ _From the very beginning, one of the main objectives of the OpenShift project wa
 "oc new-app" is the command that initializes an application in various ways on OpenShift. 
 You will use it to get your source code running on OpenShift. 
 
-In this lab you will build your application in a container on OpenShift itself. This is done using Source 2 Image (s2i) which does the following:
+Source 2 Image (s2i) does the following: 
 
 1. Launches a container from a "builder image" of the matching runtime.  In this case that's a python 2.7 builder image.
 1. Executes a build of the application in the running builder container.
-1. After a successful build, s2i commits a new image containing the application and pushes it into the internal registry of OpenShift. 
+1. After a successful build, s2i commits a new image containing the built application and pushes it into the internal registry of OpenShift. 
 1. The container is launched because a new image has been created.  If the container is already running from a previous build, the container will be re-deployed. 
 
 Using the following ``--dry-run`` option, you can first see what the "new-app" command will do. 
@@ -25,6 +25,8 @@ Run the following command in the lower terminal so we can view the running conta
 watch "oc get pods | grep -e ^db- -e ^vote-app- | grep -v ' Completed '"
 ```
 
+This command will run for most of the labs and should now show ``No resources found`` since we haven't built anything yet. 
+
 # Execute the Source 2 Image build process 
 
 Now run the ``new-app`` command and see what it will do:
@@ -37,11 +39,11 @@ The above command does the following:
 
 1. looks into the current working directory ".", detects python source code and determines its associated GitHub repository. 
 1. creates a build object called a ``build configuration`` (BC).  The build configuration knows:
-   1. the location of the python ``builder image`` repository
+   1. the location of the repository which holds the ``python builder image`` 
    1. where to fetch the source code from, e.g. the GitHub repository
-   1. knows the name of the output image which will be pushed into the internal container registry 
-1. creates ``image streams`` (IS) (a.k.a. OpenShift image objects) to track the builder and the final application image
-1. these image streams are able to detect when images are updated and trigger a rebuild or a re-deployment of the application  
+   1. knows the name of the output image which will be pushed into the internal container registry (``vote-app``)
+1. creates an ``image streams`` (IS) (a.k.a. OpenShift image objects) to track the builder and the final application image
+   1. these image streams are able to detect when images are updated and trigger a rebuild or a re-deployment of the application  
 1. creates a deployment object called a ``deployment configuration`` (DC).  The deployment configuration knows:
    1. how to re-deploy the application should the image be updated
 1. creates a ``service object`` to enable discovery and access to one or more running application containers. 
@@ -63,7 +65,7 @@ oc start-build vote-app
 ```
 -->
 
-In the lower terminal window you can see the build container running.  That's the one that's building your vote application. 
+In the lower terminal window you can see the build container running.  That's the one that's building your vote application.  You should see ``vote-app-1-build   1/1     Running``. 
 
 You can view the build process in the console and also on the command line, like this:
 
@@ -71,7 +73,7 @@ You can view the build process in the console and also on the command line, like
 oc logs bc/vote-app --follow 
 ```
 
-To view the build log in the console, click on the build and then on the ``Logs`` tab:
+To view the build log in the console, click on the build (``vote-app-1``) and then on the ``Logs`` tab:
 
 [View the build](%console_url%/k8s/ns/%project_namespace%/builds)
 
@@ -96,7 +98,7 @@ What happens during the build?
 
 1. the source code is cloned.
 1. the python builder image is launched and the code copied into it.
-1. the s2i assemble script is executed.  It knows how to build a python application.
+1. the s2i ``assemble script`` is executed.  It knows how to build a python application.
 1. the python dependencies are installed 
 1. the running container is committed and a new image is created
 1. the image is then pushed into OpenShift's internal container registry
@@ -105,7 +107,7 @@ After the build the image is automatically launched and a pod created.
 
 In the lower terminal window you can see the build container has completed ``vote-app-1-build`` and a new application container is starting ``vote-app-1-xxyyzz``.
 
-You can run the following command or view the lower terminal window.
+You can also run the following command to view the pods running in your project: 
 
 ```execute
 oc get pods
@@ -124,15 +126,31 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 1. The vote-app-1-deploy pod was launched to deploy the vote application pod.
 1. Now the vote-app-1-gxq5k pod has started.
 
-Take a look in the console to see how the application looks:
+Wait for the build to complete (``Push successful``).
+
+Now take a look in the console to view the running application. There should be a running pod called ``vote-app-1-xxyyzz`` Also, try opening a terminal window _from within the console_ to explore inside the running container.  Run ``ps -ef`` inside the running container to see the running python process: 
 
 [View the console](%console_url%/k8s/ns/%project_namespace%/pods) 
+
+You should see something like this:
+
+```
+(app-root)sh-4.2$ ps -ef
+UID         PID   PPID  C STIME TTY          TIME CMD
+1002280+      1      0  0 08:24 ?        00:00:00 python app.py
+1002280+     34      0  0 08:24 pts/0    00:00:00 sh
+1002280+     64      0  0 08:27 pts/1    00:00:00 sh
+1002280+     88     64  0 08:27 pts/1    00:00:00 ps -ef
+(app-root)sh-4.2$
+```
 
 The status of your project can be seen here:
 
 [Project Status](%console_url%/overview/ns/%project_namespace%) 
 
-# Expose the application via an OpenShift Route
+Here you can see the Deployment Configuration object which helps take care of the application life-cycle. 
+
+# Expose the application for testing 
 
 By default, the application is not accessible from outside of OpenShift. Now, expose the application to the external network so it can be tested:
 
@@ -170,9 +188,31 @@ You should see the following output which means the application is working:
     <title>Favourite Linux distribution</title>
 ```
 
-Test the application in a browser:
+The application can be further tested using a helper-script.
 
-[Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/)
+Post a few random votes to the application using the help-script:
+
+```execute 
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+```
+
+To view the results use the following command. You should see the totals of all the voting options:
+
+```execute 
+curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/results.html | grep "data: \["
+```
+
+You should see something like the following, showing all the cast votes: 
+
+```
+  data: [ "3",  "3",  "2",  "0",  "1",  "5",  "1",  "3",  "2", ],
+
+```
+
+Or, view the results page in a browser:
+
+[View Results page](http://vote-app-%project_namespace%.%cluster_subdomain%/results.html)
+
 
 Note that:
 
@@ -195,7 +235,7 @@ getwebhook vote-app %cluster_subdomain%
 
 Log into GitHub, navigate to the ``flask-vote-app`` repository, click on ``Settings`` and then on ``Webhooks``. 
 
-Click on the "Add Webhook" button and fill in the form using the following information:
+Click on the "``Add Webhook``" button and fill in the form using the following information:
 
 - Payload URL: ``see the helper script output``
 - Content type: application/json
@@ -204,7 +244,7 @@ Click on the "Add Webhook" button and fill in the form using the following infor
 
 Leave the other settings as they are.
 
-Finally, click on the "Add Webhook" button.
+Finally, click on the "``Add Webhook``" button.
 
 GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick`` next to the webhook, that means it's working. 
 

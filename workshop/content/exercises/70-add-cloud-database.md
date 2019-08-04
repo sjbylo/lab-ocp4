@@ -141,7 +141,11 @@ mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $D
 ---
 The application can be tested using curl.
 
-Post a few random votes to the application using:
+Post a few random votes to the application using this help-script:
+
+```execute 
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+```
 
 ```execute 
 for i in {1..20}

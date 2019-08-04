@@ -25,7 +25,7 @@ Use the following command to substitute some text in the voting definition file 
 sed -i "s/Linux distribution/*Linux distribution*/" seeds/seed_data.json
 ```
 
-You have just made a change to the source code. As a developer, you would normally now build and 'test' the application on your 'local workstation' and after you are happy that it works 
+You have just made a change to the source code. You have added a "``*``" before and after the text ``Linux distribution``.  As a developer, you would now want to build and 'test' the application on your 'local workstation' and after you are happy that it works 
 you would ``commit`` and ``push`` the changes to GitHub. 
 
 Check the changes you made with git:
@@ -59,10 +59,10 @@ Now, push the changes to GitHub:
 git push 
 ```
 
- - ``If you *did not* set up a webhook in the previous lab, trigger a new build manually``: 
+ - ``Warning: If you DID NOT set up a webhook in the previous lab, trigger a new build manually``: 
 
 ```execute
-oc start-build vote-app 
+oc start-build vote-app   # ONLY RUN IF YOU DID NOT SET UP THE
 ```
 
 Wait for the build to start. 

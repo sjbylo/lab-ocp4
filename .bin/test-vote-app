@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+[ $# -ne 1 ] && echo "Usage: test-vote-app: vote-app-url" && exit 1
+
+for i in {1..20}
+do
+   echo Casting vote nr. $i
+   curl -s -X POST $1 -d "vote=`expr $(($RANDOM % 9)) + 1`" >/dev/null
+done
+
