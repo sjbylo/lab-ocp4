@@ -49,6 +49,7 @@ Use the help script to extract the values from the secret into terminal's shell 
 ```execute
 eval `extract-secret mysql-secret`
 ```
+ - Note that if this command shows no output then it has succeeded. 
  - If this command returns ``not found`` wait for the database and its binding to be ``ready`` and the secret to be created from the binding. 
 
 Now, access the database to check the content of the ``vote`` database:

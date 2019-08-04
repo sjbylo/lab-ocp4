@@ -50,7 +50,7 @@ oc set env dc vote-app \
    PORT=3306 \
    DB_NAME=vote \
    MASTER_USERNAME=user \
-   MASTER_PASSWORD=password \ 
+   MASTER_PASSWORD=password \
    DB_TYPE=mysql
 ```
 
@@ -112,6 +112,15 @@ mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e 'select * from
 ```
 
 <!--
+View the containers/pods in the console:
+
+* [View the Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
+
+Open the vote application in a browser: 
+
+* [Open the Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
+-->
+
 Now, the application is no longer dependent on the built-in database and can freely scale out - `add containers` - as needed. 
 
 Go to the console and scale the application pods from 1 to 3 (please do not scale to more than 3). 
@@ -141,7 +150,6 @@ Please remember to scale the vote application back down to 1 or use the followin
 ```execute
 oc scale dc vote-app --replicas=1
 ```
--->
 
 ---
 That's the end of this lab.
