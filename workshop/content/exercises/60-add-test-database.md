@@ -98,6 +98,8 @@ test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
 
 To view the results use the following command. You should see the totals of all the voting options:
 
+# Test the application 
+
 ```execute 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/results.html | grep "data: \["
 ```
