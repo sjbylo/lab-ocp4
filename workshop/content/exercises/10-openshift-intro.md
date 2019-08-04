@@ -28,6 +28,8 @@ View which projects (namespaces) you have access to:
 oc projects
 ```
 
+Note, this project has been created for you (``%project_namespace%``) for the duration of the workshop. You will work in this project whilst others will work in their own projects, thus allowing everybody to work without interfering with each other. 
+
 Fetch the console URL:
 
 ```execute
@@ -36,7 +38,7 @@ oc whoami --show-console
 
 Have a look at the OpenShift Console and view the following:
 
-Your projects can be viewed here:
+Your projects can be viewed here.  You should only have one: 
 
 * [Projects](%console_url%) 
 
@@ -44,19 +46,23 @@ The status of your project can be seen here:
 
 * [Status](%console_url%/overview/ns/%project_namespace%)
 
+Click on the ``Dashboard`` button to see your resource usage in your project. As you have just started the workshop you are using nothing, so it shows 0% utilization for CPU and Memory.  
+
 OpenShift events can be viewed here:
 
 * [Events](%console_url%/k8s/ns/%project_namespace%/events)
 
-If something is not working properly, this is a good place to look.
+If something is not working properly, this is a good place to look! 
 
 Various OpenShift objects can be viewed:
 
 * [Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
-* [Build Configuration](%console_url%/k8s/ns/%project_namespace%/buildconfigs)
-* [Deployments](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs)
+* [Build Configs](%console_url%/k8s/ns/%project_namespace%/buildconfigs)
+* [Deployment Configs](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs)
 * [Routes](%console_url%/k8s/ns/%project_namespace%/routes) 
+<!--
 * [Workloads](%console_url%/k8s/cluster/projects/%project_namespace%/workloads)
+-->
 
 You can view various technologies, including source to image, Templates and Operators here:
 
