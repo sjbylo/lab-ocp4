@@ -1,4 +1,4 @@
-In this lab you will get to know Red Hat OpenShift and familiarize yourself with the command line and also with the web console. 
+In this lab you will get to know ``Red Hat OpenShift`` and familiarize yourself with the command line and also with the web console. 
 
 Red Hat OpenShift is an open source container application platform based on the Kubernetes container orchestrator for enterprise application development and deployment. 
 
