@@ -12,28 +12,26 @@ Source 2 Image (s2i) does the following:
 1. After a successful build, s2i commits a new image containing the built application and pushes it into the internal registry of OpenShift. 
 1. The container is launched because a new image has been created.  If the container is already running from a previous build, the container will be re-deployed. 
 
-Using the following ``--dry-run`` option, you can first see what the "new-app" command will do. 
 
-
- - ``Note: Normally the "new-app" command would automatically select a matching builder image based on the source
-code but since our code specifically requires Python version 2.7 to function properly we explicitly provide the name
-and version of the builder image we want to use (python:2.7).``
-
-Run the following command in the lower terminal so we can view the running containers/pods during the rest of the labs:
+Run the following command in the lower terminal so you can view the running containers/pods during the rest of the labs:
 
 ```execute-2
 watch "oc get pods | grep -e ^db- -e ^vote-app- | grep -v ' Completed '"
 ```
 
-This command will run for most of the labs and should now show ``No resources found`` since we haven't built anything yet. 
+This command will run for most of the labs and should now show ``No resources found`` since we haven't created anything yet. 
 
 # Execute the Source 2 Image build process 
 
-Now run the ``new-app`` command and see what it will do:
+Now run the ``new-app`` command with the ``--dry-run`` option to see what it will do:
 
 ```execute
 oc new-app python:2.7~. --name vote-app --dry-run
 ```
+
+ - ``Note: Normally the "new-app" command would automatically select a matching builder image based on the source
+code but since our code specifically requires Python version 2.7 to function properly we explicitly provide the name
+and version of the builder image we want to use (python:2.7).``
 
 The above command does the following:
 
@@ -67,7 +65,7 @@ oc start-build vote-app
 
 In the lower terminal window you can see the build container running.  That's the one that's building your vote application.  You should see ``vote-app-1-build   1/1     Running``. 
 
-You can view the build process in the console and also on the command line, like this:
+You can follow the build process in the console and also on the command line, like this:
 
 ```execute 
 oc logs bc/vote-app --follow 
@@ -103,7 +101,7 @@ What happens during the build?
 1. the running container is committed and a new image is created
 1. the image is then pushed into OpenShift's internal container registry
 
-After the build the image is automatically launched and a pod created.
+After the build the image is automatically launched and a container in a pod created.
 
 In the lower terminal window you can see the build container has completed ``vote-app-1-build`` and a new application container is starting ``vote-app-1-xxyyzz``.
 
@@ -112,6 +110,8 @@ You can also run the following command to view the pods running in your project:
 ```execute
 oc get pods
 ```
+
+Wait for the build to complete. You should see (``Push successful``) in the build log output and the build pod should show ``Completed``. 
 
 You should see something similar to this:
 
@@ -124,9 +124,8 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 
 1. The vote-app-1-build pod has completed what it was doing, namely building the python application. 
 1. The vote-app-1-deploy pod was launched to deploy the vote application pod.
-1. Now the vote-app-1-gxq5k pod has started.
+1. Now the vote-app-1-gxq5k pod has started and is ``Running``. 
 
-Wait for the build to complete (``Push successful``).
 
 Now take a look in the console to view the running application. There should be a running pod called ``vote-app-1-xxyyzz`` Also, try opening a terminal window _from within the console_ to explore inside the running container.  Run ``ps -ef`` inside the running container to see the running python process: 
 
@@ -150,6 +149,7 @@ The status of your project can be seen here:
 
 Here you can see the Deployment Configuration object which helps take care of the application life-cycle. 
 
+
 # Expose the application for testing 
 
 By default, the application is not accessible from outside of OpenShift. Now, expose the application to the external network so it can be tested:
@@ -165,6 +165,8 @@ Check the route object:
 ```execute 
 oc get route
 ```
+
+You should see the hostname to use to access the application. 
 
 # Test the application 
 
@@ -188,7 +190,8 @@ You should see the following output which means the application is working:
     <title>Favourite Linux distribution</title>
 ```
 
-The application can be further tested using a helper-script.
+
+The application can be further tested using our helper-script.
 
 Post a few random votes to the application using the help-script:
 
@@ -225,7 +228,8 @@ Finally, take a look at the resource utilization in the Console:
 
 * [Status](%console_url%/overview/ns/%project_namespace%)
 
-Click on the ``Dashboard`` button to see your resource usage in your project.
+Click on the ``Dashboard`` button to see your resource usage in your project. 
+
 
 # Create a Webhook (optional) 
 

@@ -56,13 +56,13 @@ oc set env dc vote-app \
 
 The above command sets the environment variables `as stated in the arguments`. The deployment configuration restarts the pod automatically because of the configuration change.
 
-Check thsat the application is running properly and had connected to the database:
+Check that the application is running properly and was able to connect to the database:
 
 ```execute
 oc logs dc/vote-app 
 ```
 
-You should see this output, showing the database credentials used.  If not, wait and try the ``oc logs`` command again.
+You should see the following in the output, showing the database credentials used.  If not, wait and try the ``oc logs`` command again.
 
 ```
 ---> Running application from Python script (app.py) ...
@@ -104,14 +104,13 @@ To view the results use the following command. You should see the totals of all 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/results.html | grep "data: \["
 ```
 
-After testing the application and adding one or more votes, check the votes in the database: 
+After testing the application and casting one or more votes, check the votes in the database: 
 
 
 ```execute
 mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e 'select * from poll;'
 ```
 
-<!--
 View the containers/pods in the console:
 
 * [View the Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
@@ -119,7 +118,8 @@ View the containers/pods in the console:
 Open the vote application in a browser: 
 
 * [Open the Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
--->
+
+
 
 Now, the application is no longer dependent on the built-in database and can freely scale out - `add containers` - as needed. 
 

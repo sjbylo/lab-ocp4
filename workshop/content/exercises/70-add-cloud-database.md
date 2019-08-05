@@ -100,7 +100,7 @@ oc set env --from=secret/mysql-secret DB_TYPE=mysql dc/vote-app
 oc set env --from=secret/mysql-secret dc/vote-app 
 -->
 
-The previous command fetches the values in the secret ``mysql-secret`` and adds them into the deployment, which in turn re-deploys the application. 
+The previous command fetches the values from the secret ``mysql-secret`` and adds them into the deployment config, which in turn re-deploys the application. 
 
 Check the environment variables have been properly set:
 

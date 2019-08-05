@@ -34,7 +34,7 @@ Check the changes you made with git:
 git status
 ```
 
-Git should show you that you made a change in the seed_data.json file.
+Git should show you that you made a change in the seed_data.json file:
  - ``modified:   seeds/seed_data.json``.
 
 Git can also show you the exact changes you are about to commit:
@@ -43,6 +43,8 @@ Git can also show you the exact changes you are about to commit:
 git diff seeds/seed_data.json
 ```
 
+# Commit and push the changes 
+
 Commit the changes: 
 
 ```execute
@@ -50,8 +52,6 @@ git commit -m "Changed voting data" .
 ```
 
  - ``After the next command, if you had set up the GitHub webhook in the previous lab, you should see the source to image build starting automatically.  You will see a build pod running in the lower terminal.``
-
-# Commit and push the changes 
 
 Now, push the changes to GitHub:
 
@@ -62,7 +62,9 @@ git push
  - ``Warning: If you DID NOT set up a webhook in the previous lab, trigger a new build manually``: 
 
 ```execute
-oc start-build vote-app   # ONLY RUN IF YOU DID NOT SET UP THE
+# ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVOOUS LAB
+oc start-build vote-app   
+# ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVOOUS LAB
 ```
 
 Wait for the build to start. 
