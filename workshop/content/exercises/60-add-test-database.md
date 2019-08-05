@@ -145,7 +145,7 @@ Check the application is still working as expected.  Data should not be lost:
 
 [Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
 
-Please remember to scale the vote application back down to 1 or use the following command:
+ - ``Please remember to scale the vote application back down to 1 or use the following command:``
 
 ```execute
 oc scale dc vote-app --replicas=1

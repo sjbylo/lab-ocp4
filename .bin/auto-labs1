@@ -11,7 +11,7 @@ oc new-app python:2.7~. --name vote-app
 
 oc expose svc vote-app
 
-sed -i "s/Linux distribution/*Linux distribution*/" seeds/seed_data.json
+sed -i "s/Linux distribution/=Linux distribution=/" seeds/seed_data.json
 
 git commit -m "Changed voting data" .
 

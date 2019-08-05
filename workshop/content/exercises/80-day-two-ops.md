@@ -1,8 +1,4 @@
-In this lab you will learn how to manage your application. 
-
- - ``FIXME:  This lab is not complete (Steve).  it is mant as a "filler", if they get this far they can still do something. If I get time I'll fix it up.``
-
-... scale the application, deploy a new version and execute a blue/green deployment. 
+In this lab you will learn how to scale the application, manage the deployment process and execute a blue/green deployment. 
 
  - Note: ``This lab is optional.`` 
 
@@ -12,7 +8,7 @@ Scale the application up to 3 containers/pods:
 oc scale --replicas=3 dc/vote-app
 ```
 
-See the action in the [console](%console_url%/k8s/ns/%project_namespace%/pods). 
+See the scaling action in the [console](%console_url%/k8s/ns/%project_namespace%/pods). 
 
 ```execute
 oc get pods
