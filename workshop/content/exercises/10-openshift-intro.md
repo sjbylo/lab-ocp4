@@ -76,6 +76,7 @@ Various OpenShift objects can be viewed:
 * [Build Configs](%console_url%/k8s/ns/%project_namespace%/buildconfigs)
 * [Deployment Configs](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs)
 * [Routes](%console_url%/k8s/ns/%project_namespace%/routes) 
+
 <!--
 * [Workloads](%console_url%/k8s/cluster/projects/%project_namespace%/workloads)
 -->
