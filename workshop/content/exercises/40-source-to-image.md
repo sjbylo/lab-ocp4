@@ -221,6 +221,12 @@ Note that:
  - by default, the application uses a built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
  
 
+Finally, take a loo kat the resource utilization in the Console: 
+
+* [Status](%console_url%/overview/ns/%project_namespace%)
+
+Click on the ``Dashboard`` button to see your resource usage in your project.
+
 # Create a Webhook (optional) 
 
 ``Optionally``, if you are interested to have the build execute automatically on every code change, configure a webhook in GitHub which will trigger the s2i build on every code commit and push. 
