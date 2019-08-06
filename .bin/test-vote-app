@@ -5,6 +5,6 @@
 for i in {1..20}
 do
    echo Casting vote nr. $i
-   curl -s -X POST $1 -d "vote=`expr $(($RANDOM % 9)) + 1`" >/dev/null
+   curl -s -X POST $1 -d "vote=`expr $(($RANDOM % 10)) + 1`" >/dev/null
 done
 
