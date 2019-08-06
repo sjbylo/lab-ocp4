@@ -81,7 +81,7 @@ Various OpenShift objects can be viewed:
 * [Workloads](%console_url%/k8s/cluster/projects/%project_namespace%/workloads)
 -->
 
-You can view various technologies, including source to image, Templates and Operators here:
+You can view various technologies, including Source to Image, Templates and Operators here:
 
 * [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
 

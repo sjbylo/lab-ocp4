@@ -18,7 +18,7 @@ Behind the scene, Openshift will pull down the image, create the necessary Opens
 
 ![project](images/deploy-img-a.png)
 
-You will be lead a page showing the status of the deployment.
+You will be lead to a page showing the status of the deployment.
 
 ![project](images/deploy-img-b.png)
 
@@ -30,7 +30,10 @@ Click on the deploymentConfig Object to open up a side menu for more information
 Next, click on ```Networking -> Routes``` on the left hand menu.
 You will create a route to allow external access to the containerized application you have deployed.
 
-Fill up the mandatory values on the ```Create Route``` page according to the screen-shot and click on create.
+Fill up the mandatory values on the ```Create Route``` page according to the screen-shot.
+The valuse are: Name (e.g. mapapp), Service (select ``parksmap-katacoda``), Target Port (select ``8080``).
+
+Click on Create. 
 
 ![project](images/deploy-img-c.png)
 
@@ -39,15 +42,29 @@ You will be lead to the page displaying information on the Route object you have
 
 ![project](images/deploy-img-d.png)
 
-Click on the URL to access the application.
+Click on the URL to access the application.  The application simply displays a map of the world.  If you see that, the application is running successfully!! 
 
 ![project](images/deploy-img-e.png)
 
+
+You have just got your first application running on OpenShift.  Congratulations! 
 
 Clean up the resources for this lab, you won't be using them anymore.
 
 ```execute
 oc delete all --all
+```
+
+In your terminal you should see all the configurations and objects being deleted. You will see similar output to the following:
+
+```
+pod "parksmap-katacoda-1-9f8xx" deleted
+pod "parksmap-katacoda-1-deploy" deleted
+replicationcontroller "parksmap-katacoda-1" deleted
+service "parksmap-katacoda" deleted
+deploymentconfig.apps.openshift.io "parksmap-katacoda" deleted
+imagestream.image.openshift.io "parksmap-katacoda" deleted
+route.route.openshift.io "myname" deleted
 ```
 
 This concludes the section of the Lab.
