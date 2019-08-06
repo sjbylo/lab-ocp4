@@ -129,7 +129,7 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 1. Now the vote-app-1-gxq5k pod has started and is ``Running``. 
 
 
-Now take a look in the console to view the running application. There should be a running pod called ``vote-app-1-xxyyzz``.  Also, drill down into the pod object and try opening a terminal window _from within the console_ to explore inside the running container.  Run ``ps -ef`` inside the running container to see the running python process: 
+Now take a look in the console to view the running application. There should be a running pod called ``vote-app-1-xxyyzz``.  Also, drill down into the pod object and try opening a terminal window _from within the console_ to explore inside the running container by clicking into  vote-app-1-xxyyzz pod -> Terminal.  Run ``ps -ef`` inside the running container to see the running python process: 
 
 [View the console](%console_url%/k8s/ns/%project_namespace%/pods) 
 
