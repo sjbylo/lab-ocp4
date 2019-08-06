@@ -2,16 +2,17 @@ set -xe
 
 oc delete all --selector=app=vote-app
 oc delete all --selector=app=db
+oc delete is db vote-app 
 
 fork-repo sjbylo/flask-vote-app
 
-cd flask-vote-app
+cd ~/flask-vote-app
 
 oc new-app python:2.7~. --name vote-app
 
 oc expose svc vote-app
 
-sed -i "s/distribution/Distribution=/g" seeds/seed_data.json
+sed -i "s/distribution/Distribution/g" seeds/seed_data.json
 
 git commit -m "Changed voting data" .
 
@@ -31,9 +32,4 @@ oc set env dc vote-app \
    DB_TYPE=mysql
 
 oc scale --replicas=3 dc/vote-app
-
-
-
-
-
 
