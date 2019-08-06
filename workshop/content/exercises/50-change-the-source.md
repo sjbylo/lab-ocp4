@@ -48,7 +48,7 @@ git diff seeds/seed_data.json
 Commit the changes: 
 
 ```execute
-git commit -m "Changed voting data" . 
+git commit -m "Important change" . 
 ```
 
  - ``After the next command, if you had set up the GitHub webhook in the previous lab, you should see the source to image build starting automatically.  You will see a build pod running in the lower terminal.``
