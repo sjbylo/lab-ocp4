@@ -25,8 +25,7 @@ Use the following command to substitute some text in the voting definition file 
 sed -i "s/distribution/Distribution/" seeds/seed_data.json
 ```
 
-You have just made a change to the source code. You have changed the word "``Distribution``".  As a developer, you would now want to build and 'test' the application on your 'local workstation' and after you are happy that it works 
-you would ``commit`` and ``push`` the changes to GitHub. 
+You have just made a change to the source code. You have changed the word to "``Distribution``".  As a developer, you would now want to build and 'test' the application on your 'local workstation' and after you are happy that it works you would ``commit`` and ``push`` the changes to GitHub. 
 
 Check the changes you made with git:
 

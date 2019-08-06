@@ -11,11 +11,29 @@ oc new-app python:2.7~. --name vote-app
 
 oc expose svc vote-app
 
-sed -i "s/Linux distribution/=Linux distribution=/g" seeds/seed_data.json
+sed -i "s/distribution/Distribution=/g" seeds/seed_data.json
 
 git commit -m "Changed voting data" .
 
 git push
+
+oc new-app --name db mysql:5.7 \
+   -e MYSQL_USER=user \
+   -e MYSQL_PASSWORD=password \
+   -e MYSQL_DATABASE=vote  
+
+oc set env dc vote-app \
+   ENDPOINT_ADDRESS=db \
+   PORT=3306 \
+   DB_NAME=vote \
+   MASTER_USERNAME=user \
+   MASTER_PASSWORD=password \
+   DB_TYPE=mysql
+
+oc scale --replicas=3 dc/vote-app
+
+
+
 
 
 
