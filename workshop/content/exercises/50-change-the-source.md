@@ -22,10 +22,10 @@ Once you have made the change, save the file using ``CTL-X``, then ``Y`` and the
 Use the following command to substitute some text in the voting definition file for you:
 
 ```execute
-sed -i "s/Linux distribution/=Linux distribution=/" seeds/seed_data.json
+sed -i "s/distribution/Distribution/" seeds/seed_data.json
 ```
 
-You have just made a change to the source code. You have added a "``=``" before and after the text ``Linux distribution``.  As a developer, you would now want to build and 'test' the application on your 'local workstation' and after you are happy that it works 
+You have just made a change to the source code. You have changed the word "``Distribution``".  As a developer, you would now want to build and 'test' the application on your 'local workstation' and after you are happy that it works 
 you would ``commit`` and ``push`` the changes to GitHub. 
 
 Check the changes you made with git:
@@ -91,7 +91,7 @@ curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/ | grep "<title>
 The output should include your change, for example:
 
 ```
-    <title>Favourite =Linux distribution=</title>
+    <title>Favourite Linux Distribution</title>
 ```
 
  - ``If this does not work, go back and check that the build had finished successfully and that the application has been re-deployed.``
