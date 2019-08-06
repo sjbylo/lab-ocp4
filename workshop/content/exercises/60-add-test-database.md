@@ -141,6 +141,8 @@ vote-app-3-nb5fk    1/1     Running     0          17s
 vote-app-3-p2j4w    1/1     Running     0          7m45s
 ```
 
+- Note that all the `state` of the application is stored in the database. Each container/pod is therefore `stateless` and can be freely stopped and started, as needed. 
+
 Check the application is still working as expected.  Data should not be lost: 
 
 [Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
