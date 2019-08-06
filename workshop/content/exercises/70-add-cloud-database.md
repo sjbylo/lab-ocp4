@@ -94,7 +94,9 @@ Now, connect the application to the database by injecting the database credentia
 To do this, add the credentials into the application by importing them into the ``deployment`` from the secret:
 
 ```execute
-oc set env --from=secret/mysql-secret DB_TYPE=mysql dc/vote-app 
+oc set env dc/vote-app \
+    --from=secret/mysql-secret \
+    DB_TYPE=mysql  
 ```
 <!--
 oc set env --from=secret/mysql-secret dc/vote-app 
