@@ -11,7 +11,13 @@ To deploy a container image, click on the 'Deploy Image' button at the button of
 ![project](images/deploy-img2.png)
 
 
-On the 'Deploy Image' page, enter ```openshiftroadshow/parksmap-katacoda:1.2.0``` into the 'Image Name' text box and click on the magnifying class icon at the side. This will trigger a query from Docker hub to pull down the image information.
+On the 'Deploy Image' page, enter:
+
+```copy
+openshiftroadshow/parksmap-katacoda:1.2.0
+```
+
+into the 'Image Name' text box and click on the magnifying class icon at the side. This will trigger a query from Docker hub to pull down the image information.
 
 Click on 'Deploy' button to deploy the container image on OpenShift.
 Behind the scene, Openshift will pull down the image, create the necessary Openshift objects (services, deploymentConfig) and deploy the image.
@@ -33,7 +39,7 @@ You will create a route to allow external access to the containerized applicatio
 Fill up the mandatory values on the ```Create Route``` page according to the screen-shot.
 The valuse are: Name (e.g. mapapp), Service (select ``parksmap-katacoda``), Target Port (select ``8080``).
 
-Click on Create. 
+Click on Create.
 
 ![project](images/deploy-img-c.png)
 
@@ -42,12 +48,12 @@ You will be lead to the page displaying information on the Route object you have
 
 ![project](images/deploy-img-d.png)
 
-Click on the URL to access the application.  The application simply displays a map of the world.  If you see that, the application is running successfully!! 
+Click on the URL to access the application.  The application simply displays a map of the world.  If you see that, the application is running successfully!!
 
 ![project](images/deploy-img-e.png)
 
 
-You have just got your first application running on OpenShift.  Congratulations! 
+You have just got your first application running on OpenShift.  Congratulations!
 
 Clean up the resources for this lab, you won't be using them anymore.
 
@@ -68,4 +74,3 @@ route.route.openshift.io "myname" deleted
 ```
 
 This concludes the section of the Lab.
-
