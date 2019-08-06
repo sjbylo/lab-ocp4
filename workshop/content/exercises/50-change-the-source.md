@@ -62,9 +62,8 @@ git push
  - ``Warning: If you DID NOT set up a webhook in the previous lab, trigger a new build manually``: 
 
 ```execute
-# ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVOOUS LAB
+# ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVIOUS LAB
 oc start-build vote-app   
-# ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVOOUS LAB
 ```
 
 Wait for the build to start. 
