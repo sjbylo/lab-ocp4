@@ -108,21 +108,29 @@ Check the environment variables have been properly set:
 oc set env dc/vote-app --list
 ```
 
-Once the application has been re-deployed, check the database has been initialized:
+The above command should show the values needed to connect to the database. 
+
+Once the application has been re-deployed, check the database has been initialized by the application:
 
 ```execute
 mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
 ```
 
+Again, the tables (``poll`` and ``option``) should have been created.
+
 ## Test the application 
+
+Post a few random votes to the application using the help-script:
+
+```execute 
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+```
 
 After using the application, check the votes in the database table: 
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from poll;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from `option`;'
 ```
-
-The above command should show the values needed to connect to the database. 
 
 Once the application is running again, ensure it is still working:
 
@@ -139,7 +147,7 @@ Test the application in a browser:
 After using the application and adding votes, check the votes in the database: 
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from poll;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from `option``;'
 ```
 
 ---

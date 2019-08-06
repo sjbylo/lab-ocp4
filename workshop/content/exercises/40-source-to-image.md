@@ -76,9 +76,11 @@ To view the build log in the console, click on the build (``vote-app-1``) and th
 [View the build](%console_url%/k8s/ns/%project_namespace%/builds)
 
 
-Wait for the build to finish.  Note, this can take a few minutes, especially the ``Copying blob...`` and the ``Storing signatures`` operations can be slow. 
+**Wait for the build to finish before continuing**.
 
-You will see the following amongst the output:
+Note, the build takes a few minutes, especially the ``Copying blob...`` and the ``Storing signatures`` operations can be slow. 
+
+You will see the following amongst the build output:
 
 ```
 ...
@@ -101,9 +103,9 @@ What happens during the build?
 1. the running container is committed and a new image is created
 1. the image is then pushed into OpenShift's internal container registry
 
-After the build the image is automatically launched and a container in a pod created.
+After the build has completed, the image is automatically launched and a container in a pod is created.
 
-In the lower terminal window you can see the build container has completed ``vote-app-1-build`` and a new application container is starting ``vote-app-1-xxyyzz``.
+In the lower terminal window you should see that the build container has completed (``vote-app-1-build  Completed``) and a new application container is starting ``vote-app-1-xxyyzz``.
 
 You can also run the following command to view the pods running in your project: 
 
@@ -127,11 +129,11 @@ vote-app-1-gxq5k   1/1       Running     0          30s
 1. Now the vote-app-1-gxq5k pod has started and is ``Running``. 
 
 
-Now take a look in the console to view the running application. There should be a running pod called ``vote-app-1-xxyyzz`` Also, try opening a terminal window _from within the console_ to explore inside the running container.  Run ``ps -ef`` inside the running container to see the running python process: 
+Now take a look in the console to view the running application. There should be a running pod called ``vote-app-1-xxyyzz``.  Also, drill down into the pod object and try opening a terminal window _from within the console_ to explore inside the running container.  Run ``ps -ef`` inside the running container to see the running python process: 
 
 [View the console](%console_url%/k8s/ns/%project_namespace%/pods) 
 
-You should see something like this:
+You should see something like this inside the running container:
 
 ```
 (app-root)sh-4.2$ ps -ef
@@ -256,7 +258,7 @@ Leave the other settings as they are.
 
 Finally, click on the "``Add Webhook``" button.
 
-GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick`` next to the webhook, that means it's working. 
+GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick`` next to the webhook, that means it's working (note, you may need to refresh the page). 
 
 <!-- This next part is removed as it's also in the next lab
 

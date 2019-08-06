@@ -90,6 +90,8 @@ POD=`oc get pods --selector app=workspace -o jsonpath='{.items[?(@.status.phase=
 ```
 -->
 
+# Test the application 
+
 Post a few random votes to the application using the help-script:
 
 ```execute 
@@ -97,8 +99,6 @@ test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
 ```
 
 To view the results use the following command. You should see the totals of all the voting options:
-
-# Test the application 
 
 ```execute 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/results.html | grep "data: \["
@@ -108,7 +108,7 @@ After testing the application and casting one or more votes, check the votes in 
 
 
 ```execute
-mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e 'select * from poll;'
+mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e 'select * from `option`;'
 ```
 
 View the containers/pods in the console:

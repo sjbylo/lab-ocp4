@@ -59,6 +59,10 @@ Now, push the changes to GitHub:
 git push 
 ```
 
+``If you set up a Webhook`` in the previous lab, you should see the build automatically starting. Take a look at the lower terminal window and you should see ``vote-app-2-build    1/1     Running``. 
+
+
+
  - ``Warning: If you DID NOT set up a webhook in the previous lab, trigger a new build manually``: 
 
 ```execute
@@ -66,7 +70,7 @@ git push
 oc start-build vote-app   
 ```
 
-Wait for the build to start. 
+Ensure the build is running before continuing. 
 
 Again, follow the build progress:
 
