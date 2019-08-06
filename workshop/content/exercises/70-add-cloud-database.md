@@ -118,6 +118,7 @@ mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $D
 
 Again, the tables (``poll`` and ``option``) should have been created.
 
+
 ## Test the application 
 
 Post a few random votes to the application using the help-script:
@@ -147,7 +148,7 @@ Test the application in a browser:
 After using the application and adding votes, check the votes in the database: 
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from `option``;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from `option`;'
 ```
 
 ---
@@ -188,7 +189,9 @@ Or, view the results page in a browser:
 
 
 ---
-That's the end of this lab.
+That's the end of this lab.  
+
+In this lab you provisioned a RDS database in a container and connected the application to it. 
 
 
 
