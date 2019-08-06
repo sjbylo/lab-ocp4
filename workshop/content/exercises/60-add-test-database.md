@@ -6,7 +6,7 @@ First, ensure only one replica of the application is running:
 oc scale dc vote-app --replicas=1
 ```
 
-# Launch the database 
+# Launch the database in a container
 
 Launch a MySQL database and connect the application to it.  MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL). 
 
@@ -123,9 +123,9 @@ Open the vote application in a browser:
 
 Now, the application is no longer dependent on the built-in database and can freely scale out - `add containers` - as needed. 
 
-Go to the console and scale the application pods from 1 to 3 (please do not scale to more than 3). 
+Go to the console and scale the application pods from 1 to 3 (please do not scale to more than 3).  Change the pod ``count`` via the menu of the Deployment Config called ``vote-app``. 
 
-* [View the Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
+* [Deployment Configs](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs)
 
 You can also use the following command:
 

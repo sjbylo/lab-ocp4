@@ -43,7 +43,13 @@ oc rollout latest vote-app
 ```
 
 This will deploy the ``same version`` of the application again. 
-Also, this will roll out a new revision of the application. Look into the lower terminal to see it. 
+Also, this will create a new deployment ``revision``. Look into the lower terminal to see the new revision. 
+
+You should see:
+
+```
+...   Running         manual change
+```
 
 Wait for the application to be rolled out and ``Running`` again. 
 

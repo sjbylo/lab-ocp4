@@ -71,7 +71,7 @@ You can follow the build process in the console and also on the command line, li
 oc logs bc/vote-app --follow 
 ```
 
-To view the build log in the console, click on the build (``vote-app-1``) and then on the ``Logs`` tab:
+To view the output of the build in the console, click on the build (``vote-app-1``) and then on the ``Logs`` tab:
 
 [View the build](%console_url%/k8s/ns/%project_namespace%/builds)
 
