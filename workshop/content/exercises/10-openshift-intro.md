@@ -38,7 +38,7 @@ oc whoami --show-server
 
 The endpoint shown serves all of the OpenShift APIs through which all tools, especially the ``oc`` client and the Web Console, communicate. If you are familiar with ``kubectl``, this command is also available. OpenShift includes a vanilla version of the upstream Kubernetes project that has been integrated & tested with other components of OpenShift and extended to provide functionality for a full PaaS experience. 
 
-View which projects (namespaces) you have access to:
+View the projects (namespaces) you have access to:
 
 ```execute
 oc projects
@@ -52,7 +52,7 @@ Fetch the console URL:
 oc whoami --show-console
 ```
 
-Have a look at the OpenShift Console and view the following:
+Using the below links, take a look at the OpenShift Console and view the following:
 
 Your projects can be viewed here.  You should only have one: 
 
