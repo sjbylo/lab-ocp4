@@ -1,6 +1,6 @@
 # This is a workshop for OpenShift 4
 
-This workshop uses the AWS Broker to provision an RDS instance in AWS.  The Broker needs to be installed and working on the cluster for 2 of the lab exercises to work.
+This workshop uses the AWS Broker to provision an RDS instance in AWS.  The Broker needs to be installed and working on the OpenShift cluster for 2 of the lab exercises to work.
 
 Please note this issue when installing the AWS Broker on OpenShift 4.x https://github.com/awslabs/aws-servicebroker/issues/139 
 
