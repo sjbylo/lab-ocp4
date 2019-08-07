@@ -288,7 +288,7 @@ In this lab you build the application and tested it.
 $ oc logs bc/vote-app
 Cloning "https://github.com/sjbylo3/flask-vote-app.git" ...
 	Commit:	23d4bdeec2449deb1532280cce6be54b6f0200f0 (update)
-	Author:	Your Name <you@example.com>
+	Author:	Your Name <you@ example.com>
 	Date:	Wed Jul 3 09:35:55 2019 +0000
 Caching blobs under "/var/cache/blobs".
 Getting image source signatures
