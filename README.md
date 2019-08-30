@@ -1,4 +1,4 @@
-# This is a workshop for OpenShift 4
+# OpenShift 4 with AWS Broker Workshop
 
 This workshop is for OpenShift version 4.1 and above. It provides an intriduction to OpenShift and 
 developing an application which connects to an instance of MySQL via the Relational Database Service (RDS) of AWS. 
