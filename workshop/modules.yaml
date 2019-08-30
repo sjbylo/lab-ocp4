@@ -12,6 +12,8 @@ modules:
         name: Create a Repo
     exercises/40-source-to-image:
         name: Run the Source
+    exercises/45-create-a-webhook:
+        name: Create a Webhook
     exercises/50-change-the-source:
         name: Change the Source
     exercises/60-add-test-database:

@@ -1,4 +1,4 @@
-In this lab you will provision an AWS Relational Database Service (RDS) instance so that - ``in a later lab`` - you can configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
+In this exercise you will provision an AWS Relational Database Service (RDS) instance so that - ``in a later exercise`` - you can configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
 We will use the ``AWS Service Broker`` to provision the database.
 
@@ -39,7 +39,7 @@ Now, if you wish, go to the [Developer Catalog](%console_url%/catalog/ns/%projec
 
  - Please ``DO NOT`` fill in this form and click on the ``Create`` button!  
 
-Take a look in the console and check the status of the RDS instance.  You should see ``Not ready``.  If you drill down into the ``mysql`` service object you should also be able to see ``The instance is being provisioned asynchronously`` at the bottom of the page.   You will also see that there are no ``Service Bindings``. Don't worry, we will create that in a future lab.  
+Take a look in the console and check the status of the RDS instance.  You should see ``Not ready``.  If you drill down into the ``mysql`` service object you should also be able to see ``The instance is being provisioned asynchronously`` at the bottom of the page.   You will also see that there are no ``Service Bindings``. Don't worry, we will create that in a future exercise.  
 
 [Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%/)
 
@@ -52,11 +52,11 @@ svcat get instances
 The status should be ``Provisioning``. 
 
  - Sometimes, the RDS instance fails to provision due to overlapping network segments being automatically selected (or some other reason).  In this case you will eventually see the status as ``Failed``.  
- - If there is a problem provisioning the RDS instance, you will need to re-trace your steps by `remove it entirely` and trying again.  Remember to use the above `svcat` command.  To remove the failing RDS instance, follow the steps in the section ``Remove the RDS Instance`` in the last lab exercise called [Clean up](90-clean-up).  
+ - If there is a problem provisioning the RDS instance, you will need to re-trace your steps by `remove it entirely` and trying again.  Remember to use the above `svcat` command.  To remove the failing RDS instance, follow the steps in the section ``Remove the RDS Instance`` in the last exercise exercise called [Clean up](90-clean-up).  
 
 The database takes about 20 minutes to provision. 
 
 ---
-That's the end of this lab.
+That's the end of this exercise.
 
-Once you see the instance status as `Provisioning`, move onto the next lab.
+Once you see the instance status as `Provisioning`, move onto the next exercise.

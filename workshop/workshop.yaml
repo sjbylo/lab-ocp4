@@ -8,6 +8,7 @@ modules:
     - exercises/55-initiate-database-prov
     - exercises/30-fork-the-repo
     - exercises/40-source-to-image
+    - exercises/45-create-a-webhook
     - exercises/50-change-the-source
     - exercises/60-add-test-database
     - exercises/70-add-cloud-database

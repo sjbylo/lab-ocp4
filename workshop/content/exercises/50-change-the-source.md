@@ -1,4 +1,4 @@
-In this lab you will make a change in the source code and rebuild/re-deploy the container.
+In this exercise you will make a change in the source code and rebuild/re-deploy the container.
 
 # Change the application source code 
 
@@ -50,7 +50,7 @@ Commit the changes:
 git commit -m "Important change" . 
 ```
 
- - ``After the next command, if you had set up the GitHub webhook in the previous lab, you should see the source to image build starting automatically.  You will see a build pod running in the lower terminal.``
+ - ``After the next command, if you had set up the GitHub webhook in the previous exercise, you should see the source to image build starting automatically.  You will see a build pod running in the lower terminal.``
 
 Now, push the changes to GitHub:
 
@@ -58,11 +58,11 @@ Now, push the changes to GitHub:
 git push 
 ```
 
-``If you set up a Webhook`` in the previous lab, you should see the build automatically starting. Take a look at the lower terminal window and you should see ``vote-app-2-build    1/1     Running``. 
+``If you set up a Webhook`` in the previous exercise, you should see the build automatically starting. Take a look at the lower terminal window and you should see ``vote-app-2-build    1/1     Running``. 
 
 
 
- - ``Warning: If you DID NOT set up a webhook in the previous lab, trigger a new build manually``: 
+ - ``Warning: If you DID NOT set up a webhook in the previous exercise, trigger a new build manually``: 
 
 ```execute
 # ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVIOUS LAB
@@ -101,7 +101,7 @@ Test the application in a browser with the following URL:
 
 
 ---
-That's the end of this lab.
+That's the end of this exercise.
 
 You now know how to make changes to your code and test the results.  Next you will connect the vote application to a database. 
 

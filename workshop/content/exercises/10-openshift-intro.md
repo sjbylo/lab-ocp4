@@ -1,4 +1,4 @@
-In this lab you will get to know ``Red Hat OpenShift`` and familiarize yourself with the command line and also with the web console. 
+In this exercise you will get to know ``Red Hat OpenShift`` and familiarize yourself with the command line and also with the web console. 
 
 Red Hat OpenShift is an open source container application platform based on the Kubernetes container orchestrator for enterprise application development and deployment. 
 
@@ -36,6 +36,8 @@ View the server endpoint through which you are authenticated.
 oc whoami --show-server
 ```
 
+``Note:`` Do not open this URL in your browser. 
+
 The endpoint shown serves all of the OpenShift APIs through which all tools, especially the ``oc`` client and the Web Console, communicate. If you are familiar with ``kubectl``, this command is also available. OpenShift includes a vanilla version of the upstream Kubernetes project that has been integrated & tested with other components of OpenShift and extended to provide functionality for a full PaaS experience. 
 
 View the projects (namespaces) you have access to:
@@ -45,12 +47,6 @@ oc projects
 ```
 
 Note, this project has been created for you (``%project_namespace%``) for the duration of the workshop. You will work in this project whilst others will work in their own projects, thus allowing everybody to work without interfering with each other.  This is part of the ``Role Based Access Control`` (RBAC) system which was developed by Red Hat and contributed to the upstream Kubernetes project. 
-
-Fetch the console URL:
-
-```execute
-oc whoami --show-console
-```
 
 Using the below links, take a look at the OpenShift Console and view the following:
 
@@ -70,7 +66,7 @@ OpenShift events can be viewed here:
 
 If something is not working properly, this is a good place to look! 
 
-Various OpenShift objects can be viewed:
+Various OpenShift resources can be viewed:
 
 * [Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
 * [Build Configs](%console_url%/k8s/ns/%project_namespace%/buildconfigs)
@@ -86,7 +82,7 @@ You can view various technologies, including Source to Image, Templates and Oper
 * [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
 
 <!--
-Note, this is not availabe on RHPDS 
+Note, this is not availabe on RHPDS  or only for admin users... 
 * [Operator management](%console_url%/operatormanagement/ns/%project_namespace%)
 -->
 
@@ -97,9 +93,9 @@ Come back to the terminal tab or click here:
 Note that you can open the OpenShift Console in a separate tab by using the menu on the top right corner.
 
 ---
-That's the end of this lab.
+That's the end of this exercise.
 
-In this lab you were introduced to the OpenShift console and command line.  In the next lab, you will load and run your first container based application. 
+In this exercise you were introduced to the OpenShift console and command line.  In the next exercise, you will load and run your first container based application. 
 
 
 

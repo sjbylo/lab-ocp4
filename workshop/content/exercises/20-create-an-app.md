@@ -1,4 +1,4 @@
-In this lab you will try out how to deploy a containerized application via the web console. OpenShift Container Platform offers different ways to deploy your applications. You can deploy a container image; or point Openshift Container Platform to a source code repository, to build and deploy the application. It also allows you to deploy an entire workload via Templates. In this lab, we will see how easy it is to deploy a simple container image via the web console.
+In this exercise you will try out how to deploy a containerized application via the web console. OpenShift Container Platform offers different ways to deploy your applications. You can deploy a container image; or point Openshift Container Platform to a source code repository, to build and deploy the application. It also allows you to deploy an entire workload via Templates. In this exercise, we will see how easy it is to deploy a simple container image via the web console.
 
 On the 'Console' tab, click on 'Home' -> Projects. You will see the a project that is created for you. You will deploy your applications in this project.
 
@@ -55,7 +55,7 @@ Click on the URL to access the application.  The application simply displays a m
 
 You have just got your first application running on OpenShift.  Congratulations!
 
-Clean up the resources for this lab, you won't be using them anymore.
+Clean up the resources for this exercise, you won't be using them anymore.
 
 ```execute
 oc delete all --all

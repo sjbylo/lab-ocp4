@@ -1,4 +1,4 @@
-In this lab you will launch a database ``in a container`` and configure your application to use the database instead of the default built-in database.
+In this exercise you will launch a database ``in a container`` and configure your application to use the database instead of the default built-in database.
 
 First, ensure only one replica of the application is running:
 
@@ -154,10 +154,10 @@ oc scale dc vote-app --replicas=1
 ```
 
 ---
-That's the end of this lab.
+That's the end of this exercise.
 
-In this lab you have launched a database for testing purposes and connected the application to it.  
+In this exercise you have launched a database for testing purposes and connected the application to it.  
 
-In the next lab you will configure the cloud based database. 
+In the next exercise you will configure the cloud based database. 
 
 

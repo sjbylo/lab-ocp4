@@ -1,4 +1,4 @@
-Is this lab you will fetch the source code that will be used for the rest of the labs.  
+Is this exercise you will fetch the source code that will be used for the rest of the exercises.  
 
 You will make a copy (fork) of the source code repository in GitHub and then build and deploy it to OpenShift.   The application we will use is a simple voting application which collects answers to a simple question from users and displays the collected results. 
 
@@ -22,6 +22,8 @@ Run the next helper script and enter your GitHub username and password when prom
 ```execute 
 fork-repo sjbylo/flask-vote-app
 ```
+
+ - ``Note``: This command will also generate a GitHub personal access token - scoped only to the forked repository - which will be used in the further exercises. It will be removed from the workshop environment in the final clean-up exercise.  
 
 You should now have your own GitHub repository containing the example source code. 
 
@@ -48,8 +50,8 @@ You should see your GitHub username in the output. For example:
 ```
 
 ---
-That's the end of this lab.
+That's the end of this exercise.
 
-Now you have forked the source code, the next lab will get that code running on OpenShift. 
+Now you have forked the source code, the next exercise will get that code running on OpenShift. 
 
 

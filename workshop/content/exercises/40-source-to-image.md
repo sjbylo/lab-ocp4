@@ -1,4 +1,4 @@
-In this lab you will use ``Source to Image`` to build and launch the voting application on OpenShift.
+In this exercise you will use ``Source to Image`` to build and launch the voting application on OpenShift.
 
 _From the very beginning, one of the main objectives of the OpenShift project was to make it really easy for developers to get code running on the platform._
 
@@ -13,13 +13,13 @@ Source 2 Image (s2i) does the following:
 1. The container is launched because a new image has been created.  If the container is already running from a previous build, the container will be re-deployed. 
 
 
-Run the following command in the lower terminal so you can view the running containers/pods during the rest of the labs:
+Run the following command in the lower terminal so you can view the running containers/pods during the rest of the exercises:
 
 ```execute-2
 watch "oc get pods | grep -e ^db- -e ^vote-app- | grep -v ' Completed '"
 ```
 
-This command will run for most of the labs and should now show ``No resources found`` since we haven't created anything yet. 
+This command will run for most of the exercises and should now show ``No resources found`` since we haven't created anything yet. 
 
 # Execute the Source 2 Image build process 
 
@@ -223,7 +223,7 @@ Note that:
 
  - if the message ``Application is not available`` is displayed, this means the application is not running yet or the build has failed.
  - your neighbour should be able to access your application and submit a vote.  Note that only one vote per browser is allowed.
- - by default, the application uses a built-in database to store the vote data.  In later labs we will configure the application to use an external MySQL database.
+ - by default, the application uses a built-in database to store the vote data.  In later exercises we will configure the application to use an external MySQL database.
  
 
 Finally, take a look at the resource utilization in the Console: 
@@ -232,54 +232,11 @@ Finally, take a look at the resource utilization in the Console:
 
 Click on the ``Dashboard`` button to see your resource usage in your project. 
 
-
-# Create a Webhook (optional) 
-
-``Optionally``, if you are interested to have the build execute automatically on every code change, configure a webhook in GitHub which will trigger the s2i build on every code commit and push. 
-
-Use the following helper script to view the instructions and values that you will need to configure the webhook. 
-
-```execute
-getwebhook vote-app %cluster_subdomain%
-```
-
- - ``Important: Follow the instructions displayed by the above command.``
-
-Log into GitHub, navigate to the ``flask-vote-app`` repository, click on ``Settings`` and then on ``Webhooks``. 
-
-Click on the "``Add Webhook``" button and fill in the form using the following information:
-
-- Payload URL: ``see the helper script output``
-- Content type: application/json
-- Secret: ``see the helper script output``
-- SSL verification: Disabled 
-
-Leave the other settings as they are.
-
-Finally, click on the "``Add Webhook``" button.
-
-GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick`` next to the webhook, that means it's working (note, you may need to refresh the page). 
-
-<!-- This next part is removed as it's also in the next lab
-
-Now, when you make a change to the code, commit and push it, a fresh build will be triggered automatically. 
-
-The following command makes a superficial change to the source code, commits and pushes the change to GitHub.  This should trigger a re-build and a
-re-deployment of the application.
-
-```execute
-echo >> README.md && \
-git commit -m "update" . && \
-git push
-```
-
-Watch the build take place again, see a new image being created and the application being re-deployed. 
--->
-
 ---
-That is the end of the lab. 
+That is the end of the exercise. 
 
-In this lab you build the application and tested it. 
+In this exercise you build the application and tested it. 
+
 
 ---
 ## Example output of a full application build:

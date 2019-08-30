@@ -1,4 +1,4 @@
-In this lab you will work with the AWS Relational Database Service (``RDS``) instance you provisioned earlier and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
+In this exercise you will work with the AWS Relational Database Service (``RDS``) instance you provisioned earlier and configure your application to use it.  Amazon RDS makes it easy to set up, operate, and scale MySQL deployments in the cloud. 
 
 Check the status of the RDS instance:
 
@@ -72,7 +72,7 @@ Only after the application has been configured to connect to the database and ha
 <!--
 # Point the application to the database 
 
-If not already done in the previous lab, the application needs to be configured to use a ``mysql`` database instead of the `built-in` database.  Add this setting to the application.
+If not already done in the previous exercise, the application needs to be configured to use a ``mysql`` database instead of the `built-in` database.  Add this setting to the application.
 
 To do this, add the environment variable ``DB_TYPE`` into the application using the following command:
 
@@ -191,9 +191,9 @@ Or, view the results page in a browser:
 
 
 ---
-That's the end of this lab.  
+That's the end of this exercise.  
 
-In this lab you provisioned a RDS database in a container and connected the application to it. 
+In this exercise you provisioned a RDS database in a container and connected the application to it. 
 
 
 

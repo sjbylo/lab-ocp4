@@ -15,27 +15,16 @@ S=`oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.tri
 
 cat <<END
 ###################################################################################
-Instructions on how to set up the webhook in GitHub 
+               Values needed to set up the webhook in GitHub 
 ###################################################################################
 
-1. Go to your GitHub account and log in, if not already: https://github.com/$U
-   Go to Repositories -> flask-vote-app -> Settings -> Webhooks 
-   or go to this URL: https://github.com/$U/flask-vote-app/settings/hooks
+Payload URL: https://$H:6443$P
 
-2. Click on the "Add Webhook" button and fill in the form using the following values:
-   Payload URL:
-   https://$H:6443$P
+Content type: application/json
 
-      Note: If you see the error "The URL you've entered is not valid", be very careful when copying and pasting this long value into the form as a space might be inserted at the line-break depending on which browser you are using!
+Secret: $S
 
-   Content type: application/json
+SSL verification: Disabled 
 
-   Secret: $S
-
-   SSL verification: Disabled 
-
-3. Leave the other settings as they are.  Finally, click on the "Add Webhook" button.
-
-4. GitHub will immediately test the webhook and show the result on the next page.  If you see a ``tick``, that means it's working. 
 ###################################################################################
 END

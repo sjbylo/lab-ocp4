@@ -4,7 +4,8 @@ Red Hat and AWS are working together to make deploying applications inside of co
 
 Join us to learn how to:
 
-- Easily build and extend traditional and container-based enterprise applications, leveraging the power of AWS compute, database, analytics, machine learning, networking, mobile and various application services
+- Easily build and extend traditional and container-based enterprise applications, leveraging the power of AWS compute,
+database, analytics, machine learning, networking, mobile and various application services
 
 - We will also share how Red Hat and AWS can help you put DevOps, containers and OpenShift cloud infrastructure to work for your business
  	 

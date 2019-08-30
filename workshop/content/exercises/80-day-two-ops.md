@@ -1,6 +1,6 @@
-In this lab you will learn how to manage the deployment process. 
+In this exercise you will learn how to manage the deployment process. 
 
- - Note: ``This lab is optional.`` 
+ - Note: ``This exercise is optional.`` 
 
 Ensure the application is scaled to 3 containers/pods: 
 
@@ -8,7 +8,7 @@ Ensure the application is scaled to 3 containers/pods:
 oc scale --replicas=3 dc/vote-app
 ```
 
-Throughout this lab, you can see the scaling/rollout action in the [console](%console_url%/k8s/ns/%project_namespace%/pods). 
+Throughout this exercise, you can see the scaling/rollout action in the [console](%console_url%/k8s/ns/%project_namespace%/pods). 
 
 ```execute
 oc get pods
@@ -121,9 +121,9 @@ You should see the following amongst the log output:
 Connect to : sqlite:////opt/app-root/src/data/app.db
 ```
 
-In this lab you were able to easily rollout new versions of the application and also rollback to older versions. 
+In this exercise you were able to easily rollout new versions of the application and also rollback to older versions. 
 
 ---
-That's the end of this lab.
+That's the end of this exercise.
 
-Please move onto the next lab.  
+Please move onto the next exercise.  
