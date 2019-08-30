@@ -1,8 +1,15 @@
 # This is a workshop for OpenShift 4
 
-This workshop uses the AWS Broker to provision an RDS instance in AWS.  The Broker needs to be installed and working on the OpenShift cluster for 2 of the lab exercises to work.
+This workshop is for OpenShift version 4.1 and above. It provides an intriduction to OpenShift and 
+developing an application which connects to an instance of MySQL via the Relational Database Service (RDS) of AWS. 
 
-Please note this issue when installing the AWS Broker on OpenShift 4.x https://github.com/awslabs/aws-servicebroker/issues/139 
+This workshop uses the [AWS Broker](https://github.com/awslabs/aws-servicebroker/) to provision an RDS instance in AWS.  
+The Broker needs to be installed and 
+working on the OpenShift cluster for 2 of the exercises to work.  The instructions to install the
+AWS Broker are [here](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md).
+Note that, even if the AWS Broker is not available the other exercises still provide considerable learning of OpenShift. 
+
+Please note this issue when installing the AWS Broker on OpenShift 4.1 https://github.com/awslabs/aws-servicebroker/issues/139 
 
 # Homeroom
 
