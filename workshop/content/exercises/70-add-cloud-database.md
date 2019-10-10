@@ -55,7 +55,7 @@ eval `extract-secret mysql-secret`
 Now, access the database to check the content of the ``vote`` database:
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show databases;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p"$MASTER_PASSWORD" -D $DB_NAME -e 'show databases;'
 ```
  The output should include the ``vote`` database.  If not, or if there is an error, wait for the database to become ready. 
  
@@ -64,7 +64,7 @@ mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $D
   - Note, the database `should be empty` if the application has not initialized it yet.
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p"$MASTER_PASSWORD" -D $DB_NAME -e 'show tables;'
 ```
 
 Only after the application has been configured to connect to the database and has started up, there will be any content in the database. 
@@ -115,7 +115,7 @@ The above command should show the values needed to connect to the database.
 Once the application has been re-deployed, check the database has been initialized by the application:
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'show tables;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p"$MASTER_PASSWORD" -D $DB_NAME -e 'show tables;'
 ```
 
 Again, the tables (``poll`` and ``option``) should have been created.
@@ -132,7 +132,7 @@ test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
 After using the application, check the votes in the database table: 
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from `option`;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p"$MASTER_PASSWORD" -D $DB_NAME -e 'select * from `option`;'
 ```
 
 Once the application is running again, ensure it is still working:
@@ -150,7 +150,7 @@ Test the application in a browser:
 After using the application and adding votes, check the votes in the database: 
 
 ```execute
-mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p$MASTER_PASSWORD -D $DB_NAME -e 'select * from `option`;'
+mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p"$MASTER_PASSWORD" -D $DB_NAME -e 'select * from `option`;'
 ```
 
 ---
