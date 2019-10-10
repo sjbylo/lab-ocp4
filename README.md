@@ -23,10 +23,10 @@ The dashboard for the workshop environment should look like:
 
 ## How to launch the workshop on OpenShift
 
-To launch the workshop, first checkout a copy of this Git repository to your own computer.
+To launch the workshop, first clone a copy of this Git repository to your own computer.
 
 ```
-git checkout https://github.com/sjbylo/lab-ocp4.git
+git clone https://github.com/sjbylo/lab-ocp4.git
 ```
 
 Then within the Git repository directory, run:
