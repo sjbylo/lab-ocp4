@@ -46,7 +46,8 @@ git remote -v
 You should see your GitHub username in the output. For example:
 
 ```
-...github.com/johnsmith/...
+origin ...github.com/joe/flask-vote-app.git (fetch)
+origin ...github.com/joe/flask-vote-app.git (push)
 ```
 
 ---

@@ -4,7 +4,8 @@ USER root
 
 # Tools needed for the workshop
 RUN yum -y install hub mysql 
-RUN curl -sLO https://download.svcat.sh/cli/latest/linux/amd64/svcat && chmod +x ./svcat && mv ./svcat /usr/local/bin
+#RUN curl -sLO https://download.svcat.sh/cli/latest/linux/amd64/svcat && chmod +x ./svcat && mv ./svcat /usr/local/bin
+RUN curl -sLO https://download.svcat.sh/cli/v0.2.2/linux/amd64/svcat && chmod +x ./svcat && mv ./svcat /usr/local/bin
 
 COPY . /tmp/src
 

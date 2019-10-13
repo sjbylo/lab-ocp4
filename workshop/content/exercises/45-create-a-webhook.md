@@ -5,17 +5,21 @@ Note, this exercise is optional.
 
 # Create a Webhook 
 
-If you are interested to configure a webhook, use the following helper script to view the ``values`` that you will need to configure the webhook. 
+If you want to configure a webhook, use the following helper script.  The helper script will display all the ``values`` that you need to configure the webhook in GitHub. 
+
+Run the helper script:
 
 ```execute
 getwebhook vote-app %cluster_subdomain%
 ```
 
- - ``Important: Follow the instructions here and use the values displayed by the above command.``
+ - ``Important: Follow the instructions below and use the values displayed by the helper script.``
 
-Log into https://github.com, navigate to your ``flask-vote-app`` repository, click on ``Settings`` and then on ``Webhooks``. 
-
-Click on the "``Add Webhook``" button and fill in the form using the following information:
+1. Log into https://github.com
+1. Navigate to your ``flask-vote-app`` repository
+1. Click on ``Settings`` and then on ``Webhooks``
+1. Click on the "``Add Webhook``" button and 
+1. fill in the form using the following information:
 
 - Payload URL: ``see the helper script output``
 - Content type: application/json

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 [ ! "$1" -o ! "$2" ] && echo "Usage: getwebhook <bc> <cluster domain>" && exit 1
-[ ! -f ~/.config/hub ] && echo "Please complete the previous labs before running this script!" &&  exit 0
+[ ! -f ~/.config/hub ] && echo "Please complete the previous exercises before running this script!" &&  exit 0
 
 oc get bc $1 >/dev/null || exit 1
 
