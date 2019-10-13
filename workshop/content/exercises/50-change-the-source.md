@@ -62,7 +62,7 @@ git push
 
 
 
- - ``Warning: If you DID NOT set up a webhook in the previous exercise, trigger a new build manually``: 
+ - ``Warning: If you DID NOT set up a webhook in the previous exercise, trigger a new build manually with the following command``: 
 
 ```execute
 # ONLY RUN IF YOU DID NOT SET UP THE WEBHOOK IN THE PREVIOUS LAB

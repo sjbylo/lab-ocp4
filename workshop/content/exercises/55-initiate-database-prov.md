@@ -22,8 +22,8 @@ svcat provision mysql --class rdsmysql --plan custom  \
    -p AutoMinorVersionUpgrade=false \
    -p PortNumber=13306 \
    -p BackupRetentionPeriod=0 \
-   -p VpcId=vpc-03a00c0e08cc9bec3 
 ```
+ <!-- -p VpcId=vpc-03a00c0e08cc9bec3  note that this param is not needed.  The AWS Service Broker should be configured with the target VPN -->
 
 As specified in the above command, an instance of MySQL will be created with an instance type of ``db.m4.large`` and will be accessible publicly. 
 

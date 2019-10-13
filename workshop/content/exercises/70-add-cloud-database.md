@@ -37,6 +37,19 @@ View the secret:
 ```execute
 oc describe secret mysql-secret 
 ```
+
+You should see the following output:
+
+```
+Data
+====
+DB_NAME:           4 bytes
+ENDPOINT_ADDRESS:  61 bytes
+MASTER_PASSWORD:   15 bytes
+MASTER_USERNAME:   4 bytes
+PORT:              5 bytes
+```
+
  - Note that if you see the error ``not found`` the secret has not been created yet.  This most likely means the RDS instance has not finished provisioning and/or the binding has not been created yet. 
 
 
@@ -68,6 +81,16 @@ mysql -h $ENDPOINT_ADDRESS -P $PORT -u $MASTER_USERNAME -p"$MASTER_PASSWORD" -D 
 ```
 
 Only after the application has been configured to connect to the database and has started up, there will be any content in the database. 
+
+```
++----------------+
+| Tables_in_vote |
++----------------+
+| option         |
+| poll           |
++----------------+
+```
+
 
 <!--
 # Point the application to the database 

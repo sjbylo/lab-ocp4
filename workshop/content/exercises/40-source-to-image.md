@@ -235,7 +235,7 @@ Click on the ``Dashboard`` button to see your resource usage in your project.
 ---
 That is the end of the exercise. 
 
-In this exercise you build the application and tested it. 
+In this exercise you built the application and tested it. 
 
 
 ---

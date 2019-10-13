@@ -35,7 +35,16 @@ Once the database is up and running, verify that by checking if the ``vote`` dat
 mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e "show databases"
 ```
 
-- You should see the ``vote`` database in the list.  If not, wait for the database to come up and/or check the above and try again. 
+- You should see the following.  If not, wait for the database to come up and/or check the above and try again. 
+
+```
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| vote               |
++--------------------+
+```
 
 ## Connect the application to the database 
 
@@ -84,6 +93,16 @@ mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e "show tables"
 
 You should see the  ``poll`` and ``options`` tables. 
 
+```
++----------------+
+| Tables_in_vote |
++----------------+
+| option         |
+| poll           |
++----------------+
+```
+
+
 <!--
 ```
 POD=`oc get pods --selector app=workspace -o jsonpath='{.items[?(@.status.phase=="Running")].metadata.name}'`; echo $POD
@@ -97,27 +116,44 @@ Post a few random votes to the application using the help-script:
 ```execute 
 test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
 ```
+(This script can be run multiple times if you wish).
 
-To view the results use the following command. You should see the totals of all the voting options:
+To view the results use the following command. You should see the votes:
 
+<!--
 ```execute 
 curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/results.html | grep "data: \["
 ```
-
-After testing the application and casting one or more votes, check the votes in the database: 
-
+-->
 
 ```execute
 mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e 'select * from `option`;'
+```
+
+```
++----+------------------------------+---------+-------+
+| id | text                         | poll_id | votes |
++----+------------------------------+---------+-------+
+|  1 | Mint                         |       1 |     3 |
+|  2 | Fedora                       |       1 |     4 |
+|  3 | Debian                       |       1 |     7 |
+|  4 | Ubuntu                       |       1 |     3 |
+|  5 | Fedora CoreOS                |       1 |     2 |
+|  6 | Centos                       |       1 |     5 |
+|  7 | Red Hat Universal Base Image |       1 |     7 |
+|  8 | Alpine                       |       1 |     1 |
+|  9 | Arch                         |       1 |     5 |
+| 10 | Other                        |       1 |     3 |
++----+------------------------------+---------+-------+
 ```
 
 View the containers/pods in the console:
 
 * [View the Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
 
-Open the vote application in a browser: 
+Open the vote application results page in a browser: 
 
-* [Open the Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
+* [Open the Application](http://vote-app-%project_namespace%.%cluster_subdomain%/results.html) 
 
 
 
@@ -145,7 +181,7 @@ vote-app-3-p2j4w    1/1     Running     0          7m45s
 
 Check the application is still working as expected.  Data should not be lost: 
 
-[Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/) 
+[Open the Vote Application](http://vote-app-%project_namespace%.%cluster_subdomain%/results.html) 
 
  - ``Please remember to scale the vote application back down to 1 or use the following command:``
 
