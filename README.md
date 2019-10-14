@@ -41,7 +41,7 @@ Follow the ["Getting Started Guide - OpenShift"](https://github.com/awslabs/aws-
 
 ## Increase the AWS resource limits in the target account
 
-The following Amazon RDS resources need to be increased to match the number of RDS instances (attendees) needed for the workshop, e.g. 60 in this example:
+The following [Amazon RDS limits need to be increased](https://console.aws.amazon.com/servicequotas/home#!/services/rds/quotas) to match the number of RDS instances (i.e. one per attendee) needed for the workshop, e.g. 60 in this example:
 
 ```
 DB Instances (0/60)
