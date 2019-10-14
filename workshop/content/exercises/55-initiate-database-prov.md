@@ -6,9 +6,9 @@ We will use the ``AWS Service Broker`` to provision the database.
 
 Using the ``AWS Broker`` - which is configured and running on this OpenShift cluster - provision an AWS RDS MySQL service.  Connect the MySQL database to the application and test it. 
 
-# Initiate the database using the developer catalogue 
+# Provision a RDS MySQL database using the service catalogue 
 
-Provision an instance of MySQL RDS using this ``svcat`` command: 
+To initiate the provisioning of RDS run the following ``svcat`` command: 
 
 ```execute
 svcat provision mysql --class rdsmysql --plan custom  \
@@ -25,9 +25,17 @@ svcat provision mysql --class rdsmysql --plan custom  \
 ```
  <!-- -p VpcId=vpc-03a00c0e08cc9bec3  note that this param is not needed.  The AWS Service Broker should be configured with the target VPN -->
 
-As specified in the above command, an instance of MySQL will be created with an instance type of ``db.m4.large`` and will be accessible publicly. 
+As specified in the above command, an instance of MySQL will be provisioned with an instance type of ``db.m4.large`` and will be accessible publicly. 
 
-Now, if you wish, go to the [Developer Catalog](%console_url%/catalog/ns/%project_namespace%). You will see many technologies which can be used.  One of them is the RDS Service.  In the search box, enter ``rds``.  You will see the ``Amazon RDS for MySQL`` service class.  Click on this RDS Service Class to read information about this service.  Then click on the ``Create Service Instance``  button to view all of the parameters that _can_ be used to define the MySQL instance.  The most important options are:
+Check the status of the RDS instance from the command line:
+
+```execute
+svcat get instances
+```
+
+The status should be ``Provisioning``.  Note that the database takes about 20 minutes to provision. We will use it in a later exercise. 
+
+Now, if you wish, go to the [Service Catalog](%console_url%/catalog/ns/%project_namespace%). You will see many technologies which can be used.  One of them is the RDS Service.  In the search box, enter ``rds``.  You will see the ``Amazon RDS for MySQL`` service class.  Click on this RDS Service Class to read information about this service.  Then click on the ``Create Service Instance``  button to view all of the parameters that _can_ be used to define the MySQL instance.  The most important options are:
 
 1. Service Instance Name
 1. DB Instance Class
@@ -37,22 +45,13 @@ Now, if you wish, go to the [Developer Catalog](%console_url%/catalog/ns/%projec
 1. Publicly Accessible
 1. Master Username
 
- - Please ``DO NOT`` fill in this form and click on the ``Create`` button!  
+``Please note: ``DO NOT`` fill in this form and click on the ``Create`` button!  
 
-Take a look in the console and check the status of the RDS instance.  You should see ``Not ready``.  If you drill down into the ``mysql`` service object you should also be able to see ``The instance is being provisioned asynchronously`` at the bottom of the page.   You will also see that there are no ``Service Bindings``. Don't worry, we will create that in a future exercise.  
+Take a look in the console at the [Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%/) and check the status of the RDS instance.  You should see ``Not ready``.  If you drill down into the ``mysql`` service object you should also be able to see ``The instance is being provisioned asynchronously`` at the bottom of the page.   You will also see that there are no ``Service Bindings``. A service binding is a link between a service instance and an application.  Don't worry, we will create that in a future exercise.  
 
-[Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%/)
-
-You can check the status of the RDS instance from the command line as well:
-
-```execute
-svcat get instances
-```
-
-The status should be ``Provisioning``. 
 
  - Sometimes, the RDS instance fails to provision due to overlapping network segments being automatically selected (or some other reason).  In this case you will eventually see the status as ``Failed``.  
- - If there is a problem provisioning the RDS instance, you will need to re-trace your steps by `remove it entirely` and trying again.  Remember to use the above `svcat` command.  To remove the failing RDS instance, follow the steps in the section ``Remove the RDS Instance`` in the last exercise exercise called [Clean up](90-clean-up).  
+ - If there is a problem provisioning the RDS instance, you will need to remove it and try again.  To remove the failing RDS instance, run the command `"svcat deprovision mysql"`.  <!--follow the steps in the section ``Remove the RDS Instance`` in the last exercise exercise called [Clean up](90-clean-up).  -->
 
 The database takes about 20 minutes to provision. 
 

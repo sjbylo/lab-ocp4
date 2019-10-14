@@ -20,17 +20,14 @@ Fetch the access credentials via the `service catalogue` by using the "``bind``"
 svcat bind mysql --name mysql-binding --secret-name mysql-secret
 ```
 
- - The binding will be called ``mysql-binding`` and the resulting Kubernetes secret will be called ``mysql-secret``.
-
- - Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a container. 
+ - The binding will be called ``mysql-binding`` and the resulting Kubernetes secret will be called ``mysql-secret``. The secret will contain connection details and credentials for the RDS instance (host, username, password ...). 
+ - Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim into a container. 
 
 Check the database bindings:
 
 ```execute
 svcat get bindings
 ```
-
-The binding creates a secret containing the database's access credentials (host, username, password ...) 
 
 View the secret:
 
@@ -60,8 +57,15 @@ Let's check that the RDS instance is up and reachable.
 Use the help script to extract the values from the secret into terminal's shell environment so the connectivity to the database can be tested. 
 
 ```execute
+extract-secret mysql-secret
+```
+
+Now import this data into the shell's environment for later use: 
+
+```execute
 eval `extract-secret mysql-secret`
 ```
+
  - Note that if this command shows no output then it has succeeded. 
  - If this command returns ``not found`` wait for the database and its binding to be ``ready`` and the secret to be created from the binding. 
 
