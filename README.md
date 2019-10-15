@@ -13,15 +13,28 @@ Note that, even if the AWS Broker is not available the other exercises still pro
 
 Please note this issue when installing the AWS Broker on OpenShift 4.1 https://github.com/awslabs/aws-servicebroker/issues/139 
 
-# Setup of the workshop using RHPDS
+# Setup of the workshop using RHPDS 
 
 A Red Hat RHPDS OCP 4.x cluster can be provisioned and used for this workshop.  The AWS Service Broker (AWSSB) is then installed and configured onto the RHPDS cluster.  The AWSSB can be configured to manage services in a separate AWS account (target account).  There are a few prerequisites that need to be configured into the target account which are described in the AWSSB documentation. 
 
+## Increase the RDS limits in the Target AWS Account
+
+If needed, the following [Amazon RDS limits need to be increased](https://console.aws.amazon.com/servicequotas/home#!/services/rds/quotas) to match the number of RDS instances (i.e. one per attendee) needed for the workshop.  It takes AWS about 3-5 days to make the changes. These are the limits that need increasing, e.g. to 60: 
+
+```
+DB Instances (0/60)
+Parameter groups
+  Custom (0/60)
+Option groups:
+  Custom (0/60)
+Subnet groups (0/60)
+```
+
 ## Setup of the Target AWS Account 
 
-Follow the [instructions](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) (as above) to allow the target account to be managed by the AWS Service Broker (AWSSB).  This entails setting up IAM and a DynamoDB table. 
+Follow the [instructions](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) to allow the target account to be managed by the AWS Service Broker (AWSSB).  This entails setting up IAM and a DynamoDB table. 
 
-Following are the steps that were used to configure AWSB onto a OCP 4.1 cluster, provisioned via RHPDS
+Following are the steps that were used to configure AWSB onto a OCP 4.1 cluster, provisioned via RHPDS. 
 
 Ensure the "Broker Management" option appears in the OpenShift Menu.  If this is already visible then there is probably no need to execute the next two commands.
 
@@ -33,23 +46,22 @@ oc patch servicecatalogapiservers cluster --patch '{"spec": {"managementState": 
 oc patch servicecatalogcontrollermanagers cluster --patch '{"spec": {"managementState": "Managed"}}' --type=merge
 ```
 
-Wait for at least 30 mins for the Service Catalog to be configured and for the "Broker Management" option to appear in the OpenShift menu. 
+The output iof these commands should show "patched". 
+
+Wait for at least 30 minutes for the Service Catalog to be configured and for the "Broker Management" option to appear in the OpenShift menu.  
 
 ## Deploy AWS Service Broker on the RHPDS OpenShift cluster 
 
 Follow the ["Getting Started Guide - OpenShift"](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) to run the "deploy.sh" script which will deploy AWSSB.  
 
-## Increase the AWS resource limits in the target account
-
-The following [Amazon RDS limits need to be increased](https://console.aws.amazon.com/servicequotas/home#!/services/rds/quotas) to match the number of RDS instances (i.e. one per attendee) needed for the workshop, e.g. 60 in this example:
+After running the "deploy.sh" script you should observer the following in the logs:
 
 ```
-DB Instances (0/60)
-Parameter groups
-  Custom (0/60)
-Option groups:
-  Custom (0/60)
-Subnet groups (0/60)
+oc logs aws-servicebroker-6dcd88cc7d-mrbzc -n aws-sb 
+...
+converting service definition "rdsmssql"
+...
+Starting server on :3199
 ```
 
 # Homeroom workshop setup
