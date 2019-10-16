@@ -31,7 +31,11 @@ Parameter groups = 60
 
 This is how the RDS resources should look in the AWS Console if you want to run 60 instances: 
 
+<img src="images/rds-resources-for-60-instances.png" alt="drawing" width="400"/>
+
+<!--
 ![project](images/rds-resources-for-60-instances.png)
+-->
 
 ## Setup of the Target AWS Account 
 
@@ -53,7 +57,9 @@ The output of these commands should show "patched".
 
 Wait for at least 30 minutes for the Service Catalog to be configured and for the "Broker Management" option to appear in the OpenShift menu.  
 
-![project](images/ocp-broker-management-menu.png)
+<img src="images/ocp-broker-management-menu.png" alt="drawing" width="300"/>
+
+<!--![menu](images/ocp-broker-management-menu.png ) -->
 
 ## Deploy AWS Service Broker on the RHPDS OpenShift cluster 
 
