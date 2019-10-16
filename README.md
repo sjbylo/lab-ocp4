@@ -19,16 +19,19 @@ A Red Hat RHPDS OCP 4.x cluster can be provisioned and used for this workshop.  
 
 ## Increase the RDS limits in the Target AWS Account
 
-If needed, the following [Amazon RDS limits need to be increased](https://console.aws.amazon.com/servicequotas/home#!/services/rds/quotas) to match the number of RDS instances (i.e. one per attendee) needed for the workshop.  It takes AWS about 3-5 days to make the changes. These are the limits that need increasing, e.g. to 60: 
+If needed, the following [Amazon RDS limits need to be increased](https://console.aws.amazon.com/servicequotas/home#!/services/rds/quotas) to match the number of RDS instances (i.e. one per attendee) needed for the workshop.  It takes AWS about 3-5 days to make the changes. These are the limits that need increasing, e.g. set all these limits to 60 if you anticipate 60 workshop participants: 
 
 ```
-DB Instances (0/60)
-Parameter groups
-  Custom (0/60)
-Option groups:
-  Custom (0/60)
-Subnet groups (0/60)
+DB cluster parameter groups = 60 (shows up as Custom (0/120))
+DB instances = 60 
+DB subnet groups = 60 
+Option groups = 60 
+Parameter groups = 60 
 ```
+
+This is how the RDS resources should look if you want to run 60 instances: 
+
+![project](images/rds-resources-for-60-instances.png)
 
 ## Setup of the Target AWS Account 
 
