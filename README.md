@@ -15,7 +15,7 @@ Please note this issue when installing the AWS Broker on OpenShift 4.1 https://g
 
 # Setup of the workshop using RHPDS 
 
-A Red Hat RHPDS OCP 4.x cluster can be provisioned and used for this workshop.  The AWS Service Broker (AWSSB) is then installed and configured onto the RHPDS cluster.  The AWSSB can be configured to manage services in a separate AWS account (target account).  There are a few prerequisites that need to be configured into the target account which are described in the AWSSB documentation. 
+A Red Hat RHPDS OCP 4.x cluster can be provisioned and used for this workshop.  The AWS Service Broker (AWSSB) is then installed and configured onto the RHPDS cluster.  The AWSSB can be configured to manage services in a separate AWS account or the same account (target account).  There are a few prerequisites that need to be configured into the target account which are described in the AWSSB documentation. 
 
 ## Increase the RDS limits in the Target AWS Account
 
@@ -65,7 +65,34 @@ Wait for at least 30 minutes for the Service Catalog to be configured and for th
 
 Follow the ["Getting Started Guide - OpenShift"](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) to run the "deploy.sh" script which will deploy AWSSB.  
 
-After running the "deploy.sh" script you should observer the following in the logs:
+ - Please note that I have fixed the deploy.sh script to work with OCP 4.x.  The git pull request may not have been accepted in the AWS Broker project yet (as of Oct 2019).  If so, use the below script! 
+
+The deploy.sh script: 
+
+```
+#!/bin/bash
+
+ACCESSKEYID=$(echo -n $1 | base64)
+SECRETKEY=$(echo -n $2 | base64)
+
+# On OpenShift 4.x the project name has changed to "openshift-service-catalog-apiserver"
+oc projects -q | grep -q "^kube-service-catalog$" && proj=kube-service-catalog
+oc projects -q | grep -q "^openshift-service-catalog-apiserver$" && proj=openshift-service-catalog-apiserver
+[ ! "$proj" ] && echo "Error: Cannot find project" && exit 1
+
+# Fetch the cert 
+CA=`oc get secret -n $proj -o go-template='{{ range .items }}{{ if eq .type "kubernetes.io/service-account-token" }}{{ index .data "service-ca.crt" }}{{end}}{{"\n"}}{{end}}' | grep -v '^$' | tail -n 1`
+
+# Create the project and the AWS Service Broker
+oc new-project aws-sb 
+oc process -f aws-servicebroker.yaml --param-file=parameters.env \
+	--param BROKER_CA_CERT=$CA \
+	--param ACCESSKEYID=${ACCESSKEYID} \
+	--param SECRETKEY=${SECRETKEY} | oc apply -f - -n aws-sb
+```
+
+
+After running the "deploy.sh" script you should observer the following in the logs of the "aws-servicebroker" pod:
 
 ```
 oc logs aws-servicebroker-6dcd88cc7d-mrbzc -n aws-sb 
@@ -74,6 +101,38 @@ converting service definition "rdsmssql"
 ...
 Starting server on :3199
 ```
+
+# Verify AWS Service Broker is working
+
+Install the svcat script (e.g. for [Mac](https://svc-cat.io/docs/install/#macos)).  Try the following commands:
+
+```
+$ svcat describe broker aws-servicebroker
+  Name:     aws-servicebroker
+  Scope:    cluster         
+  URL:      https://aws-servicebroker.aws-sb.svc.cluster.local  
+  Status:   Ready - Successfully fetched catalog entries from broker @ 2019-10-15 03:19:06 +0000 UTC  
+```
+
+```
+$ svcat get classes | grep rds
+  rdsoracle                      AWS Service Broker - Amazon    
+  rdsmssql                       AWS Service Broker - Amazon    
+  rdsmariadb                     AWS Service Broker - Amazon    
+  rdspostgresql                  AWS Service Broker - Amazon    
+  rdsmysql                       AWS Service Broker - Amazon   
+```
+
+```
+svcat marketplace | grep rds
+  rdsoracle          production     AWS Service Broker - Amazon   
+  rdsmssql           dev            AWS Service Broker - Amazon   
+  rdsmariadb         custom         AWS Service Broker - Amazon   
+  route53            recordset      AWS Service Broker - Amazon   
+  rdspostgresql      production     AWS Service Broker - Amazon   
+  rdsmysql           custom         AWS Service Broker - Amazon
+```
+
 
 # Homeroom workshop setup
 
