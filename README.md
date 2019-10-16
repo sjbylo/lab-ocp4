@@ -29,7 +29,7 @@ Option groups = 60
 Parameter groups = 60 
 ```
 
-This is how the RDS resources should look if you want to run 60 instances: 
+This is how the RDS resources should look in the AWS Console if you want to run 60 instances: 
 
 ![project](images/rds-resources-for-60-instances.png)
 
@@ -49,7 +49,7 @@ oc patch servicecatalogapiservers cluster --patch '{"spec": {"managementState": 
 oc patch servicecatalogcontrollermanagers cluster --patch '{"spec": {"managementState": "Managed"}}' --type=merge
 ```
 
-The output iof these commands should show "patched". 
+The output of these commands should show "patched". 
 
 Wait for at least 30 minutes for the Service Catalog to be configured and for the "Broker Management" option to appear in the OpenShift menu.  
 
