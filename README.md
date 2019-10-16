@@ -53,6 +53,8 @@ The output of these commands should show "patched".
 
 Wait for at least 30 minutes for the Service Catalog to be configured and for the "Broker Management" option to appear in the OpenShift menu.  
 
+![project](images/ocp-broker-management-menu.png)
+
 ## Deploy AWS Service Broker on the RHPDS OpenShift cluster 
 
 Follow the ["Getting Started Guide - OpenShift"](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) to run the "deploy.sh" script which will deploy AWSSB.  
