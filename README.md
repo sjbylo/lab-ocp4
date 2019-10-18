@@ -39,9 +39,11 @@ This is how the RDS resources should look in the AWS Console if you want to run 
 
 ## Setup of the Target AWS Account 
 
-Follow the [instructions](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) to allow the target account to be managed by the AWS Service Broker (AWSSB).  This entails setting up IAM and a DynamoDB table. 
+**Follow the [instructions](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md) to allow the target account to be managed by the AWS Service Broker (AWSSB).**  This entails setting up IAM and a DynamoDB table.
 
-Following are the steps that were used to configure AWSB onto a OCP 4.1 cluster, provisioned via RHPDS. 
+## Prepare the RHPDS OpenShift cluster  
+
+Following are the steps that were used to configure AWSSB onto a OCP 4.1 cluster, provisioned via RHPDS. 
 
 Ensure the "Broker Management" option appears in the OpenShift Menu.  If this is already visible then there is probably no need to execute the next two commands.
 
