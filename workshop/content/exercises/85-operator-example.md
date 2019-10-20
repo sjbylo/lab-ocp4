@@ -1,6 +1,7 @@
 In this exercise you will learn about the Etcd Operator
 
 * [Installed Operators](%console_url%/console/ns/%project_namespace%/clusterserviceversions)
+* [Installed Operators](%console_url%/clusterserviceversions/ns/%project_namespace%)
 * [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
 
 ```execute
