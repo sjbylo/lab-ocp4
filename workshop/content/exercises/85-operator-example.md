@@ -44,9 +44,9 @@ As the Etcd cluster is being created, observer the steps taken in the upper term
 ```execute
 oc get events -w | grep /example
 ```
-You should be able to observe the steps taken to create the Etcd Cluster. 
+You should be able to observe the steps taken to create the Etcd Cluster.  E.g. ``New member example-xxxyyyzzz added to cluster``.
 
-After all three pods of the Etcd cluster have been created, stop the command in the upper terminal:
+After all three pods of the Etcd cluster have been created (see them in the lower terminal), stop the command in the upper terminal:
 
 ```execute
 <ctrl+c>
@@ -142,7 +142,7 @@ Now, clean up:
 <ctrl+c>
 ```
 
-In this exercise you were able to deploy an etcd cluster, connect to it and watch it self-heal.  
+In this exercise you were able to deploy an etcd cluster, connect to it, scale it and watch it self-heal.  
 
 ---
 That's the end of this exercise.
