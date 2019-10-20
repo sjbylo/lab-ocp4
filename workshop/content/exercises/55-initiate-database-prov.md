@@ -4,6 +4,8 @@ We will use the ``AWS Service Broker`` to provision the database.
 
 - ``The AWS Service Broker is an open source project that allows native AWS services to be exposed directly through Red Hat OpenShift and Kubernetes. The Broker provides simple integration of AWS Services directly within OpenShift.``
 
+![aws service broker arch](images/aws-service-broker-architecture.png)
+
 Using the ``AWS Broker`` - which is configured and running on this OpenShift cluster - provision an AWS RDS MySQL service.  Connect the MySQL database to the application and test it. 
 
 # Provision a RDS MySQL database using the service catalogue 
