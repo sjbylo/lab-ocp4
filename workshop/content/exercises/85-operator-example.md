@@ -125,10 +125,16 @@ You will see that the Etcd Operator restored the Etcd Cluster back to how it was
 It is also possible to expand the Etcd Cluster by increasing the size:
 
 ```execute
-oc patch EtcdCluster example --type merge -p '{"spec":{"size":1}}'
+oc patch EtcdCluster example --type merge -p '{"spec":{"size":5}}'
 ```
 
 Observe how the Etcd Cluster is scaled out.
+
+Now, to remove the Etcd Cluster, all that's needed is to remove the custom resource. 
+
+```execute
+oc delete EtcdCluster example
+```
 
 Now, clean up:
 
@@ -136,7 +142,7 @@ Now, clean up:
 <ctrl+c>
 ```
 
-In this exercise you were able to deploy an etcd cluster, connect to it and watch it self-heal. 
+In this exercise you were able to deploy an etcd cluster, connect to it and watch it self-heal.  
 
 ---
 That's the end of this exercise.
