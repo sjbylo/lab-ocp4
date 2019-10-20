@@ -1,12 +1,8 @@
-In this exercise you will learn about the Etcd Operator
+In this exercise you will learn about the Etcd Operator.
 
-* [Installed Operators](%console_url%/ns/%project_namespace%/clusterserviceversions)
-* [Installed Operators](%console_url%/clusterserviceversions/ns/%project_namespace%)
-* [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
+Go to the console page "[Installed Operators](%console_url%/ns/%project_namespace%/clusterserviceversions)" where the Etcd Operator should be seen.  If it is not visible, then the OpenShift Platform Administrator needs to subscribe to it.
 
-https://lab-ocp4-labs.apps.cluster-scbank-4cc1.scbank-4cc1.example.opentlc.com/user/5z00g/console/k8s/ns/default/clusterserviceversions
-
-Check what's running:
+First, check what's running in your projct:
 
 ```execute
 oc get po
@@ -17,6 +13,14 @@ Clean up:
 ```execute
 oc delete all --all 
 ```
+
+With the following command, we can observe what the Etcd Operator does
+
+```execute-2
+oc get events -w | grep /example
+```
+
+Instanciate an Etcd CLuster by creating the EtcdCluster custom resource:
 
 ```execute
 oc create -f - << END
@@ -32,6 +36,8 @@ spec:
 END
 ```
 
+As the cluster is created, the lower terminal will show what is happening: 
+
 View the Custom Resource:
 
 ```execute
@@ -44,17 +50,23 @@ View the details about the Custom Resource:
 oc describe EtcdCluster example
 ```
 
+To access the Etcd Cluster, launch a separate pod containing the ``etcdctl`` command:
+
+
 ```execute
 oc run --rm -it testclient --image quay.io/coreos/etcd --restart=Never -- /bin/sh
 ```
+A command prompt should appear.
 
-Inside the pod, run the following commands.
+Inside the pod, run the following commands:
+
+Set the Etcd version to use:
 
 ```execute
 export ETCDCTL_API=3
 ```
 
-Add a value to the Etcd cluster:
+Using the ``etcdctl`` command, add a value to the Etcd cluster:
 
 ```execute
 etcdctl --endpoints http://example-client:2379 put foo bar
