@@ -13,6 +13,7 @@ modules:
     - exercises/60-add-test-database
     - exercises/70-add-cloud-database
     - exercises/80-day-two-ops
+    - exercises/85-operator-example
     - exercises/90-clean-up
     - finish
 
