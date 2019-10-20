@@ -35,7 +35,7 @@ svcat get instances
 
 The status should be ``Provisioning``.  Note that the database takes about 20 minutes to provision. We will use it in a later exercise. 
 
-Now, if you wish, go to the [Service Catalog](%console_url%/catalog/ns/%project_namespace%). You will see many technologies which can be utilized.  One of them is the RDS Service.  In the search box, enter ``rds``.  You will see the ``Amazon RDS for MySQL`` service class.  Click on this RDS Service Class to read information about this service.  Then click on the ``Create Service Instance``  button to view all of the parameters that _can_ be used to define the MySQL instance.  The most important options are:
+If you wish to explore in the console, go to the [Service Catalog](%console_url%/catalog/ns/%project_namespace%). You will see many technologies which can be utilized.  One of them is the RDS Service.  In the search box, enter ``rds``.  You will see the ``Amazon RDS for MySQL`` service class.  Click on this "Amazon RDS for MySQL" to read information about this service.  Then click on the ``Create Service Instance``  button to view all of the parameters that _can_ be used to define the MySQL instance.  The most important options are:
 
 1. Service Instance Name
 1. DB Instance Class
@@ -45,7 +45,7 @@ Now, if you wish, go to the [Service Catalog](%console_url%/catalog/ns/%project_
 1. Publicly Accessible
 1. Master Username
 
-``Please note: DO NOT fill in this form and click on the "Create" button! ``  You already provisioned the RDS instance above using the ``svcat`` command. 
+``Please note: DO NOT fill in this form and DO NOT click on the "Create" button at the bottom of the page!``  You already provisioned the RDS instance above using the ``svcat`` command. 
 
 Take a look in the console at the [Provisioned Services](%console_url%/provisionedservices/ns/%project_namespace%/) and check the status of the RDS instance.  You should see ``Not ready``.  If you drill down into the ``mysql`` service object you should also be able to see ``The instance is being provisioned asynchronously`` at the bottom of the page.   You will also see that there are no ``Service Bindings``. A service binding is a link between a service instance and an application.  Don't worry, we will create that in a future exercise.  
 
