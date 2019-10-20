@@ -22,7 +22,7 @@ watch "oc get pods | grep example | grep -v ' Completed '"
 ```
 Leave this command running for the duration of this exercise.
 
-Instanciate an Etcd Cluster by creating the EtcdCluster custom resource:
+Instantiate an Etcd Cluster by creating the EtcdCluster custom resource:
 
 ```execute
 oc create -f - << END
@@ -37,16 +37,16 @@ spec:
   version: 3.2.13
 END
 ```
-Noote that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod).
+Note that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod).
 
 As the Etcd cluster is being created, observer the steps taken in the upper terminal: 
 
 ```execute
 oc get events -w | grep /example
 ```
-You should be able to observe the steos taken to create the Etcd Cluster. 
+You should be able to observe the steps taken to create the Etcd Cluster. 
 
-After all three pods of the Etcd cluster have been created, stop the command in the upper termninal:
+After all three pods of the Etcd cluster have been created, stop the command in the upper terminal:
 
 ```execute
 <ctrl+c>
@@ -116,13 +116,13 @@ Delete one instance of the Etcd cluster:
 oc delete pod `oc get pod | grep example | awk '{print $1}' | tail -1`
 ```
 
-In the bottom terminal, the Etcd cluster is repaired by the Etcd Operator.  This is similar to what a Kuibernetes ``deployment`` controller would do, 
+In the bottom terminal, the Etcd cluster is repaired by the Etcd Operator.  This is similar to what a Kubernetes ``deployment`` controller would do, 
 but there is a lot more to it.
 The Etcd operator needs to create a new Etcd cluster member, add it back into the Etcd cluster and initialize (re-distribute) it with the data that already exists in the Etcd Cluster.
 
-You will see that the Etcd Operator restroed the Etcd Cluster back to how it was.
+You will see that the Etcd Operator restored the Etcd Cluster back to how it was.
 
-It is also possible to expand the Etcd CLuster by increasing the size:
+It is also possible to expand the Etcd Cluster by increasing the size:
 
 ```execute
 oc patch EtcdCluster example --type merge -p '{"spec":{"size":1}}'
