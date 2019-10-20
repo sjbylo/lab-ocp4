@@ -1,8 +1,10 @@
 In this exercise you will learn about the Etcd Operator
 
-* [Installed Operators](%console_url%/console/ns/%project_namespace%/clusterserviceversions)
+* [Installed Operators](%console_url%/ns/%project_namespace%/clusterserviceversions)
 * [Installed Operators](%console_url%/clusterserviceversions/ns/%project_namespace%)
 * [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
+
+https://lab-ocp4-labs.apps.cluster-scbank-4cc1.scbank-4cc1.example.opentlc.com/user/5z00g/console/k8s/ns/default/clusterserviceversions
 
 ```execute
 oc run --rm -it testclient --image quay.io/coreos/etcd --restart=Never -- /bin/sh
