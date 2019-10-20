@@ -1,26 +1,28 @@
 In this exercise you will learn about the Etcd Operator.
 
-Go to the console page "[Installed Operators](%console_url%/ns/%project_namespace%/clusterserviceversions)" where the Etcd Operator should be seen.  If it is not visible, then the OpenShift Platform Administrator needs to subscribe to it.
+Go to the console page "[Installed Operators](%console_url%/ns/%project_namespace%/clusterserviceversions)" where the Etcd Operator should be seen.  
+If it is not visible, then the OpenShift Platform Administrator needs to subscribe to it.
 
-First, check what's running in your projct:
+First, check what's running in your project:
 
 ```execute
 oc get po
 ```
 
-Clean up:
+Clean up the project:
 
 ```execute
 oc delete all --all 
 ```
 
-With the following command, we can observe what the Etcd Operator does
+With the following command, we can observe the pods of the Etcd Cluster in the lower terminal:
 
 ```execute-2
-oc get events -w | grep /example
+watch "oc get pods | grep example | grep -v ' Completed '"
 ```
+Leave this command running for the duration of this exercise.
 
-Instanciate an Etcd CLuster by creating the EtcdCluster custom resource:
+Instanciate an Etcd Cluster by creating the EtcdCluster custom resource:
 
 ```execute
 oc create -f - << END
@@ -35,10 +37,22 @@ spec:
   version: 3.2.13
 END
 ```
+Noote that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod).
 
-As the cluster is created, the lower terminal will show what is happening: 
+As the Etcd cluster is being created, observer the steps taken in the upper terminal: 
 
-View the Custom Resource:
+```execute
+oc get events -w | grep /example
+```
+You should be able to observe the steos taken to create the Etcd Cluster. 
+
+After all three pods of the Etcd cluster have been created, stop the command in the upper termninal:
+
+```execute
+<ctrl+c>
+```
+
+Now, view the Custom Resource:
 
 ```execute
 oc get EtcdCluster 
@@ -56,7 +70,7 @@ To access the Etcd Cluster, launch a separate pod containing the ``etcdctl`` com
 ```execute
 oc run --rm -it testclient --image quay.io/coreos/etcd --restart=Never -- /bin/sh
 ```
-A command prompt should appear.
+A ``$ `` command prompt should appear.
 
 Inside the pod, run the following commands:
 
@@ -84,26 +98,43 @@ Delete a value from the Etcd cluster:
 etcdctl --endpoints http://example-client:2379 del foo
 ```
 
-Read a value from the Etcd cluster:
+Try to read a value that does not exist from the Etcd cluster:
 
 ```execute
 etcdctl --endpoints http://example-client:2379 get foo
 ```
 
-Watch the Etcd cluster pods in the bottom terminal:
-
-```execute-2
-watch "oc get pods | grep example | grep -v ' Completed '"
-```
-
-Delete one instance of the cluster:
+Exit from the etcdctl pod:
 
 ```execute
-oc delete `oc get po | grep example | awk '{print $1}' | tail -1`
+exit
 ```
 
-In the bottom terminal, the cluster is repaired by the Etcd Operator.  This is similar to what the "deployment" controller would do, but there is a lot more to it.
-The Etcd operator needs to create a new Etcd cluster member, add it back into the cluster and initialize (distribute) it with the existing data.
+Delete one instance of the Etcd cluster:
+
+```execute
+oc delete pod `oc get pod | grep example | awk '{print $1}' | tail -1`
+```
+
+In the bottom terminal, the Etcd cluster is repaired by the Etcd Operator.  This is similar to what a Kuibernetes ``deployment`` controller would do, 
+but there is a lot more to it.
+The Etcd operator needs to create a new Etcd cluster member, add it back into the Etcd cluster and initialize (re-distribute) it with the data that already exists in the Etcd Cluster.
+
+You will see that the Etcd Operator restroed the Etcd Cluster back to how it was.
+
+It is also possible to expand the Etcd CLuster by increasing the size:
+
+```execute
+oc patch EtcdCluster example --type merge -p '{"spec":{"size":1}}'
+```
+
+Observe how the Etcd Cluster is scaled out.
+
+Now, clean up:
+
+```execute-2
+<ctrl+c>
+```
 
 In this exercise you were able to deploy an etcd cluster, connect to it and watch it self-heal. 
 
