@@ -3,27 +3,27 @@ modules:
         name: Workshop Overview
         exit_sign: Start Workshop
     exercises/10-openshift-intro:
-        name: Get started with OpenShift
+        name: 1. Get started with OpenShift
     exercises/55-initiate-database-prov:
-        name: Initiate Database Provisioning 
+        name: 2. Initiate Database Provisioning 
     exercises/20-create-an-app:
-        name: First Application
+        name: 3. First Application
     exercises/30-fork-the-repo:
-        name: Create a Repo
+        name: 4. Create a Repo
     exercises/40-source-to-image:
-        name: Run the Source
+        name: 5. Run the Source
     exercises/45-create-a-webhook:
-        name: Create a Webhook
+        name: 6. Create a Webhook
     exercises/50-change-the-source:
-        name: Change the Source
+        name: 7. Change the Source
     exercises/60-add-test-database:
-        name: Add a Database for testing
+        name: 8. Add a Database for testing
     exercises/70-add-cloud-database:
-        name: Add a production Database
+        name: 9. Add a production Database
     exercises/80-day-two-ops:
-        name: Day 2 Operations
+        name: 10. Day 2 Operations
     exercises/85-operator-example:
-        name: Working with Operators
+        name: 11. Working with Operators
     exercises/90-clean-up:
         name: Clean up
     finish:
