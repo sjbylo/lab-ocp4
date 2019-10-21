@@ -5,9 +5,9 @@ modules:
     exercises/10-openshift-intro:
         name: 1. Get started with OpenShift
     exercises/55-initiate-database-prov:
-        name: 2. Initiate Database Provisioning 
+        name: 3. Initiate Database Provisioning 
     exercises/20-create-an-app:
-        name: 3. First Application
+        name: 2. First Application
     exercises/30-fork-the-repo:
         name: 4. Create a Repo
     exercises/40-source-to-image:
