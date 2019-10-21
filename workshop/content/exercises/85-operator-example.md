@@ -9,11 +9,13 @@ First, check what's running in your project:
 oc get po
 ```
 
+<!--
 Clean up the project:
 
 ```execute
 oc delete all --all 
 ```
+-->
 
 With the following command, we can observe the pods of the Etcd Cluster in the lower terminal:
 
