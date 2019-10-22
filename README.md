@@ -210,6 +210,19 @@ To delete a multi user workshop instance when done, run:
 .workshop/scripts/delete-spawner.sh
 ```
 
+Ensure the workshop is configured correctly to allow enough time and resources for the duration of the workshop. 
+
+For example, here the values are set for an idle session timeout of `2 hours`, a maximum session age of `6 hours` (1 or 2 hours longer than the expected duration of the workshop), a server limit for `60` participants and a resource budget of `unlimited` (therefor no cpu/ram limits set):
+
+```
+oc set env dc/lab-ocp4 \
+  IDLE_TIMEOUT=7200 \
+  MAX_SESSION_AGE=21600  \
+  SERVER_LIMIT=60   \
+  RESOURCE_BUDGET=unlimited 
+```
+
+
 Also delete the build configuration for the workshop image by running:
 
 ```
