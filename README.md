@@ -149,7 +149,7 @@ The dashboard for the workshop environment should look like:
 To launch the workshop, first clone a copy of this Git repository to your own computer.
 
 ```
-git clone https://github.com/sjbylo/lab-ocp4.git
+git clone --recurse-submodules https://github.com/sjbylo/lab-ocp4.git
 ```
 
 Then within the Git repository directory, run:
@@ -222,9 +222,11 @@ oc set env dc/lab-ocp4 \
   RESOURCE_BUDGET=unlimited 
 ```
 
+See also these docs on how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
 
-Also delete the build configuration for the workshop image by running:
+Delete the build configuration for the workshop image by running:
 
 ```
 .workshop/scripts/delete-workshop.sh
 ```
+
