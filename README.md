@@ -17,7 +17,7 @@ Please note this issue when installing the AWS Broker on OpenShift 4.1 https://g
 
 # Setup of the workshop using RHPDS 
 
-A Red Hat RHPDS OCP 4.x cluster can be provisioned and used for this workshop.  The AWS Service Broker (AWSSB) is then installed and configured onto the RHPDS cluster.  The AWSSB can be configured to manage services in a separate AWS account or the same account (target account).  There are a few prerequisites that need to be configured into the target account which are described in the AWSSB documentation. 
+A Red Hat RHPDS OCP 4.x cluster can be provisioned and used for this workshop.  Select "OpenShift 4 Workshop" from the catalog in RHPDS. The AWS Service Broker (AWSSB) is then installed and configured onto the RHPDS cluster.  The AWSSB can be configured to manage services in a separate AWS account or the same account (target account).  There are a few prerequisites that need to be configured into the target account which are described in the AWSSB documentation. 
 
 ## Increase the RDS limits in the Target AWS Account
 
