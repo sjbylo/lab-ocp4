@@ -11,7 +11,9 @@ working on the OpenShift cluster for two of the exercises to work.  The instruct
 AWS Broker are [here](https://github.com/awslabs/aws-servicebroker/blob/master/docs/getting-started-openshift.md).
 Note that, even if the AWS Broker is not available the other exercises still provide considerable learning of OpenShift. 
 
+<!--
 Please note this issue when installing the AWS Broker on OpenShift 4.1 https://github.com/awslabs/aws-servicebroker/issues/139 
+-->
 
 # Setup of the workshop using RHPDS 
 
