@@ -75,6 +75,7 @@ The deploy.sh script:
 
 ```
 #!/bin/bash
+# From: https://github.com/awslabs/aws-servicebroker/blob/master/packaging/openshift/deploy.sh
 
 ACCESSKEYID=$(echo -n $1 | base64)
 SECRETKEY=$(echo -n $2 | base64)
