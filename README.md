@@ -229,6 +229,8 @@ oc set env dc/lab-ocp4 \
 
 Also, see how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
 
+## Tidy up
+
 Delete the build configuration for the workshop image by running:
 
 ```
