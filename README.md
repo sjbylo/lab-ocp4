@@ -227,7 +227,7 @@ oc set env dc/lab-ocp4 \
   RESOURCE_BUDGET=unlimited 
 ```
 
-See also these docs on how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
+Also, see how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
 
 Delete the build configuration for the workshop image by running:
 
