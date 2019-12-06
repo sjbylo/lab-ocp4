@@ -96,6 +96,34 @@ oc process -f aws-servicebroker.yaml --param-file=parameters.env \
 	--param SECRETKEY=${SECRETKEY} | oc apply -f - -n aws-sb
 ```
 
+Running the script should look like this
+
+```
+$ ./deploy.sh AKIAIUHIUH2FCJBJBFKG 'UHuhde73873hhjhUHGIUH8798798xxxxxxxxxxxx' 
+Now using project "aws-sb" on server "https://api.cluster-workshop-a011.workshop-a011.example.opentlc.com:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app django-psql-example
+
+to build a new example application in Python. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+
+serviceaccount/aws-servicebroker-client created
+secret/aws-servicebroker created
+clusterservicebroker.servicecatalog.k8s.io/aws-servicebroker created
+serviceaccount/aws-servicebroker created
+clusterrole.rbac.authorization.k8s.io/aws-servicebroker created
+clusterrole.rbac.authorization.k8s.io/access-aws-servicebroker created
+clusterrolebinding.rbac.authorization.k8s.io/aws-servicebroker created
+clusterrolebinding.rbac.authorization.k8s.io/aws-servicebroker-client created
+service/aws-servicebroker created
+secret/aws-servicebroker-credentials created
+deployment.extensions/aws-servicebroker created
+
+```
+
 
 After running the "deploy.sh" script you should observer the following in the logs of the "aws-servicebroker" pod:
 
@@ -177,6 +205,63 @@ To deploy it for a workshop with multiple users, run:
 .workshop/scripts/deploy-spawner.sh
 ```
 
+The output of this command should look like this:
+
+```
+$ .workshop/scripts/deploy-spawner.sh
+### Parsing command line arguments.
+### Reading the default configuation.
+### Reading the workshop configuation.
+### Setting the workshop application.
+### Checking spawner configuration.
+### Creating spawner application.
+serviceaccount/lab-ocp4-aws-sb-hub created
+rolebinding.authorization.openshift.io/lab-ocp4-edit created
+clusterrole.authorization.openshift.io/lab-ocp4-aws-sb-spawner created
+clusterrolebinding.authorization.openshift.io/lab-ocp4-aws-sb-spawner created
+clusterrole.authorization.openshift.io/lab-ocp4-aws-sb-spawner-rules created
+clusterrolebinding.authorization.openshift.io/lab-ocp4-aws-sb-spawner-rules created
+clusterrole.authorization.openshift.io/lab-ocp4-aws-sb-session-rules created
+clusterrolebinding.authorization.openshift.io/lab-ocp4-aws-sb-session-rules created
+imagestream.image.openshift.io/lab-ocp4-hub created
+configmap/lab-ocp4-cfg created
+configmap/lab-ocp4-res created
+configmap/lab-ocp4-env created
+deploymentconfig.apps.openshift.io/lab-ocp4 created
+persistentvolumeclaim/lab-ocp4-hub-data created
+service/lab-ocp4 created
+route.route.openshift.io/lab-ocp4 created
+imagestream.image.openshift.io/lab-ocp4 created
+### Waiting for the spawner to deploy.
+Deployment config "lab-ocp4" waiting on image update
+Deployment config "lab-ocp4" waiting on image update
+Waiting for latest deployment config spec to be observed by the controller loop...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 of 1 updated replicas are available...
+Waiting for latest deployment config spec to be observed by the controller loop...
+replication controller "lab-ocp4-1" successfully rolled out
+### Install static resource definitions.
+### Update spawner configuration for workshop.
+### Restart the spawner with new configuration.
+deploymentconfig.apps.openshift.io/lab-ocp4 rolled out
+Waiting for latest deployment config spec to be observed by the controller loop...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for rollout to finish: 0 of 1 updated replicas are available...
+Waiting for latest deployment config spec to be observed by the controller loop...
+replication controller "lab-ocp4-2" successfully rolled out
+### Updating spawner to use image for workshop.
+Tag lab-ocp4:latest set to quay.io/openshiftlabs/workshop-dashboard:3.7.1.
+### Route details for the spawner are as follows.
+NAME       HOST/PORT                                                                      PATH   SERVICES   PORT       TERMINATION     WILDCARD
+lab-ocp4   lab-ocp4-aws-sb.apps.cluster-workshop-a011.workshop-a011.example.opentlc.com          lab-ocp4   8080-tcp   edge/Redirect   None
+```
+
+
 Note that you will need to be a cluster admin in the OpenShift cluster to deploy a workshop for multiple users.
 
 Once the deployment has completed, because this workshop is not currently setup to be automatically built into an image and hosted on an image registry, you will need to manually build the workshop image.
@@ -225,6 +310,24 @@ oc set env dc/lab-ocp4 \
   MAX_SESSION_AGE=21600  \
   SERVER_LIMIT=60   \
   RESOURCE_BUDGET=unlimited 
+```
+
+The output of this command should look like this:
+
+```
+$ oc get po
+NAME                                 READY   STATUS              RESTARTS   AGE
+aws-servicebroker-55c56446fc-srvtx   1/1     Running             0          5m29s
+lab-ocp4-1-deploy                    0/1     Completed           0          2m37s
+lab-ocp4-2-deploy                    0/1     Completed           0          114s
+lab-ocp4-2-ql7m4                     1/1     Running             0          83s
+
+$ oc set env dc/lab-ocp4 \
+>   IDLE_TIMEOUT=7200 \
+>   MAX_SESSION_AGE=21600  \
+>   SERVER_LIMIT=60   \
+>   RESOURCE_BUDGET=unlimited 
+deploymentconfig.apps.openshift.io/lab-ocp4 updated
 ```
 
 Also, see how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
