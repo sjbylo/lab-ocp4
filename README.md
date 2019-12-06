@@ -274,7 +274,7 @@ Ensure the workshop is configured correctly to allow enough time and resources f
 For example, here the values are set for an idle session timeout of `2 hours`, a maximum session age of `6 hours` (1 or 2 hours longer than the expected duration of the workshop), a server limit for `60` participants and a resource budget of `unlimited` (therefor no cpu/ram limits set):
 
 ```
-oc set env dc/lab-ocp4 \
+oc set env dc/lab-ocp4-spawner \
   IDLE_TIMEOUT=7200 \
   MAX_SESSION_AGE=21600  \
   SERVER_LIMIT=60   \
@@ -291,7 +291,7 @@ lab-ocp4-1-deploy                    0/1     Completed           0          2m37
 lab-ocp4-2-deploy                    0/1     Completed           0          114s
 lab-ocp4-2-ql7m4                     1/1     Running             0          83s
 
-$ oc set env dc/lab-ocp4 \
+$ oc set env dc/lab-ocp4-spawner \
 >   IDLE_TIMEOUT=7200 \
 >   MAX_SESSION_AGE=21600  \
 >   SERVER_LIMIT=60   \
