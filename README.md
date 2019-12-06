@@ -205,60 +205,29 @@ To deploy it for a workshop with multiple users, run:
 .workshop/scripts/deploy-spawner.sh
 ```
 
-The output of this command should look like this:
+The output of this command should contain the following:
 
 ```
 $ .workshop/scripts/deploy-spawner.sh
 ### Parsing command line arguments.
-### Reading the default configuation.
-### Reading the workshop configuation.
-### Setting the workshop application.
-### Checking spawner configuration.
-### Creating spawner application.
-serviceaccount/lab-ocp4-aws-sb-hub created
-rolebinding.authorization.openshift.io/lab-ocp4-edit created
-clusterrole.authorization.openshift.io/lab-ocp4-aws-sb-spawner created
-clusterrolebinding.authorization.openshift.io/lab-ocp4-aws-sb-spawner created
-clusterrole.authorization.openshift.io/lab-ocp4-aws-sb-spawner-rules created
-clusterrolebinding.authorization.openshift.io/lab-ocp4-aws-sb-spawner-rules created
-clusterrole.authorization.openshift.io/lab-ocp4-aws-sb-session-rules created
-clusterrolebinding.authorization.openshift.io/lab-ocp4-aws-sb-session-rules created
-imagestream.image.openshift.io/lab-ocp4-hub created
-configmap/lab-ocp4-cfg created
-configmap/lab-ocp4-res created
-configmap/lab-ocp4-env created
-deploymentconfig.apps.openshift.io/lab-ocp4 created
-persistentvolumeclaim/lab-ocp4-hub-data created
-service/lab-ocp4 created
-route.route.openshift.io/lab-ocp4 created
-imagestream.image.openshift.io/lab-ocp4 created
+...
+clusterrole.authorization.openshift.io/lab-ocp4-spawner-extra created
+...
+imagestream.image.openshift.io/lab-ocp4-session created
 ### Waiting for the spawner to deploy.
-Deployment config "lab-ocp4" waiting on image update
-Deployment config "lab-ocp4" waiting on image update
-Waiting for latest deployment config spec to be observed by the controller loop...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 of 1 updated replicas are available...
-Waiting for latest deployment config spec to be observed by the controller loop...
-replication controller "lab-ocp4-1" successfully rolled out
-### Install static resource definitions.
+...
+replication controller "lab-ocp4-spawner-1" successfully rolled out
+### Install spawner resource definitions.
 ### Update spawner configuration for workshop.
-### Restart the spawner with new configuration.
-deploymentconfig.apps.openshift.io/lab-ocp4 rolled out
-Waiting for latest deployment config spec to be observed by the controller loop...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 out of 1 new replicas have been updated...
-Waiting for rollout to finish: 0 of 1 updated replicas are available...
-Waiting for latest deployment config spec to be observed by the controller loop...
-replication controller "lab-ocp4-2" successfully rolled out
 ### Updating spawner to use image for workshop.
-Tag lab-ocp4:latest set to quay.io/openshiftlabs/workshop-dashboard:3.7.1.
+Tag lab-ocp4-session:latest set to quay.io/openshifthomeroom/workshop-dashboard:5.0.0.
+### Restart the spawner with new configuration.
+deploymentconfig.apps.openshift.io/lab-ocp4-spawner rolled out
+### Waiting for the spawner to deploy again.
+...
+replication controller "lab-ocp4-spawner-2" successfully rolled out
 ### Route details for the spawner are as follows.
-NAME       HOST/PORT                                                                      PATH   SERVICES   PORT       TERMINATION     WILDCARD
-lab-ocp4   lab-ocp4-aws-sb.apps.cluster-workshop-a011.workshop-a011.example.opentlc.com          lab-ocp4   8080-tcp   edge/Redirect   None
+lab-ocp4-aws-sb.apps.cluster-workshop-a011.workshop-a011.example.opentlc.com
 ```
 
 
