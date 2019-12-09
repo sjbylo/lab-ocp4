@@ -274,32 +274,17 @@ Ensure the workshop is configured correctly to allow enough time and resources f
 For example, here the values are set for an idle session timeout of `2 hours`, a maximum session age of `6 hours` (1 or 2 hours longer than the expected duration of the workshop), a server limit for `60` participants and a resource budget of `unlimited` (therefor no cpu/ram limits set):
 
 ```
-oc set env dc/lab-ocp4-spawner \
-  IDLE_TIMEOUT=7200 \
-  MAX_SESSION_AGE=21600  \
-  SERVER_LIMIT=60   \
-  RESOURCE_BUDGET=unlimited 
+oc set env dc/lab-ocp4-spawner IDLE_TIMEOUT=7200 MAX_SESSION_AGE=21600 SERVER_LIMIT=60 RESOURCE_BUDGET=unlimited 
 ```
 
 The output of this command should look like this:
 
 ```
-$ oc get po
-NAME                                 READY   STATUS              RESTARTS   AGE
-aws-servicebroker-55c56446fc-srvtx   1/1     Running             0          5m29s
-lab-ocp4-1-deploy                    0/1     Completed           0          2m37s
-lab-ocp4-2-deploy                    0/1     Completed           0          114s
-lab-ocp4-2-ql7m4                     1/1     Running             0          83s
-
-$ oc set env dc/lab-ocp4-spawner \
->   IDLE_TIMEOUT=7200 \
->   MAX_SESSION_AGE=21600  \
->   SERVER_LIMIT=60   \
->   RESOURCE_BUDGET=unlimited 
+$ oc set env dc/lab-ocp4-spawner IDLE_TIMEOUT=7200 MAX_SESSION_AGE=21600 SERVER_LIMIT=60 RESOURCE_BUDGET=unlimited 
 deploymentconfig.apps.openshift.io/lab-ocp4 updated
 ```
 
-Also, see how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
+Also, see more on how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
 
 ## Tidy up
 

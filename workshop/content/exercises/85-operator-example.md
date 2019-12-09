@@ -1,7 +1,7 @@
 In this exercise you will learn about the Etcd Operator.
 
 Go to the console page "[Installed Operators](%console_url%/ns/%project_namespace%/clusterserviceversions)" where the Etcd Operator should be seen.  
-If it is not visible, then the OpenShift Platform Administrator needs to subscribe to it.
+If it is not visible, then the OpenShift Platform Administrator needs to subscribe to it and ensure it's available for ``all namespaces on the cluster``.
 
 First, check what's running in your project:
 
@@ -37,15 +37,24 @@ metadata:
 spec:
   size: 3
   version: 3.2.13
+  pod:
+    persistentVolumeClaimSpec:
+      storageClassName: gp2
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
 END
 ```
-Note that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod).
+Note that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod) and each pod will be provisioned with 1 persistent volume. 
 
-As the Etcd cluster is being created, observer the steps taken in the upper terminal: 
+As the Etcd cluster is being created, observer the steps taken in the upper terminal with this command:
 
 ```execute
 oc get events -w | grep /example
 ```
+
 You should be able to observe the steps taken to create the Etcd Cluster.  E.g. ``New member example-xxxyyyzzz added to cluster``.
 
 After all three pods of the Etcd cluster have been created (see them in the lower terminal), stop the command in the upper terminal:
