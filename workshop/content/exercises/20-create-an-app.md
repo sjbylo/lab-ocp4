@@ -4,11 +4,11 @@ On the 'Console' tab, click on 'Home' -> Projects. You will see the a project th
 
 ![project](images/deploy-img1.png)
 
-Click on the project, you will be brought to the project console which shows that there is no workload running .
+Click on the project, you will be brought to the project console which shows that there is no workload running.
 
-Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` at the top of the left menu and selecting ``Developer``.  You will now see the Developer perspective which focuses on everything that a developer would be concerned about. 
+Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` left-menu item at the top and selecting ``Developer``.  You will now see the Developer perspective which focuses on everything that a developer would be concerned about. 
 
-You can now deploy a container my clicking on the ``+Add`` menu item. 
+You can now deploy a container by clicking on the ``+Add`` menu item. 
 
 To deploy a container image, click on the '+Add' in the left menu.
 
