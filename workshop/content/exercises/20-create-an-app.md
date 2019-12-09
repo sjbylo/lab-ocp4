@@ -1,21 +1,21 @@
-In this exercise you will try out how to deploy a containerized application via the web console. OpenShift Container Platform offers different ways to deploy your applications. You can deploy a container image; or point Openshift Container Platform to a source code repository, to build and deploy the application. It also allows you to deploy an entire workload via Templates. In this exercise, we will see how easy it is to deploy a simple container image via the web console.
+In this exercise, you will try out how to deploy a containerized application via the web console. OpenShift Container Platform offers different ways to deploy your applications. You can deploy a container image; or point OpenShift Container Platform to a source code repository to build and deploy the application. It also allows you to deploy an entire workload via Templates. In this exercise, we will see how easy it is to deploy a simple container image via the web console.
 
-On the 'Console' tab, click on 'Home' -> Projects. You will see the a project that is created for you. You will deploy your applications in this project.
+On the 'Console' tab, click on 'Home' -> ['Projects'](%console_url%) . You will see the project that was created for you. You will deploy your applications in this project.
 
 ![project](images/deploy-img1.png)
 
-Click on the project, you will be brought to the project console which shows that there is no workload running.
+Click on the project and you will be brought to the project console which shows that there is no workload running.
 
 Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` left-menu item at the top and selecting ``Developer``.  You will now see the Developer perspective which focuses on everything that a developer would be concerned about. 
 
 You can now deploy a container by clicking on the ``+Add`` menu item. 
 
-To deploy a container image, click on the '+Add' in the left menu.
+To deploy a container image, click on '+Add' in the left menu.
 
 ![project](images/deploy-img2.png)
 
 
-On the 'Deploy Image' page, enter:
+On the deploy 'Container Image' page, enter:
 
 ```copy
 openshiftroadshow/parksmap-katacoda:1.2.0
@@ -23,8 +23,8 @@ openshiftroadshow/parksmap-katacoda:1.2.0
 
 into the 'Image Name' text box and click on the magnifying class icon at the side. This will trigger a query from Docker hub to pull down the image information.
 
-Click on 'Deploy' button to deploy the container image on OpenShift.
-Behind the scene, Openshift will pull down the image, create the necessary Openshift objects (services, deploymentConfig) and deploy the image.
+Click on 'Create' button to deploy the container image on OpenShift.
+Behind the scenes, Openshift will pull down the image, create the necessary Openshift objects (services, deploymentConfig) and deploy the image.
 
 ![project](images/deploy-img-a.png)
 
