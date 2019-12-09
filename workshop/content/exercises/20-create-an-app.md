@@ -6,7 +6,11 @@ On the 'Console' tab, click on 'Home' -> Projects. You will see the a project th
 
 Click on the project, you will be brought to the project console which shows that there is no workload running .
 
-To deploy a container image, click on the 'Deploy Image' button at the button of the page. Or you can use the 'Add' menu at the top right to deploy an image.
+Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` at the top of the left menu and selecting ``Developer``.  You will now see the Developer perspective which focuses on everything that a developer would be concerned about. 
+
+You can now deploy a container my clicking on the ``+Add`` menu item. 
+
+To deploy a container image, click on the '+Add' in the left menu.
 
 ![project](images/deploy-img2.png)
 
@@ -37,7 +41,7 @@ Next, click on ```Networking -> Routes``` on the left hand menu.
 You will create a route to allow external access to the containerized application you have deployed.
 
 Fill up the mandatory values on the ```Create Route``` page according to the screen-shot.
-The valuse are: Name (e.g. mapapp), Service (select ``parksmap-katacoda``), Target Port (select ``8080``).
+The values are: Name (e.g. mapapp), Service (select ``parksmap-katacoda``), Target Port (select ``8080``).
 
 Click on Create.
 
