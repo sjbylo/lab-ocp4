@@ -6,7 +6,7 @@ On the 'Console' tab, click on 'Home' -> ['Projects'](%console_url%) . You will 
 
 Click on the project and you will be brought to the project console which shows that there is no workload running.
 
-Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` left-menu item at the top and selecting ``Developer``.  You will now see the Developer perspective which focuses on everything that a developer would be concerned about. 
+Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` left-menu item at the top and selecting ``Developer``.  You will see the Developer perspective which focuses on everything that a developer would be concerned about. 
 
 You can now deploy a container by clicking on the ``+Add`` menu item. 
 
@@ -24,20 +24,20 @@ openshiftroadshow/parksmap-katacoda:1.2.0
 into the 'Image Name' text box and click on the magnifying class icon at the side. This will trigger a query from Docker hub to pull down the image information.
 
 Click on 'Create' button to deploy the container image on OpenShift.
-Behind the scenes, Openshift will pull down the image, create the necessary Openshift objects (services, deploymentConfig) and deploy the image.
+Behind the scenes, OpenShift will pull down the image, create the necessary OpenShift objects (services, deploymentConfig) and deploy the image.
 
 ![project](images/deploy-img-a.png)
 
-You will be lead to a page showing the status of the deployment.
+You will be lead to the Topology view showing your application.
 
 ![project](images/deploy-img-b.png)
 
-Click on the deploymentConfig Object to open up a side menu for more information
+Click on the application donut to open up a side menu with more information.
 
 ![project](images/deploy-img-b1.png)
 
 
-Next, click on ```Networking -> Routes``` on the left hand menu.
+Next, click on ```Networking -> Routes``` on the left-hand menu.
 You will create a route to allow external access to the containerized application you have deployed.
 
 Fill up the mandatory values on the ```Create Route``` page according to the screen-shot.
