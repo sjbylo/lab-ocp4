@@ -1,0 +1,16 @@
+name: OpenShift Workshop 
+
+modules:
+    activate:
+    - index
+    - exercises/10-openshift-intro
+    - exercises/30-fork-the-repo
+    - exercises/40-source-to-image
+    - exercises/45-create-a-webhook
+    - exercises/50-change-the-source
+    - exercises/60-add-test-database
+    - exercises/81-eap-cluster
+    - exercises/85-operator-example
+    - exercises/90-clean-up
+    - finish
+
