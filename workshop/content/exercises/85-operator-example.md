@@ -47,6 +47,8 @@ spec:
           storage: 1Gi
 END
 ```
+  - Note: If you see the error message ``no matches for kind "EtcdCluster"`` this means the ``EtcdCluster`` Custom Resource is unknown to the system and that probably means the ``Etcd Operator`` has not been configured yet. 
+
 Note that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod) and each pod will be provisioned with 1 persistent volume. 
 
 As the Etcd cluster is being created, observer the steps taken in the upper terminal with this command:

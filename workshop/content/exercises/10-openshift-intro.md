@@ -54,11 +54,13 @@ Your projects can be viewed here.  You should only have one:
 
 * [Projects](%console_url%) 
 
+<!--
 The status of your project can be seen here:
 
 * [Status](%console_url%/overview/ns/%project_namespace%)
 
 Click on the ``Dashboard`` button to see your resource usage in your project. As you have just started the workshop you are using nothing, so it shows 0% utilization for CPU and Memory.  
+-->
 
 OpenShift events can be viewed here:
 

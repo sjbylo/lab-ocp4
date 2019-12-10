@@ -226,11 +226,13 @@ Note that:
  - by default, the application uses a built-in database to store the vote data.  In later exercises we will configure the application to use an external MySQL database.
  
 
+<!--
 Finally, take a look at the resource utilization in the Console: 
 
 * [Status](%console_url%/overview/ns/%project_namespace%)
 
 Click on the ``Dashboard`` button to see your resource usage in your project. 
+-->
 
 ---
 That is the end of the exercise. 
