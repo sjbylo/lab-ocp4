@@ -68,7 +68,7 @@ Once you see the message ``Push successful``, you can continue with the rest of 
 First of all, let's be able to observe what's happening.  We will execute a ``watch`` command in the lower terminal window that shows the various pods in your project/namespace).  Run this command: 
 
 ```execute-2
-watch "oc get po | grep -v -e \-deploy -e Completed" 
+watch "oc get po | grep -v -e ^NAME -e \-deploy -e Completed" 
 ```
 
 Now, create & launch the application using the image you created in the previous steps.  We do that with the OpenShift's ``new-app`` command: 

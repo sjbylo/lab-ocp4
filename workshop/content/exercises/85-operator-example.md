@@ -20,7 +20,7 @@ oc delete all --all
 With the following command, we can observe the pods of the Etcd Cluster in the lower terminal:
 
 ```execute-2
-watch "oc get pods | grep example | grep -v ' Completed '"
+watch "oc get pods | grep -e ^NAME -e example | grep -v ' Completed '"
 ```
 Leave this command running for the duration of this exercise.
 
