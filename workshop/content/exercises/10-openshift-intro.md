@@ -6,6 +6,8 @@ If you are not familiar with the OpenShift Container Platform, it’s worth taki
 
 The goal of OpenShift is to provide a great experience for both Developers and System Administrators to develop, deploy, and run containerized applications. Developers should love using OpenShift because it enables them to take advantage of both containerized applications and orchestration without having to know the details. Developers are free to focus on their code instead of spending time writing Dockerfiles and running docker builds.
 
+![image](images/ocp4-arch-diagram.png)
+
 OpenShift is a full platform that incorporates several upstream projects while also providing additional features and functionality to make those upstream projects easier to consume. The core of the platform is containers and orchestration. For the container side of the house, the platform supports ``Open Container Initiative`` (OCI) compliant container images, including images built with docker, podman or buildah.  For the orchestration side, we have put a lot of work into the ``upstream Kubernetes`` project. Beyond these two upstream projects, we have created a set of additional Kubernetes objects such as ``routes`` and ``deployment configs`` that we will learn how to use during this workshop.
 
 The command line tool that we will be using as part of this training is called the oc tool. This tool is provided for Windows, OS X, and the Linux Operating Systems.
@@ -30,15 +32,11 @@ oc version
 
 Note the version of the server. Look for the "Major" and "Minor" numbers, e.g. 4 and 1+.
 
-View the server endpoint through which you are authenticated.  
+The OpenShift API endpoint shown serves all of the OpenShift APIs through which all tools, especially the ``oc`` client and the Web Console, communicate. If you are familiar with ``kubectl``, this command is also available. OpenShift includes a vanilla version of the upstream Kubernetes project that has been integrated & tested with other components of OpenShift and extended to provide functionality for a full PaaS experience. 
 
 ```execute
-oc whoami --show-server
+kubectl version
 ```
-
-``Note:`` Do not open this URL in your browser. 
-
-The endpoint shown serves all of the OpenShift APIs through which all tools, especially the ``oc`` client and the Web Console, communicate. If you are familiar with ``kubectl``, this command is also available. OpenShift includes a vanilla version of the upstream Kubernetes project that has been integrated & tested with other components of OpenShift and extended to provide functionality for a full PaaS experience. 
 
 View the projects (namespaces) you have access to:
 
@@ -47,6 +45,8 @@ oc projects
 ```
 
 Note, this project has been created for you (``%project_namespace%``) for the duration of the workshop. You will work in this project whilst others will work in their own projects, thus allowing everybody to work without interfering with each other.  This is part of the ``Role Based Access Control`` (RBAC) system which was developed by Red Hat and contributed to the upstream Kubernetes project. 
+
+  - ``Warning: should you see the error message "no permission" in the console, please ensure you select the correct project from the drop-down menu at the top of the page``  
 
 Using the below links, take a look at the OpenShift Console and view the following:
 
@@ -70,18 +70,20 @@ If something is not working properly, this is a good place to look!
 
 Various OpenShift resources can be viewed:
 
-* [Pods](%console_url%/k8s/ns/%project_namespace%/pods) 
-* [Build Configs](%console_url%/k8s/ns/%project_namespace%/buildconfigs)
-* [Deployment Configs](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs)
-* [Routes](%console_url%/k8s/ns/%project_namespace%/routes) 
+* [Pods](%console_url%/k8s/ns/%project_namespace%/pods) - Shows your running pods in your project. 
+* [Build Configs](%console_url%/k8s/ns/%project_namespace%/buildconfigs) - resources that build your application images.
+* [Deployment Configs](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs) - resources that manage the lifecycle of your application.
+* [Routes](%console_url%/k8s/ns/%project_namespace%/routes) - resources that allow access to your applicatin from the external network.
 
 <!--
 * [Workloads](%console_url%/k8s/cluster/projects/%project_namespace%/workloads)
 -->
 
+<!--
 You can view various technologies, including Source to Image, Templates and Operators here:
 
 * [Developer Catalog](%console_url%/catalog/ns/%project_namespace%)
+-->
 
 <!--
 Note, this is not availabe on RHPDS  or only for admin users... 
@@ -92,12 +94,9 @@ Come back to the terminal tab or click here:
 
 * [Terminal](%terminal_url%)
 
-Note that you can open the OpenShift Console in a separate tab by using the menu on the top right corner.
+Note that you can open the OpenShift Console in a separate tab by using the menu on the top right corner and selecting ``Open Console``. 
 
 ---
 That's the end of this exercise.
 
-In this exercise you were introduced to the OpenShift console and command line.  In the next exercise, you will load and run your first container based application. 
-
-
-
+In this exercise you were introduced to OpenShift, the console and the command line. 
