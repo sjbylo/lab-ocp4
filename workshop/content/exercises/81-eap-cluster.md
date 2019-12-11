@@ -1,5 +1,7 @@
 In this exercise, you will learn how to set up an EAP cluster on OpenShift. 
 
+<!-- https://github.com/coreos/etcd-operator/blob/master/doc/user/spec_examples.md -->
+
 # Build the test cluster image    
 
 Clone the repository:
