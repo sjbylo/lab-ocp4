@@ -2,28 +2,39 @@ modules:
     index:
         name: Workshop Overview
         exit_sign: Start Workshop
+    index-aws:
+        name: Workshop Overview
+        exit_sign: Start Workshop
     exercises/10-openshift-intro:
-        name: 1. Get started with OpenShift
+        name: Get started with OpenShift
     exercises/55-initiate-database-prov:
-        name: 3. Initiate Database Provisioning 
+        name: Initiate Database Provisioning 
     exercises/20-create-an-app:
-        name: 2. First Application
+        name: First Application
     exercises/30-fork-the-repo:
-        name: 4. Create a Repo
+        name: Create a Repo
     exercises/40-source-to-image:
-        name: 5. Run the Source
+        name: Run the Source
     exercises/45-create-a-webhook:
-        name: 6. Create a Webhook
+        name: Create a Webhook
     exercises/50-change-the-source:
-        name: 7. Change the Source
+        name: Change the Source
     exercises/60-add-test-database:
-        name: 8. Add a Database for testing
+        name: Add a Database for testing
     exercises/70-add-cloud-database:
-        name: 9. Add a production Database
+        name: Add a production Database
+    exercises/75-springboot:
+        name: Create a SpringBoot application 
+    exercises/75-eap:
+        name: Create a J2EE application on EAP
     exercises/80-day-two-ops:
-        name: 10. Day 2 Operations
+        name: Day 2 Operations
+    exercises/81-eap-cluster:
+        name: EAP Cluster
     exercises/85-operator-example:
-        name: 11. Working with Operators
+        name: Working with Operators
+    exercises/90-clean-up-aws:
+        name: Clean up
     exercises/90-clean-up:
         name: Clean up
     finish:
