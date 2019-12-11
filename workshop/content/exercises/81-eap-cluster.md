@@ -297,7 +297,7 @@ Notice that none of the session data is lost.
 
 # Clean up
 
-Clean up the project: 
+Clean up the project:
 
 ```execute
 oc delete all --selector=app=eap-cluster  

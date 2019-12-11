@@ -22,6 +22,8 @@ openshiftroadshow/parksmap-katacoda:1.2.0
 
 into the 'Image Name' text box and click on the magnifying class icon at the side. This will trigger a query from Docker hub to pull down the image information.
 
+Enter an "myapp" for the ``Application Name`` and also for the ``Name`` fields. 
+
 Click on 'Create' button to deploy the container image on OpenShift. Behind the scenes, OpenShift will pull down the image, create the necessary OpenShift objects (services, deploymentConfig) and deploy the image.
 
 ![project](images/exercise-2-2.png)
