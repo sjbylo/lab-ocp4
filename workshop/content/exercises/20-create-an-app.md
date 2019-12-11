@@ -35,25 +35,13 @@ Click on the application donut to open up a side menu with more information.
 ![project](images/exercise-2-4.png)
 
 
-Next, click on ```Networking -> Routes``` on the left-hand menu.
-You will create a route to allow external access to the containerized application you have deployed.
-
-Fill up the mandatory values on the ```Create Route``` page according to the screen-shot.
-The values are: Name (e.g. mapapp), Service (select ``parksmap-katacoda``), Target Port (select ``8080``).
-
-Click on Create.
-
-![project](images/deploy-img-c.png)
-
-
-You will be lead to the page displaying information on the Route object you have just created. Under the ```Location``` section on the right of the page, is the URL to access the application.
+You will be lead to the page displaying information on the Route object.  Under the ```Location``` section on the right of the page, is the URL to access the application.
 
 ![project](images/deploy-img-d.png)
 
 Click on the URL to access the application.  The application simply displays a map of the world.  If you see that, the application is running successfully!!
 
 ![project](images/deploy-img-e.png)
-
 
 You have just got your first application running on OpenShift.  Congratulations!
 
