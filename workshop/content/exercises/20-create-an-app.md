@@ -32,7 +32,7 @@ You will be lead to the Topology view showing your application.
 
 Click on the application donut to open up a side menu with more information.
 
-![project](images/exercise-2-4.png)
+![project](images/exercise-2-5.jpeg)
 
 
 You will be lead to the page displaying information on the Route object.  Under the ```Location``` section on the right of the page, is the URL to access the application.
