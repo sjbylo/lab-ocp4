@@ -6,14 +6,13 @@ On the 'Console' tab, click on 'Home' -> ['Projects'](%console_url%) . You will 
 
 Click on the project and you will be brought to the project console which shows that there is no workload running.
 
-Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` left-menu item at the top and selecting ``Developer``.  You will see the Developer perspective which focuses on everything that a developer would be concerned about. 
+Now switch to the ``Developer`` perspective by clicking on the ``Administrator`` left-menu item at the top and selecting ``Developer``.  You will see the Developer perspective which focuses on everything that a developer would be concerned about.
 
-You can now deploy a container by clicking on the ``+Add`` menu item. 
+You can now deploy a container by clicking on the ``+Add`` menu item.
 
 To deploy a container image, click on '+Add' in the left menu.
 
-![project](images/deploy-img2.png)
-
+![project](images/exercise-2-1.png)
 
 On the deploy 'Container Image' page, enter:
 
@@ -23,18 +22,17 @@ openshiftroadshow/parksmap-katacoda:1.2.0
 
 into the 'Image Name' text box and click on the magnifying class icon at the side. This will trigger a query from Docker hub to pull down the image information.
 
-Click on 'Create' button to deploy the container image on OpenShift.
-Behind the scenes, OpenShift will pull down the image, create the necessary OpenShift objects (services, deploymentConfig) and deploy the image.
+Click on 'Create' button to deploy the container image on OpenShift. Behind the scenes, OpenShift will pull down the image, create the necessary OpenShift objects (services, deploymentConfig) and deploy the image.
 
-![project](images/deploy-img-a.png)
+![project](images/exercise-2-2.png)
 
 You will be lead to the Topology view showing your application.
 
-![project](images/deploy-img-b.png)
+![project](images/exercise-2-3.png)
 
 Click on the application donut to open up a side menu with more information.
 
-![project](images/deploy-img-b1.png)
+![project](images/exercise-2-4.png)
 
 
 Next, click on ```Networking -> Routes``` on the left-hand menu.
