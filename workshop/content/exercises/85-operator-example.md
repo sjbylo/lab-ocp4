@@ -49,13 +49,15 @@ END
 ```
   - Note: If you see the error message ``no matches for kind "EtcdCluster"`` this means the ``EtcdCluster`` Custom Resource is unknown to the system and that probably means the ``Etcd Operator`` has not been configured yet. 
 
-Note that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod) and each pod will be provisioned with 1 persistent volume. 
+Note that version 3.2.13 will be created with a cluster size of 3 instances (each instance in a pod) and each pod will be provisioned with one persistent volume. 
 
 As the Etcd cluster is being created, observer the steps taken in the upper terminal with this command:
 
 ```execute
 oc get events -w | grep /example
 ```
+
+  - Note: During the provisioning process you may see some warning about volume provisioning.  This is normal and means that OpenShift needs to wait for all three volumes to be created. 
 
 You should be able to observe the steps taken to create the Etcd Cluster.  E.g. ``New member example-xxxyyyzzz added to cluster``.
 
@@ -149,7 +151,7 @@ Now, to remove the Etcd Cluster, all that's needed is to remove the custom resou
 oc delete EtcdCluster example
 ```
 
-Now, clean up:
+Stop the watch command:
 
 ```execute-2
 <ctrl+c>

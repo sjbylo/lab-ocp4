@@ -270,7 +270,7 @@ oc scale dc eap-cluster --replicas=3
 Whilst the new pod is being added to the cluster, test the application to ensure the session data is still being shared amongst the cluster: 
 
 ```execute 
-./test.sh $ROUTE 0.1 20
+./test.sh $ROUTE 0.1 10
 ```
 
 The cluster can still serve the same user session. 
@@ -284,7 +284,7 @@ oc delete pod `oc get pod | grep eap-cluster | awk '{print $1}' | tail -1`
 Whilst the pod is being healed (restarted), test the application again:
 
 ```execute 
-./test.sh $ROUTE 0.1 20
+./test.sh $ROUTE 0.1 10
 ```
 
 The results should still show the session is shared between all pods and the correct hit count is shown. 
@@ -297,6 +297,12 @@ oc rollout latest eap-cluster
 
 ```execute 
 ./test.sh $ROUTE 0.1 
+```
+
+Stop the test: 
+
+```execute 
+<ctrl+c>
 ```
 
 Notice that none of the session data is lost. 
