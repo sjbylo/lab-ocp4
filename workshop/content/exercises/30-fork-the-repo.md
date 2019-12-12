@@ -1,11 +1,10 @@
-Is this exercise you will fetch the source code that will be used for the rest of the exercises.  
+Is this exercise you will fetch the source code that will be used for this exercise and for some of the following, exercises.  
 
 You will make a copy (fork) of the source code repository in GitHub and then build and deploy it to OpenShift.   The application we will use is a simple voting application which collects answers to a simple question from users and displays the collected results. 
 
 ## Fork the repository 
 
-First, set up a source code repository in your own GitHub account.  You will need your GitHub username and password for
-the next step.  If you don't have an account, first sign up for one at [http://github.com/join](https://github.com/join) and then come back and follow the instructions here. Be sure to remember the username and password!
+First, set up a source code repository in your own GitHub account.  You will need your GitHub username and password for the next step.  If you don't have an account, first sign up for one at [http://github.com/join](https://github.com/join) and then come back and follow the instructions here. Be sure to remember the username and password!
 
  - ``Note: Github is a site based on an open source version control system known as git, like other version control software git helps with tracking changes to a repository of files.`` 
 

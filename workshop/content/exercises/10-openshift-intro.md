@@ -46,7 +46,7 @@ oc projects
 
 Note, this project has been created for you (``%project_namespace%``) for the duration of the workshop. You will work in this project whilst others will work in their own projects, thus allowing everybody to work without interfering with each other.  This is part of the ``Role Based Access Control`` (RBAC) system which was developed by Red Hat and contributed to the upstream Kubernetes project. 
 
-  - ``Warning: should you see the error message ``_Restricted Access, You don't have access to this section due to cluster policy._`` in the console, this means you are trying to access the wrong project.  Please ensure you select the correct project from the drop-down menu at the top of the page``  
+  - ``Warning: should you see the error message ``Restricted Access, You don't have access to this section due to cluster policy.`` in the console, this means you are trying to access the wrong project.  Please ensure you select the correct project from the drop-down menu at the top of the page``  
 
 Using the below links, take a look at the OpenShift Console and view the following:
 

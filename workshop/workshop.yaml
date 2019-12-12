@@ -2,7 +2,7 @@ name: OpenShift on AWS Workshop
 
 modules:
     activate:
-    - index
+    - index-aws
     - exercises/10-openshift-intro
     - exercises/20-create-an-app
     - exercises/55-initiate-database-prov
@@ -14,6 +14,6 @@ modules:
     - exercises/70-add-cloud-database
     - exercises/80-day-two-ops
     - exercises/85-operator-example
-    - exercises/90-clean-up
+    - exercises/90-clean-up-aws
     - finish
 

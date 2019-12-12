@@ -39,8 +39,6 @@ Click on the application donut to open up a side menu with more information.
 
 You will be lead to the page displaying information on the Route object.  Under the ```Location``` section on the right of the page, is the URL to access the application.
 
-![project](images/deploy-img-d.png)
-
 Click on the URL to access the application.  The application simply displays a map of the world.  If you see that, the application is running successfully!!
 
 ![project](images/deploy-img-e.png)

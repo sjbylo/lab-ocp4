@@ -99,7 +99,11 @@ Let's fetch the ``route`` hostname into an environment variable (ROUTE) along wi
 ROUTE=http://`oc get route eap-cluster -o template --template {{.spec.host}}`/cluster_test/
 echo $ROUTE
 ```
+
 The application can be reached at this endpoint. 
+
+Wait for the pod to be ``Running`` and the application to finish starting up.  You can open the application ina browser using the above URL. 
+
 
 # Configure the application 
 
@@ -250,7 +254,7 @@ Now, we have configured clustering and have verified it's started from the pod l
 You will see that all pods are now sharing the same session data.  This means that any pod can serve the requests of all users. 
 
 ```execute 
-rm -f .cookie               # start a new session 
+rm -f .cookie    # start a new session 
 ./test.sh $ROUTE 0.1 10
 ```
 
@@ -288,7 +292,7 @@ The results should still show the session is shared between all pods and the cor
 Start a new _rolling deployment_.  All pods will be replaced one after the other ensuring the application remains available:
 
 ```execute
-oc rollout latest dc eap-cluster 
+oc rollout latest eap-cluster 
 ```
 
 ```execute 
