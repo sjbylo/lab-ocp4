@@ -22,7 +22,7 @@ Once you have made the change, save the file using ``CTL-X``, then ``Y`` and the
 Use the following command to substitute some text in the voting definition file for you:
 
 ```execute
-sed -i "s/distribution/Distribution/" seeds/seed_data.json
+sed -i "s/avourite distribution/avourite Linux Distribution/" seeds/seed_data.json
 ```
 
 You have just made a change to the source code. You have changed the word to "``Distribution``".  As a developer, you would now want to build and 'test' the application on your 'local workstation' and after you are happy that it works you would ``commit`` and ``push`` the changes to GitHub. 
