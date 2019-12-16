@@ -1,6 +1,6 @@
 # OpenShift 4 with AWS Broker Workshop
 
-This workshop is for OpenShift version 4.1 and above. It provides an intriduction to OpenShift and 
+This workshop is for OpenShift version 4.1 and above. It provides an introduction to OpenShift and 
 developing an application which connects to an instance of MySQL via the Relational Database Service (RDS) of AWS. 
 
 The workshop exercises can be found [here](https://github.com/sjbylo/lab-ocp4/tree/master/workshop/content/exercises).
@@ -269,9 +269,17 @@ To delete a multi user workshop instance when done, run:
 
 ## Configure the workshop
 
+You can also Ensure the workshop is configured correctly to allow enough time and resources for the duration of the workshop. 
+
+Check the current workshop configuiration with:
+
+```
+oc set env dc/lab-ocp4-spawner --list
+```
+
 Check the workshop configuration file for the settings used: ``.workshop/settings.sh``
 
-Ensure the workshop is configured correctly to allow enough time and resources for the duration of the workshop. 
+You can make changes to the running workshop by setting the current environment variables.  This will restart the workshop and all sessions:
 
 For example, here the values are set for an idle session timeout of `2 hours`, a maximum session age of `6 hours` (1 or 2 hours longer than the expected duration of the workshop), a server limit for `60` participants and a resource budget of `unlimited` (therefor no cpu/ram limits set):
 
