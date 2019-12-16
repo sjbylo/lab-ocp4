@@ -14,8 +14,11 @@ If not already, switch to the ``Developer`` perspective (click on the ``Administ
 
 You can read more about the ``Developer Catalog`` in the [documentation](https://docs.openshift.com/container-platform/4.2/applications/application-life-cycle-management/odc-creating-applications-using-developer-perspective.html#odc-creating-applications-using-developer-perspective) 
 
+Click on  ``+Add`` and then on ``From Catalog``:
 
+<!--
 Click on * [+Add](%console_url%/k8s/ns/%project_namespace%/add) and then on ``From Catalog``:
+-->
 
 ![Creating an application using the Developer CATALOG option](images/image10.png)
 
@@ -86,11 +89,12 @@ oc delete all --all
 
 ---
 
+<!--
 Console links:
 
 * [Pods](%console_url%/k8s/ns/%project_namespace%/pods) - Shows your running pods in your project. 
 * [Build Configs](%console_url%/k8s/ns/%project_namespace%/buildconfigs) - resources that build your application images.
 * [Deployment Configs](%console_url%/k8s/ns/%project_namespace%/deploymentconfigs) - resources that manage the lifecycle of your application.
 * [Routes](%console_url%/k8s/ns/%project_namespace%/routes) - resources that allow access to your applicatin from the external network.
-* [Topology](%console_url%/k8s/ns/%project_namespace%/topology) 
-
+* [Topology](%console_url%/k8s/ns/%project_namespace%/topology)  # broken
+-->
