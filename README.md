@@ -269,6 +269,8 @@ To delete a multi user workshop instance when done, run:
 
 ## Configure the workshop
 
+Check the workshop configuration file for the settings used: ``.workshop/settings.sh``
+
 Ensure the workshop is configured correctly to allow enough time and resources for the duration of the workshop. 
 
 For example, here the values are set for an idle session timeout of `2 hours`, a maximum session age of `6 hours` (1 or 2 hours longer than the expected duration of the workshop), a server limit for `60` participants and a resource budget of `unlimited` (therefor no cpu/ram limits set):
