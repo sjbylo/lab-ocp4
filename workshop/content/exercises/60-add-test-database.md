@@ -209,7 +209,7 @@ In the next exercise you will configure the cloud based database.
 ---
 # Troubleshooting instructions
 
-When the application starts for the first time and initializes the database, the log output should look like this:
+When the application starts for the first time and initializes the database the log output should look like this:
 
 ![log output 1](images/vote-app-start-1.png)
 
@@ -219,10 +219,18 @@ When the application restarts the log output should look like this:
 
 Do you see any error messages in the output? 
 
-If the issue can't be fixed, reset the database and restart the application using the following command: 
+If the issue can't be fixed, empty the database and restart the application using the following command: 
 
 ```execute 
-reset-test-database
+delete-test-database
+```
+
+If the issue can't be fixed, recreate the database and restart the application using the following command: 
+
+```execute 
+recreate-test-database
 ```
 
 After the script has completed return to the instructions and try again.
+
+<!-- drop table `option`;  delete from `option`;  >
