@@ -1,0 +1,21 @@
+#!/bin/bash 
+
+echo Replacing the database ...
+oc delete all -oname --selector=app=db
+oc delete is db
+
+oc new-app --name db mysql:5.7 \
+  -e MYSQL_USER=user \
+  -e MYSQL_PASSWORD=password \
+  -e MYSQL_DATABASE=vote 
+
+echo Waiting for database to be fully deployed
+oc rollout status dc db -w
+
+echo Ensure there is only one instance of the application
+oc scale dc vote-app --replicas=1 
+
+echo Restart the application
+oc rollout latest vote-app 
+oc rollout status dc vote-app -w
+

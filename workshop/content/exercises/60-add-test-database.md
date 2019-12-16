@@ -209,9 +209,19 @@ In the next exercise you will configure the cloud based database.
 ---
 # Troubleshooting instructions
 
-Reset the database and restart the application using the following command: 
+When the application starts for the first time and initializes the database, the log output should look like this:
 
-```
+![log output 1](images/vote-app-start-1.png)
+
+When the application restarts the log output should look like this:
+
+![log output 1](images/vote-app-start-2.png)
+
+Do you see any error messages in the output? 
+
+If the issue can't be fixed, reset the database and restart the application using the following command: 
+
+```execute 
 reset-test-database
 ```
 
