@@ -269,7 +269,7 @@ To delete a multi user workshop instance when done, run:
 
 ## Configure the workshop
 
-You can also Ensure the workshop is configured correctly to allow enough time and resources for the duration of the workshop. 
+You must ensure the workshop is configured correctly to allow enough time and resources for the duration of the workshop.  If you don't check this, some or all of the  participants may not be able to access the workshop!
 
 Check the current workshop configuiration with:
 
@@ -279,7 +279,7 @@ oc set env dc/lab-ocp4-spawner --list
 
 Check the workshop configuration file for the settings used: ``.workshop/settings.sh``
 
-You can make changes to the running workshop by setting the current environment variables.  This will restart the workshop and all sessions:
+You can make changes to the running workshop by setting the current environment variables.  Note: This will restart the workshop and all sessions:
 
 For example, here the values are set for an idle session timeout of `2 hours`, a maximum session age of `6 hours` (1 or 2 hours longer than the expected duration of the workshop), a server limit for `60` participants and a resource budget of `unlimited` (therefor no cpu/ram limits set):
 
