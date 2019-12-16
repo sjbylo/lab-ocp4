@@ -293,6 +293,42 @@ oc set env dc/lab-ocp4-spawner \
 
 Also, see more on how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
 
+## Constructing your own workshop
+
+It is possible to mix and match the various lab exercises (modules) that are available.  
+Other workshops have already been defined in the files, e.g. workshop/workshop-all.yaml and workshop/workshop-dev-overview.yaml.
+A new module file can be created and configured to include the modules you need.
+
+Note that all the modules have been defined in the workshop/modules.yaml file so this file can be copied to a new file and edited to create a new workshop.
+
+Here is an example:
+
+```
+cd lab-ocp4 
+oc new-project workshop-dev
+```
+
+Deploy the workshop spawner.  Note the use of the WORKSHOP_FILE parameter which points to a different workshop definition file.
+
+Note also the use of NAME_PREFIX, which allows you to run more than one instance of the workshop on the same project or OCP cluster.
+
+```
+.workshop/scripts/deploy-spawner.sh --override NAME_PREFIX=dev- --override WORKSHOP_FILE=workshop-dev-overview.yaml
+```
+
+Then build the image in the usual way: 
+
+```
+.workshop/scripts/build-workshop.sh --override NAME_PREFIX=dev-
+```
+
+After deployment, you should be able to access the "dev" workshop via its route.
+
+```
+oc get route
+```
+
+
 ## Tidy up
 
 Delete the build configuration for the workshop image by running:
