@@ -24,13 +24,13 @@ modules:
     exercises/70-add-cloud-database:
         name: Add a production Database
     exercises/75-springboot:
-        name: Create a SpringBoot application 
+        name: Build & run a SpringBoot application 
     exercises/75-eap:
-        name: Create a J2EE application on EAP
+        name: Build a J2EE application & run on EAP
     exercises/80-day-two-ops:
-        name: Day 2 Operations
+        name: Working with Deployments
     exercises/81-eap-cluster:
-        name: EAP Cluster
+        name: Working with an EAP Cluster
     exercises/85-operator-example:
         name: Working with Operators
     exercises/90-clean-up-aws:
