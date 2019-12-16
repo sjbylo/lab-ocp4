@@ -310,7 +310,8 @@ oc new-project workshop-dev
 
 Deploy the workshop spawner.  Note the use of the WORKSHOP_FILE parameter which points to a different workshop definition file.
 
-Note also the use of NAME_PREFIX, which allows you to run more than one instance of the workshop on the same project or OCP cluster.
+Note also the use of the _optional_ NAME_PREFIX, which allows you to run more than one instance of a workshop in the same project or OCP cluster. 
+You could have multiple different workshops running in parallel or you might want to have one extra workshop running for dev/test purposes. 
 
 ```
 .workshop/scripts/deploy-spawner.sh --override NAME_PREFIX=dev- --override WORKSHOP_FILE=workshop-dev-overview.yaml

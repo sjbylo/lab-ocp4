@@ -1,0 +1,21 @@
+name: OpenShift Workshop (All Modules)
+
+modules:
+    activate:
+    - index
+    - exercises/10-openshift-intro
+    - exercises/20-create-an-app
+    - exercises/55-initiate-database-prov
+    - exercises/30-fork-the-repo
+    - exercises/40-source-to-image
+    - exercises/45-create-a-webhook
+    - exercises/50-change-the-source
+    - exercises/60-add-test-database
+    - exercises/70-add-cloud-database
+    - exercises/80-day-two-ops
+    - exercises/75-springboot
+    - exercises/75-eap
+    - exercises/81-eap-cluster
+    - exercises/85-operator-example
+    - exercises/90-clean-up
+    - finish
