@@ -48,6 +48,14 @@ mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e "show database
 
 ## Connect the application to the database 
 
+First of all, look at the output of the current vote app:
+
+```execute
+oc logs dc/vote-app | grep ^Connect 
+```
+
+You can see that it's using ``sqlite`` (an internal database) to store it's data.  We will change this below. 
+
 At this point, the application is unaware of the existence of the MySQL database!  You need to re-configure the application to use the new database. 
 To do that we will change the vote application's environment variables and re-launch the pod.  The vote application looks for the existence of the environment variables at startup and uses them to configure itself.  If database credentials are defined the application connects to the database and provisions the needed tables and data. 
 

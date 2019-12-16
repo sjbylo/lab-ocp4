@@ -281,17 +281,6 @@ oc set env dc/lab-ocp4-spawner \
 	RESOURCE_BUDGET=unlimited 
 ```
 
-The output of this command should look like this:
-
-```
-$ oc set env dc/lab-ocp4-spawner \
-	IDLE_TIMEOUT=7200 \
-	MAX_SESSION_AGE=21600 \
-	SERVER_LIMIT=60 \
-	RESOURCE_BUDGET=unlimited 
-deploymentconfig.apps.openshift.io/lab-ocp4 updated
-```
-
 Also, see more on how to [configure and manage the workshop environment](https://github.com/openshift-homeroom/workshop-scripts#configuring-deployments). 
 
 ## Tidy up
