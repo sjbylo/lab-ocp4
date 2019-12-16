@@ -119,12 +119,12 @@ POD=`oc get pods --selector app=workspace -o jsonpath='{.items[?(@.status.phase=
 
 # Test the application 
 
-Post a few random votes to the application using the help-script:
+Post a few random votes to the application using the test script:
 
 ```execute 
 test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
 ```
-(This script can be run multiple times if you wish).
+(This script can be run multiple times if you wish to make more votes).
 
 To view the results use the following command. You should see the votes:
 
@@ -137,6 +137,8 @@ curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/results.html | g
 ```execute
 mysql -h db.%project_namespace%.svc -u user -ppassword -D vote -e 'select * from `option`;'
 ```
+
+  - ``Note:`` Should the application not work as expected, see below for troubleshooting instructions. 
 
 ```
 +----+------------------------------+---------+-------+
@@ -204,4 +206,13 @@ In this exercise you have launched a database for testing purposes and connected
 
 In the next exercise you will configure the cloud based database. 
 
+---
+# Troubleshooting instructions
 
+Reset the database and restart the application using the following command: 
+
+```
+reset-test-database
+```
+
+After the script has completed return to the instructions and try again.
