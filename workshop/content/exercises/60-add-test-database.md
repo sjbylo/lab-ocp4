@@ -204,10 +204,12 @@ That's the end of this exercise.
 
 In this exercise you have launched a database for testing purposes and connected the application to it.  
 
-In the next exercise you will configure the cloud based database. 
+Now move on to the next exercise. 
 
 ---
-# Troubleshooting instructions
+### Troubleshooting instructions
+
+Is the vote application working? 
 
 When the application starts for the first time and initializes the database the log output should look like this:
 
@@ -225,7 +227,7 @@ If the issue can't be fixed, empty the database and restart the application usin
 delete-test-database
 ```
 
-If the issue can't be fixed, recreate the database and restart the application using the following command: 
+If the issue still can't be fixed, recreate the database and restart the application using the following command: 
 
 ```execute 
 recreate-test-database
@@ -233,4 +235,4 @@ recreate-test-database
 
 After the script has completed return to the instructions and try again.
 
-<!-- drop table `option`;  delete from `option`;  >
+<!-- drop table `option`;  delete from `option`;  -->

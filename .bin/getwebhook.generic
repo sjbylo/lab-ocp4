@@ -5,13 +5,13 @@
 
 oc get bc $1 >/dev/null || exit 1
 
-P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .webhook }}{{ $selfLink }}{{ "/webhooks/" }}{{ .webhook.secret }}{{ "/webhook" }}{{ end }}{{ end }}{{ end }}')
+P=$(oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .generic }}{{ $selfLink }}{{ "/webhooks/" }}{{ .generic.secret }}{{ "/generic" }}{{ end }}{{ end }}{{ end }}')
 
 H=$(echo $2 | sed "s/apps\./api\./")
 
 U=`cat ~/.config/hub | grep user: | awk '{print $NF}'`
 
-S=`oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .webhook }}{{ .webhook.secret }}{{ end }}{{ end }}{{ end }}'`
+S=`oc get bc $1 --template='{{ $selfLink := .metadata.selfLink }}{{ if .spec.triggers }}{{ range .spec.triggers }}{{ if .generic }}{{ .generic.secret }}{{ end }}{{ end }}{{ end }}'`
 
 cat <<END
 ###################################################################################

@@ -1,13 +1,12 @@
 #!/bin/bash 
 
+echo Stoping the application 
+oc scale dc vote-app --replicas=0
+
 echo Deleting the database ...
 mysql -h db.`oc project -q`.svc -u user -ppassword -D vote -e 'drop table `option`;'
 mysql -h db.`oc project -q`.svc -u user -ppassword -D vote -e 'delete from `poll`;'
 
-echo Ensure there is only one instance of the application
+echo Starting the application 
 oc scale dc vote-app --replicas=1 
-
-echo Restart the application
-oc rollout latest vote-app 
-oc rollout status dc vote-app -w
 

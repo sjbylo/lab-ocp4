@@ -16,7 +16,7 @@ Source 2 Image (s2i) does the following:
 Run the following command in the lower terminal so you can view the running containers/pods during the rest of the exercises:
 
 ```execute-2
-watch "oc get pods | grep -e ^NAME -e ^db- -e ^vote-app- | grep -v ' Completed '"
+watch "oc get pods | grep -v -e ' Completed ' -e \-deploy"
 ```
 
 This command will run for most of the exercises and should now show ``No resources found`` since we haven't created anything yet. 
@@ -189,7 +189,7 @@ curl -s http://vote-app-%project_namespace%.%cluster_subdomain%/ | grep "<title>
 You should see the following output which means the application is working:
 
 ```
-    <title>Favourite Linux distribution</title>
+    <title>Favourite distribution</title>
 ```
 
 

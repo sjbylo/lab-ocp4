@@ -126,4 +126,4 @@ In this exercise you were able to easily rollout new versions of the application
 ---
 That's the end of this exercise.
 
-Please move onto the next exercise.  
+Please move on to the next exercise.  
