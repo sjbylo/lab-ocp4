@@ -186,7 +186,7 @@ git clone --recurse-submodules https://github.com/sjbylo/lab-ocp4.git
 Then within the Git repository directory, run:
 
 ```
-git submodule update --init --recursive
+git submodule update --init --recursive --remote 
 ```
 
 This will checkout a copy of a Git submodule which contains scripts to help you deploy the workshop.
@@ -250,7 +250,7 @@ You can learn more about the scripts used to perform the deployment by looking a
 If you need to ever update the deployment scripts to the latest version run:
 
 ```
-git submodule update --recursive --remote
+git submodule update --init --recursive --remote
 ```
 
 This will update the commit reference for the Git submodule, so if you want to keep it for the future, you will need to commit the change back to the repository.
