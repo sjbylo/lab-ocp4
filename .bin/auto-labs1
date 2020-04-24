@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash -x
 
 oc delete all --selector=app=vote-app
 oc delete all --selector=app=db
@@ -31,5 +31,5 @@ oc set env dc vote-app \
    MASTER_PASSWORD=password \
    DB_TYPE=mysql
 
-oc scale --replicas=3 dc/vote-app
+#oc scale --replicas=3 dc/vote-app
 
