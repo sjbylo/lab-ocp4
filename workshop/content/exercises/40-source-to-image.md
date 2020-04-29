@@ -198,7 +198,7 @@ The application can be further tested using our helper-script.
 Post a few random votes to the application using the help-script:
 
 ```execute 
-test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%
 ```
 
 To view the results use the following command. You should see the totals of all the voting options:

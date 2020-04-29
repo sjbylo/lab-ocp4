@@ -153,7 +153,7 @@ Again, the tables (``poll`` and ``option``) should have been created.
 Post a few random votes to the application using the help-script:
 
 ```execute 
-test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%
 ```
 
 After using the application, check the votes in the database table: 
@@ -186,7 +186,7 @@ The application can be tested using curl.
 Post a few random votes to the application using this help-script:
 
 ```execute 
-test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%
 ```
 
 <!--

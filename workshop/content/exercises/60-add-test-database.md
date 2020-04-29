@@ -122,7 +122,7 @@ POD=`oc get pods --selector app=workspace -o jsonpath='{.items[?(@.status.phase=
 Post a few random votes to the application using the test script:
 
 ```execute 
-test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%/vote.html
+test-vote-app http://vote-app-%project_namespace%.%cluster_subdomain%
 ```
 (This script can be run multiple times if you wish to make more votes).
 
