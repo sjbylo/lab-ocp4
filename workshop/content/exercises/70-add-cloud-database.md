@@ -220,7 +220,7 @@ Or, view the results page in a browser:
 ---
 That's the end of this exercise.  
 
-In this exercise you provisioned a RDS database in a container and connected the application to it. 
+In this exercise you provisioned a RDS database and connected the application to it. 
 
 
 
